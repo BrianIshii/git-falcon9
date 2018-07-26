@@ -3,8 +3,9 @@
 
 //import PropTypes from '../../../../Library/Caches/typescript/2.9/node_modules/@types/prop-types';
 import PropTypes from 'prop-types';
-import { Rocket, RocketSpan, RocketBow, FinLeft, FinRight, RocketEngine,
-         LegLeft, LegRight, Blaze, BlazeInnerExtra, BlazeInnerMedium } from './styledElements';
+import { Rocket, RocketSpan, RocketBow, FinLeft, FinRight, RocketEngineBase,
+          RocketEngineLeft, RocketEngineMiddle, RocketEngineRight,
+          LegLeft, LegMiddle, LegRight, Blaze, BlazeInnerExtra, BlazeInnerMedium } from './styledElements';
 
 // This function performs regex matching on expected shell output for git push result being input
 // at the command line. Currently it supports output from bash, zsh, fish, cmd and powershell.
@@ -17,8 +18,8 @@ function detectPushCommand(data) {
 
 function detectPullCommand(data) {
   console.log("check pull");
-  //const patterns = ['Updating'] //for development
-  const patterns = ['^Updating {0,}([a-z0-9A-Z]+\.{2,3}[a-z0-9A-Z]+)|(\[[a-z0-9A-Z]+\.{2,3}[a-z0-9A-Z]+\])$', '^Unpacking objects']
+  const patterns = ['Updating']
+  //const patterns = ['^Updating {0,}([a-z0-9A-Z]+\.{2,3}[a-z0-9A-Z]+)|(\[[a-z0-9A-Z]+\.{2,3}[a-z0-9A-Z]+\])$', '^Unpacking objects']
   const antiPattern = /CONFLICT/
   
   return new RegExp(`(${patterns.join(')|(')})`).test(data) && !antiPattern.test(data)
@@ -79,7 +80,7 @@ exports.decorateTerm = (Term, { React }) => {
 
       this.state = {
         animationType: "NONE",
-        display: false,
+        display: true,
       };
     }
 
@@ -91,7 +92,7 @@ exports.decorateTerm = (Term, { React }) => {
         console.log(this.state);
         this.setState({
           animationType: "NONE",
-          display: false,
+          display: true,
         });
         setTimeout(1500); 
       });
@@ -132,13 +133,17 @@ exports.decorateTerm = (Term, { React }) => {
            <RocketBow/>
           <FinLeft/>
           <FinRight/>
-          <RocketEngine/>
+          <RocketEngineBase/>
+          <RocketEngineLeft/>
+          <RocketEngineRight/>
+          <RocketEngineMiddle/>
           <LegLeft animationType={this.state.animationType} />
           <LegRight animationType={this.state.animationType} />
           <Blaze>
             <BlazeInnerMedium/>
             <BlazeInnerExtra/>
           </Blaze>
+          <LegMiddle animationType={this.state.animationType} />
         </Rocket> 
       );
     }
