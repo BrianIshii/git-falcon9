@@ -120,9 +120,7 @@ export const RocketBow = styled.i`
   display: block;
   border-top-left-radius: 200%;
   border-top-right-radius: 200%;
-  border-bottom-left-radius: 100%;
-  border-bottom-right-radius: 100%;
-  background-color: #d1d2d6;
+  border-bottom-left-radius: 100%;  background-color: #d1d2d6;
   box-sizing: border-box;
   border-left: 3px solid #797d88;
 
