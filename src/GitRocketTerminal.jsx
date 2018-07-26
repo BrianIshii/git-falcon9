@@ -17,8 +17,8 @@ function detectPushCommand(data) {
 
 function detectPullCommand(data) {
   console.log("check pull");
-  const patterns = ['Updating']
-  //const patterns = ['^Updating {0,}([a-z0-9A-Z]+\.{2,3}[a-z0-9A-Z]+)|(\[[a-z0-9A-Z]+\.{2,3}[a-z0-9A-Z]+\])$', '^Unpacking objects']
+  //const patterns = ['Updating'] //for development
+  const patterns = ['^Updating {0,}([a-z0-9A-Z]+\.{2,3}[a-z0-9A-Z]+)|(\[[a-z0-9A-Z]+\.{2,3}[a-z0-9A-Z]+\])$', '^Unpacking objects']
   const antiPattern = /CONFLICT/
   
   return new RegExp(`(${patterns.join(')|(')})`).test(data) && !antiPattern.test(data)
