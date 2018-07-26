@@ -108,7 +108,7 @@ export const RocketSpan = styled.span`
 export const RocketBow = styled.i`
   top: 0;
   height: 60px;
-  width: 30px;
+  width: 26px;
   display: block;
   border-top-left-radius: 100%;
   border-top-right-radius: 100%;

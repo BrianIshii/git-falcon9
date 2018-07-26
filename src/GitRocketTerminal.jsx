@@ -25,8 +25,8 @@ function detectPullCommand(data) {
 }
 
 exports.middleware = store => next => (action) => {
-  console.log("middleware");
-  console.log(action);
+  //console.log("middleware");
+  //console.log(action);
   if (action.type === 'SESSION_ADD_DATA') {
     const { data } = action;
 
@@ -46,11 +46,11 @@ exports.middleware = store => next => (action) => {
 };
 
 exports.reduceUI = (state, action) => {
-  console.log("reduceUI");
+  //console.log("reduceUI");
   //console.log("action");
   //console.log(action);
   //console.log("state");
-  console.log(state);
+  //console.log(state);
   switch (action.type) {
     case 'PUSH_MODE_TOGGLE':
       return state.set('rocketState', 'launch');
