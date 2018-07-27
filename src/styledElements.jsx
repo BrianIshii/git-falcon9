@@ -93,7 +93,7 @@ export const Rocket = styled.div`
   left: calc(90% - 50px);
   top: calc(50% - 50px);
   height: 320px;
-  animation-name: ${props => ((props.animationType == "LAUNCH") ? 'none'/*launch*/ : 'none'/*land*/)};
+  animation-name: ${props => ((props.animationType == "LAUNCH") ? launch : land)};
   animation-duration:3000ms;
   animation-delay: 0ms, 3000ms;
   animation-iteration-count: 8, 1,1;
