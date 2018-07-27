@@ -3,7 +3,7 @@
 
 //import PropTypes from '../../../../Library/Caches/typescript/2.9/node_modules/@types/prop-types';
 import PropTypes from 'prop-types';
-import { Rocket, RocketSpan, RocketBow, FinLeft, FinRight, RocketEngineBase,
+import { Rocket, RocketSpan, RocketFairing, RocketSecondStage, SpaceXLogo, USFlag, FinLeft, FinRight, RocketEngineBase,
           RocketEngineLeft, RocketEngineMiddle, RocketEngineRight,
           LegLeft, LegMiddle, LegRight, Blaze, BlazeInnerExtra, BlazeInnerMedium } from './styledElements';
 
@@ -130,9 +130,12 @@ exports.decorateTerm = (Term, { React }) => {
       return (
         <Rocket id="rocket" display={this.state.display} animationType={this.state.animationType}>
           <RocketSpan/>
-           <RocketBow/>
-          <FinLeft/>
-          <FinRight/>
+          <RocketFairing animationType={this.state.animationType}/>
+          <RocketSecondStage animationType={this.state.animationType}/>
+          <USFlag src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png"/>
+          <SpaceXLogo src="http://i67.tinypic.com/24q6a0k.png"/>
+          <FinLeft animationType={this.state.animationType} />
+          <FinRight animationType={this.state.animationType} />
           <RocketEngineBase/>
           <RocketEngineLeft/>
           <RocketEngineRight/>
