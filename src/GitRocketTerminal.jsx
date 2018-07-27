@@ -10,14 +10,14 @@ import { Rocket, RocketSpan, RocketFairing, RocketSecondStage, SpaceXLogo, USFla
 // This function performs regex matching on expected shell output for git push result being input
 // at the command line. Currently it supports output from bash, zsh, fish, cmd and powershell.
 function detectPushCommand(data) {
-  console.log("check push");
+  //console.log("check push");
   const patterns = ['To(.+)\.git'];
   const antiPatterns = ['error:'];
   return new RegExp(`(${patterns.join(')|(')})`).test(data) && !new RegExp(`(${antiPatterns.join(')|(')})`).test(data);
 }
 
 function detectPullCommand(data) {
-  console.log("check pull");
+  //console.log("check pull");
   //const patterns = ['Updating'] // for development
   const patterns = ['^Updating {0,}([a-z0-9A-Z]+\.{2,3}[a-z0-9A-Z]+)|(\[[a-z0-9A-Z]+\.{2,3}[a-z0-9A-Z]+\])$', '^Unpacking objects']
   const antiPattern = /CONFLICT/
@@ -26,8 +26,8 @@ function detectPullCommand(data) {
 }
 
 exports.middleware = store => next => (action) => {
-  //console.log("middleware");
-  //console.log(action);
+  ////console.log("middleware");
+  ////console.log(action);
   if (action.type === 'SESSION_ADD_DATA') {
     const { data } = action;
 
@@ -47,11 +47,11 @@ exports.middleware = store => next => (action) => {
 };
 
 exports.reduceUI = (state, action) => {
-  //console.log("reduceUI");
-  //console.log("action");
-  //console.log(action);
-  //console.log("state");
-  //console.log(state);
+  ////console.log("reduceUI");
+  ////console.log("action");
+  ////console.log(action);
+  ////console.log("state");
+  ////console.log(state);
   switch (action.type) {
     case 'PUSH_MODE_TOGGLE':
       return state.set('rocketState', 'launch');
@@ -85,11 +85,11 @@ exports.decorateTerm = (Term, { React }) => {
     }
 
     componentDidMount() {
-      console.log("componentDidMount");
+      //console.log("componentDidMount");
       const rocket = document.getElementById('rocket');
       rocket.addEventListener('animationend', () => {
-        console.log("Animation end");
-        console.log(this.state);
+        //console.log("Animation end");
+        //console.log(this.state);
         this.setState({
           animationType: "NONE",
           display: false,
@@ -100,14 +100,14 @@ exports.decorateTerm = (Term, { React }) => {
 
 
     componentWillReceiveProps(nextProps) {
-      console.log("ComponentWillReceiveProps");
-      console.log("nextProps");
-      console.log(nextProps);
-      console.log("this.props");
-      console.log(this.props);
+      //console.log("ComponentWillReceiveProps");
+      //console.log("nextProps");
+      //console.log(nextProps);
+      //console.log("this.props");
+      //console.log(this.props);
       if (nextProps.rocketState === 'land')
       {
-        console.log("component LAND");
+        //console.log("component LAND");
         this.setState({
           animationType: 'LAND',
           display: true,
@@ -115,7 +115,7 @@ exports.decorateTerm = (Term, { React }) => {
       }
       else if (nextProps.rocketState === 'launch')
       {
-        console.log("component LAUNCH")
+        //console.log("component LAUNCH")
         this.setState({
           animationType: 'LAUNCH',
           display: true,
@@ -125,8 +125,8 @@ exports.decorateTerm = (Term, { React }) => {
     }
 
     render() {
-      console.log("rocket render");
-      console.log(this.state);
+      //console.log("rocket render");
+      //console.log(this.state);
       return (
         <Rocket id="rocket" display={this.state.display} animationType={this.state.animationType}>
           <RocketSpan/>
@@ -163,14 +163,14 @@ exports.decorateTerm = (Term, { React }) => {
     }
 
     _onTerminal(term) {
-      console.log("onTerminal");
+      //console.log("onTerminal");
       if (this.props.onTerminal) this.props.onTerminal(term);
       this._div = term.div_;
       this._window = term.document_.defaultView;
     }
 
     render() {
-      console.log("renderHOC");
+      //console.log("renderHOC");
       return (
         <div style={{ width: '100%', height: '100%', position: 'relative' }}>
           {React.createElement(Term, Object.assign({}, this.props, {
