@@ -5,7 +5,7 @@
 import PropTypes from 'prop-types';
 import { Rocket, RocketSpan, RocketFairing, RocketSecondStage, SpaceXLogo, USFlag, FinLeft, FinRight, RocketEngineBase,
           RocketEngineLeft, RocketEngineMiddle, RocketEngineRight,
-          LegLeft, LegMiddle, LegRight, Blaze, BlazeInnerExtra, BlazeInnerMedium, Flame } from './styledElements';
+          LegLeft, LegMiddle, LegRight, Blaze, BlazeInnerExtra, BlazeInnerMedium, Flame, Wastes } from './styledElements';
 
 // This function performs regex matching on expected shell output for git push result being input
 // at the command line. Currently it supports output from bash, zsh, fish, cmd and powershell.
@@ -132,6 +132,7 @@ exports.decorateTerm = (Term, { React }) => {
     render() {
       //console.log("rocket render");
       //console.log(this.state);
+
       return (
         <Rocket id="rocket" display={this.state.display} animationType={this.state.animationType}>
           <RocketSpan/>
@@ -149,6 +150,13 @@ exports.decorateTerm = (Term, { React }) => {
           <LegLeft animationType={this.state.animationType} />
           <LegRight animationType={this.state.animationType} />
           <LegMiddle animationType={this.state.animationType} />
+          <Wastes animationType={this.state.animationType} >
+              <i />
+              <i />
+              <i />
+              <i />
+              <i />
+            </Wastes>
         </Rocket> 
       );
     }

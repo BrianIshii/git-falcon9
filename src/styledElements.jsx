@@ -46,6 +46,18 @@ export const wiggle = keyframes`
   }
 `
 
+export const flameWiggle = keyframes`
+  0% {
+    height: 70px;
+  }
+  50% {
+    height: 75px;
+  }
+  100% {
+    height: 70px;
+  }
+`
+
 export const land = keyframes`
   0% {
     top: -260px; 
@@ -71,17 +83,19 @@ export const launch = keyframes`
 `
 export const engineTurnedOn = keyframes`
   0% {
+    opacity: 1;
       display: 'none';    
       left: 8px;
       width: 8px;
-      height: 80px;
+     // height: 80px;
     //left: calc(90% - 47px);
   }
   50% {
+    opacity: 1;
       display: block; 
       left: 8px;
       width: 8px;
-      height: 80px;
+     // height: 80px;
       //left: calc(90% - 45px);
 
       // box-shadow:
@@ -94,10 +108,11 @@ export const engineTurnedOn = keyframes`
       // 0 5px 3px 3px white;
   }
   100% {
+    opacity: 1;
     display: 'none';
     left: 8px;
     width: 8px;
-    height: 80px;
+   // height: 80px;
    // left: calc(90% - 47px);
   }
 }
@@ -105,33 +120,60 @@ export const engineTurnedOn = keyframes`
 
 export const engineTurnedOff = keyframes`
   0% {
-    display: 'none';
+    opacity: 1;
     position: absolute;
-    left: 10px;
-    width: 1px;
-    height: 20px;
+    left: 11px;
+    width: 2px;
+    height: 5px;
   }
   50% {
-    display: block;
+    opacity: 1;
+
     position: absolute;
-    left: 10px;
-      width: 2px;
-      height: 40px;
+    left: 11px;
+    width: 2px;
+    height: 30px;
   }
-  80% {
-    display: 'none';
+  90% {
+    opacity: 1;
+
     position: absolute;
-    left: 10px;
-    width: 0px;
-    height: 0px;
+    left: 11px;
+    width: 2px;
+    height: 20px;
+  }
+  99% {
+    opacity: 1;
+    position: absolute;
+    left: 11px;
+    width: 2px;
+    height: 10px;
   }
   100% {
-    display: 'none';
+    opacity: 0;
+    position: absolute;
+    left: 11px;
     width: 0px;
     height: 0px;
   }
 }
 `
+export const wasting = keyframes`
+  0% {
+    transform: translate3d(0px, 0, 0);
+  }
+  100% {
+    transform: translate3d(-10px, 35px, 0);
+  }
+`;
+export const wasting2 = keyframes`
+  0% {
+    transform: translate3d(0px, 0, 0);
+  }
+  100% {
+    transform: translate3d(10px, 35px, 0);
+  }
+`;
 
 export const engineOff = keyframes`
   0% {
@@ -150,8 +192,8 @@ export const Rocket = styled.div`
   ${props => ((props.animationType == "LAUNCH") ? 'top: calc(100% - 280px);' : 'top: calc(0%-300px);')}
   animation-name: ${wiggle}, ${props => ((props.animationType == "LAUNCH") ? launch : land)};
   animation-duration: 200ms, 10s;
-  animation-delay: 1s, 0s;
-  animation-iteration-count: 38, 1;
+  animation-delay: 2s, 0s;
+  animation-iteration-count: 30, 1;
   animation-timing-function: ${props => ((props.animationType == "LAUNCH") ? "ease-in" : "ease-out")};
   animation-fill-mode: forwards;
 `
@@ -288,7 +330,7 @@ export const RocketEngine = styled.i`
   border-top-right-radius: 100%;
   position: absolute;
   background-color: #787879;
-  border-color: #0c0c0c;
+  border-color: #3a3a3b;
   border-width: 1px;
   border-top-width: 0px;
   border-style: solid;
@@ -370,12 +412,13 @@ export const Blaze = styled.i`
 
 export const Flame = styled.i`
   display: block;
+  opacity: 0;
   position: absolute;
-  width: 0px;
-  height: 0px;
+  width: 1px;
+  height: 4px;
   margin: 0px auto;
   top: 265px;
-  left: 10px;
+  left: 12px;
   background: white; 
   border-top-left-radius: 100px;
   border-bottom-left-radius: 9000%;
@@ -389,24 +432,59 @@ export const Flame = styled.i`
       0 0px 150px 15px #ffd9b3, //global
       0 10px 2px 4px white,
       0 5px 3px 3px white;
-  animation-name: ${props => ((props.animationType == "LAUNCH") ? engineTurnedOn : engineTurnedOff)};
-  animation-duration: 8s;
-  animation-delay: 2s;
-  animation-iteration-count: 1;
+  animation-name: ${flameWiggle}, ${props => ((props.animationType == "LAUNCH") ? engineTurnedOn : engineTurnedOff)};
+  animation-duration: 100ms, 9s;
+  animation-delay: 2s, ${props => ((props.animationType == "LAUNCH") ? '2s' : '0s')};
+  animation-iteration-count: infinite, 1;
   animation-fill-mode: forwards;
   }
     .shadows{
     position: absolute;
     left: 4px;
-    top: -5%;
+    //top: -5%;
     width: 0px;
-    height: 50px;
+    height: ${props => ((props.animationType == "LAUNCH") ? '120px' : '50px')};
     border-radius: 50%;
     box-shadow: 
       0 5px 20px 15px white, 
       0 0px 150px 30px #ffd9b3
   }
 `
+
+export const Wastes = styled.i`
+  position: absolute;
+  left: 11px;
+  top: ${props => ((props.animationType == "LAUNCH") ? '320px': '265px')};
+  width: 8px;
+  height: 8px;
+  animation-delay: 2s;
+  i {
+    position: absolute;
+    width: 1px;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  i:nth-child(1) {
+    top: 2px;
+    animation: ${wasting} 400ms ${props => ((props.animationType == "LAUNCH") ? '30': '18')} 100ms;
+  }
+  i:nth-child(2) {
+    top: 4px;
+    animation: ${wasting2} 400ms ${props => ((props.animationType == "LAUNCH") ? '30': '18')} 200ms;
+  }
+  i:nth-child(3) {
+    top: 6px;
+    animation: ${wasting} 400ms ${props => ((props.animationType == "LAUNCH") ? '30': '18')} 300ms;
+  }
+  i:nth-child(4) {
+    top: 8px;
+    animation: ${wasting2} 400ms ${props => ((props.animationType == "LAUNCH") ? '30': '18')} 400ms;
+  }
+  i:nth-child(5) {
+    top: 10px;
+    animation: ${wasting} 400ms ${props => ((props.animationType == "LAUNCH") ? '30': '18')} 100ms;
+  }
+`;
 //export default Spaceship
 
 
