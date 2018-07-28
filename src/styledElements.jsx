@@ -244,17 +244,17 @@ export const RocketFairing = styled.i`
   width: 30px;
   border-top-left-radius: 200%;
   border-top-right-radius: 200%;
-  border-bottom-left-radius: 100%;
-  border-bottom-Right-radius: 100%;
+  border-bottom-left-radius: 70%;
+  border-bottom-right-radius: 70%;
   background-color: #d1d2d6;
   box-sizing: border-box;
-  border-left: 3px solid #797d88;
+  //border-left: 3px solid #797d88;
 
   :after{
     content: '';
     position: absolute;
     display: ${props => ((props.animationType == "LAUNCH") ? 'block' : 'none')};
-    left: 13px;
+    left: 16px;
     width: 10px;
     top: 3px;
     height: 27px;
@@ -272,7 +272,8 @@ export const RocketSecondStage = styled.i`
   position: absolute;
   // border-left: 3px solid #797d88;
   //border-right: 3px solid #a7a9b1;
-  //border-bottom: 5px solid #3a3a3b;
+  border-bottom: 1px solid #a7a9b1;
+  border-top: 1px solid #a7a9b1;
   box-sizing: initial;
 
   // :after{ 
