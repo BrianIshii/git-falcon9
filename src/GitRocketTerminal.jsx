@@ -18,8 +18,8 @@ function detectPushCommand(data) {
 
 function detectPullCommand(data) {
   //console.log("check pull");
-  //const patterns = ['Updating'] // for development
-  const patterns = ['^Updating {0,}([a-z0-9A-Z]+\.{2,3}[a-z0-9A-Z]+)|(\[[a-z0-9A-Z]+\.{2,3}[a-z0-9A-Z]+\])$', '^Unpacking objects']
+  const patterns = ['Updating'] // for development
+  //const patterns = ['^Updating {0,}([a-z0-9A-Z]+\.{2,3}[a-z0-9A-Z]+)|(\[[a-z0-9A-Z]+\.{2,3}[a-z0-9A-Z]+\])$', '^Unpacking objects']
   const antiPattern = /CONFLICT/
   
   return new RegExp(`(${patterns.join(')|(')})`).test(data) && !antiPattern.test(data)
@@ -88,13 +88,13 @@ exports.decorateTerm = (Term, { React }) => {
       //console.log("componentDidMount");
       const rocket = document.getElementById('rocket');
       rocket.addEventListener('animationend', () => {
-        //console.log("Animation end");
-        //console.log(this.state);
+        console.log("Animation end");
+        console.log(this.state);
+        setTimeout(10000); 
         this.setState({
           animationType: "NONE",
           display: false,
         });
-        setTimeout(1500); 
       });
     }
 

@@ -36,14 +36,14 @@ export const openRightFin = keyframes`
 `
 export const wiggle = keyframes`
   0% {
-    left: calc(90% - 50px);
-    top: calc(50% - 50px); }
+    left: calc(90% - 47px);
+  }
   50% {
     left: calc(90% - 45px);
-    top: calc(50% - 48px); }
+  }
   100% {
-    left: calc(90% - 50px);
-    top: calc(50% - 50px); } 
+    left: calc(90% - 47px);
+  }
 `
 
 export const land = keyframes`
@@ -58,12 +58,12 @@ export const land = keyframes`
 
 export const launch = keyframes`
 from {
-  top: calc(100% - 180px);
-  display: none; }
+  top: calc(100% - 280px);
+  display: none;
+}
 to {
-  top: calc(100% - 180px);
+  top: calc(0% - 300px);
   display: none; 
-  top: -260px; 
 }
 `
 export const engineTurnedOn = keyframes`
@@ -78,7 +78,7 @@ export const engineTurnedOn = keyframes`
     transform: scale(1); } 
 `
 
-export const engineTurnOff = keyframes`
+export const engineTurnedOff = keyframes`
   0% {
     transform-origin: top center;
     transform: scale(1); }
@@ -87,18 +87,27 @@ export const engineTurnOff = keyframes`
     transform: scale(0); }
 `
 
+export const engineOff = keyframes`
+  0% {
+    display: 'none';
+  }
+  100% {
+    display: 'none';
+  }
+`
+
 export const Rocket = styled.div`
   display: ${props => (props.display ? 'block' : 'none')};
   position: absolute;
   left: calc(90% - 50px);
-  top: calc(50% - 50px);
+  top: calc(100% - 280px);
   height: 320px;
-  animation-name: ${props => ((props.animationType == "LAUNCH") ? launch : land)};
-  animation-duration:3000ms;
-  animation-delay: 0ms, 3000ms;
-  animation-iteration-count: 8, 1,1;
-  animation-timing-function: ease-out;
-  animation-fill-mode: none,none,forwards;
+  animation-name: ${wiggle}, 'none', ${props => ((props.animationType == "LAUNCH") ? launch : land)};
+  animation-duration: 200ms, 100s, 4s;
+  animation-delay: 1s, 2s;
+  animation-iteration-count: 20, 1, 1;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
 `
 
 export const RocketSpan = styled.span`
@@ -310,9 +319,8 @@ export const Blaze = styled.i`
   border-radius: 50% 50% 70% 70%;
   width: 40px;
   height: 60px;
-  animation-name: ${engineTurnedOn}, ${engineTurnedOn};
-  animation-duration:  200ms, 1000ms;
-  animation-delay: 10ms, 2000ms;
+  animation-name: ${engineOff}, ${engineTurnedOn};
+  animation-duration:  2s, 6s;
   animation-iteration-count: infinite, 1;
   animation-fill-mode: none, forwards; 
 `
