@@ -47,44 +47,90 @@ export const wiggle = keyframes`
 `
 
 export const land = keyframes`
-  from {
+  0% {
     top: -260px; 
   }
-  to {
-    top: calc(100% - 180px);
-    display: none; 
+  80% {
+    top: calc(100% - 285px);
+  }
+  100% {
+    top: calc(100% - 285px);
   }
 `
 
 export const launch = keyframes`
-from {
+  0% {
   top: calc(100% - 280px);
-  display: none;
 }
-to {
+  25% {
+  top: calc(100% - 280px);
+}
+  100% {
   top: calc(0% - 300px);
-  display: none; 
 }
 `
 export const engineTurnedOn = keyframes`
   0% {
-    transform-origin: top center;
-    transform: scale(1); }
+      display: 'none';    
+      left: 8px;
+      width: 8px;
+      height: 80px;
+    //left: calc(90% - 47px);
+  }
   50% {
-    transform-origin: top center;
-    transform: scale(0.8); }
+      display: block; 
+      left: 8px;
+      width: 8px;
+      height: 80px;
+      //left: calc(90% - 45px);
+
+      // box-shadow:
+      // 0 0px 0px 3px white,
+      // 0 38px 1px 2px white, 
+      // 0 41px 2px 3px #ffd9b3, 
+      // 0 50px 5px 4px #ffd9b3,  //orange top
+      // 0 0px 150px 10px $orange, //orange global
+      // 0 10px 2px 4px white,
+      // 0 5px 3px 3px white;
+  }
   100% {
-    transform-origin: top center;
-    transform: scale(1); } 
+    display: 'none';
+    left: 8px;
+    width: 8px;
+    height: 80px;
+   // left: calc(90% - 47px);
+  }
+}
 `
 
 export const engineTurnedOff = keyframes`
   0% {
-    transform-origin: top center;
-    transform: scale(1); }
+    display: 'none';
+    position: absolute;
+    left: 10px;
+    width: 1px;
+    height: 20px;
+  }
+  50% {
+    display: block;
+    position: absolute;
+    left: 10px;
+      width: 2px;
+      height: 40px;
+  }
+  80% {
+    display: 'none';
+    position: absolute;
+    left: 10px;
+    width: 0px;
+    height: 0px;
+  }
   100% {
-    transform-origin: top center;
-    transform: scale(0); }
+    display: 'none';
+    width: 0px;
+    height: 0px;
+  }
+}
 `
 
 export const engineOff = keyframes`
@@ -99,24 +145,24 @@ export const engineOff = keyframes`
 export const Rocket = styled.div`
   display: ${props => (props.display ? 'block' : 'none')};
   position: absolute;
-  left: calc(90% - 50px);
-  top: calc(100% - 280px);
   height: 320px;
-  animation-name: ${wiggle}, 'none', ${props => ((props.animationType == "LAUNCH") ? launch : land)};
-  animation-duration: 200ms, 100s, 4s;
-  animation-delay: 1s, 2s;
-  animation-iteration-count: 20, 1, 1;
-  animation-timing-function: ease-in;
+  left: calc(90% - 50px);
+  ${props => ((props.animationType == "LAUNCH") ? 'top: calc(100% - 280px);' : 'top: calc(0%-300px);')}
+  animation-name: ${wiggle}, ${props => ((props.animationType == "LAUNCH") ? launch : land)};
+  animation-duration: 200ms, 10s;
+  animation-delay: 1s, 0s;
+  animation-iteration-count: 38, 1;
+  animation-timing-function: ${props => ((props.animationType == "LAUNCH") ? "ease-in" : "ease-out")};
   animation-fill-mode: forwards;
 `
 
 export const RocketSpan = styled.span`
   display: block;
+  position: absolute;
   top: 100px;
   width: 22px;
   height: 155px;
   background-color: #d1d2d6;
-  position: absolute;
   // border-left: 3px solid #797d88;
   //border-right: 3px solid #a7a9b1;
   //border-bottom: 5px solid #3a3a3b;
@@ -205,6 +251,7 @@ export const Fin = styled.i`
   top: 101px;
   background-color: #3a3a3b;
   animation-duration: 1s;
+  animation-delay: 1s;
   animation-fill-mode: forwards;
   transform: rotate(0deg);
 `
@@ -263,7 +310,12 @@ export const RocketEngineRight= RocketEngine.extend`
   left: 2px;
 `
 
-export const Leg = styled.i`
+export const LegAnimation = styled.i`
+  animation-duration: 2s;
+  animation-delay: 6s;
+  animation-fill-mode: forwards;
+`
+export const Leg = LegAnimation.extend`
   position: absolute;
   display: block; 
   bottom: 65px;
@@ -276,16 +328,10 @@ export const LegLeft = Leg.extend`
   right: 1px;
   transform-origin: right center;
   animation-name: ${props => ((props.animationType == "LAUNCH") ? 'none' : openLeftLeg)};
-  animation-duration: 2s;
-  animation-delay: 500ms;
-  animation-fill-mode: forwards;
   transform: rotate(90deg) skewX(35deg);
 `
-export const LegMiddle = styled.i`
+export const LegMiddle = LegAnimation.extend`
   animation-name: ${props => ((props.animationType == "LAUNCH") ? 'none' : openMiddleLeg)};
-  animation-duration: 2s;
-  animation-delay: 500ms;
-  animation-fill-mode: forwards;
   width: 18px; 
   height: 45px;
   bottom: 65px;
@@ -304,47 +350,63 @@ export const LegRight = Leg.extend`
   left: 23px;
   transform-origin: left center;
   animation-name: ${props => ((props.animationType == "LAUNCH") ? 'none' : openRightLeg)};
-  animation-duration: 2s;
-  animation-delay: 500ms;
-  animation-fill-mode: forwards;
   transform: rotate(-90deg) skewX(-35deg);
 `
 
 export const Blaze = styled.i`
+  display: block;
   position: absolute;
   top: 270px;
   left: -6px;
-  display: block;
   background-color: #FF3D00;
   border-radius: 50% 50% 70% 70%;
   width: 40px;
   height: 60px;
   animation-name: ${engineOff}, ${engineTurnedOn};
-  animation-duration:  2s, 6s;
+  animation-duration:  2s, 8s;
   animation-iteration-count: infinite, 1;
   animation-fill-mode: none, forwards; 
 `
 
-export const BlazeInner = styled.i`
-  position: absolute;
+export const Flame = styled.i`
   display: block;
-  left: 5px;
-  border-radius: 50% 50% 90% 90%;
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  margin: 0px auto;
+  top: 265px;
+  left: 10px;
+  background: white; 
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 9000%;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 9000%;
+  box-shadow: 
+      0 0px 0px 3px white,
+      0 20px 1px 4px white, 
+      0 25px 2px 3px #ffd9b3, 
+      0 30px 5px 4px #ffd9b3,  //top
+      0 0px 150px 15px #ffd9b3, //global
+      0 10px 2px 4px white,
+      0 5px 3px 3px white;
+  animation-name: ${props => ((props.animationType == "LAUNCH") ? engineTurnedOn : engineTurnedOff)};
+  animation-duration: 8s;
+  animation-delay: 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  }
+    .shadows{
+    position: absolute;
+    left: 4px;
+    top: -5%;
+    width: 0px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 
+      0 5px 20px 15px white, 
+      0 0px 150px 30px #ffd9b3
+  }
 `
-
-export const BlazeInnerMedium = BlazeInner.extend`
-  width: 30px;
-  height: 45px;
-  background-color: #FFD600; 
-`
-
-export const BlazeInnerExtra = BlazeInner.extend`
-  left: 12px;
-  width: 15px;
-  height: 30px;
-  background-color: #FFFF00;
-`
-
 //export default Spaceship
 
 

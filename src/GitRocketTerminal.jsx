@@ -5,7 +5,7 @@
 import PropTypes from 'prop-types';
 import { Rocket, RocketSpan, RocketFairing, RocketSecondStage, SpaceXLogo, USFlag, FinLeft, FinRight, RocketEngineBase,
           RocketEngineLeft, RocketEngineMiddle, RocketEngineRight,
-          LegLeft, LegMiddle, LegRight, Blaze, BlazeInnerExtra, BlazeInnerMedium } from './styledElements';
+          LegLeft, LegMiddle, LegRight, Blaze, BlazeInnerExtra, BlazeInnerMedium, Flame } from './styledElements';
 
 // This function performs regex matching on expected shell output for git push result being input
 // at the command line. Currently it supports output from bash, zsh, fish, cmd and powershell.
@@ -87,14 +87,19 @@ exports.decorateTerm = (Term, { React }) => {
     componentDidMount() {
       //console.log("componentDidMount");
       const rocket = document.getElementById('rocket');
-      rocket.addEventListener('animationend', () => {
-        console.log("Animation end");
-        console.log(this.state);
-        setTimeout(10000); 
-        this.setState({
-          animationType: "NONE",
-          display: false,
-        });
+      rocket.addEventListener('animationend', (animationType, animation) => {
+        if (animationType.elapsedTime == 10)
+        {
+          this.setState({
+            animationType: "NONE",
+            display: false,
+          });
+        }
+        setTimeout(1500);
+        // console.log("Animation end");
+        // console.log(this.state);
+        // console.log(animationType); 
+        // console.log(animation); 
       });
     }
 
@@ -136,16 +141,13 @@ exports.decorateTerm = (Term, { React }) => {
           <SpaceXLogo src="http://i67.tinypic.com/24q6a0k.png"/>
           <FinLeft animationType={this.state.animationType} />
           <FinRight animationType={this.state.animationType} />
+          <Flame animationType={this.state.animationType} />
           <RocketEngineBase/>
           <RocketEngineLeft/>
           <RocketEngineRight/>
           <RocketEngineMiddle/>
           <LegLeft animationType={this.state.animationType} />
           <LegRight animationType={this.state.animationType} />
-          <Blaze>
-            <BlazeInnerMedium/>
-            <BlazeInnerExtra/>
-          </Blaze>
           <LegMiddle animationType={this.state.animationType} />
         </Rocket> 
       );
