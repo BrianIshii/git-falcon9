@@ -1,6 +1,7 @@
 /* eslint no-underscore-dangle: 0 */
 /* eslint react/no-multi-comp: 0 */
-
+import React, { Component } from 'react'
+import Spaceship from './styledElements'
 //import PropTypes from '../../../../Library/Caches/typescript/2.9/node_modules/@types/prop-types';
 import PropTypes from 'prop-types';
 import { Rocket, RocketSpan, RocketFairing, RocketSecondStage, SpaceXLogo, USFlag, FinLeft, FinRight, RocketEngineBase,
@@ -127,12 +128,12 @@ exports.decorateTerm = (Term, { React }) => {
           });
         }
         setTimeout(1500);
-        // console.log("Animation end");
-        // console.log(this.state);
+         console.log("Animation end");
+         console.log(this.state);
         // console.log(animationType); 
         // console.log(animation); 
       });
-    }
+  }
 
 
     componentWillReceiveProps(nextProps) {
@@ -192,28 +193,8 @@ exports.decorateTerm = (Term, { React }) => {
     }
 
     falconHeavy(animationType) {
-      return (        
-      <Rocket id="rocket" display={this.state.display} animationType={animationType}>
-      <RocketSpan/>
-      <RocketFairing animationType={animationType}/>
-      <RocketSecondStage animationType={animationType}/>
-      <USFlag src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png"/>
-      <SpaceXLogo src="http://i67.tinypic.com/24q6a0k.png"/>
-      <FinLeft animationType={animationType} />
-      <FinRight animationType={animationType} />
-      <Flame animationType={animationType} />
-      <RocketEngineBase/>
-      <RocketEngineLeft/>
-      <RocketEngineRight/>
-      <RocketEngineMiddle/>
-      <Wastes animationType={animationType} >
-          <i />
-          <i />
-          <i />
-          <i />
-          <i />
-        </Wastes>
-    </Rocket> );
+      return (
+        Spaceship('falconHeavy', this.state.display, this.state.animationType));
     }
 
     render() {
@@ -222,7 +203,8 @@ exports.decorateTerm = (Term, { React }) => {
       if (this.state.bytes > 200){
         return this.falconHeavy(this.state.animationType);
       }
-      return this.falcon9(this.state.animationType);
+      //return this.falcon9(this.state.animationType);
+      return Spaceship(display ={this.state.display} animationType={this.state.animationType});
     }
   }
 

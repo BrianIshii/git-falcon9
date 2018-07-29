@@ -1,4 +1,5 @@
 import styled, {keyframes} from 'styled-components'
+import React from 'react'
 
 export const openLeftLeg = keyframes`
   from {
@@ -404,3 +405,31 @@ export const Wastes = styled.i`
     animation: ${wasting} 400ms ${props => ((props.animationType == "LAUNCH") ? '30': '18')} 100ms;
   }
 `;
+
+const Spaceship = ({display, animationType}) => (<Rocket id="rocket" display={display} animationType={animationType}>
+<RocketSpan/>
+<RocketFairing animationType={animationType}/>
+<RocketSecondStage animationType={animationType}/>
+<USFlag src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png"/>
+<SpaceXLogo src="http://i67.tinypic.com/24q6a0k.png"/>
+<FinLeft animationType={animationType} />
+<FinRight animationType={animationType} />
+<Flame animationType={animationType} />
+<RocketEngineBase/>
+<RocketEngineLeft/>
+<RocketEngineRight/>
+<RocketEngineMiddle/>
+<LegLeft animationType={animationType} />
+<LegRight animationType={animationType} />
+<LegMiddle animationType={animationType} />
+<Wastes animationType={animationType} >
+    <i />
+    <i />
+    <i />
+    <i />
+    <i />
+  </Wastes>
+</Rocket> 
+);
+
+export default Spaceship
