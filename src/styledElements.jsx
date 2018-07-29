@@ -5,7 +5,7 @@ export const openLeftLeg = keyframes`
   from {
     transform: rotate(90deg) skewX(35deg); }
   to {
-    transform: rotate(-35deg) skewX(-35deg); } 
+    transform: rotate(-40deg) skewX(-35deg); } 
 `
 export const openMiddleLeg = keyframes`
   from {
@@ -18,7 +18,7 @@ export const openRightLeg = keyframes`
   from {
     transform: rotate(-90deg) skewX(-35deg); }
   to {
-    transform: rotate(35deg) skewX(35deg); }
+    transform: rotate(40deg) skewX(35deg); }
 `
 
 export const openLeftFin = keyframes`
