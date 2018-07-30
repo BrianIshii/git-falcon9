@@ -406,29 +406,30 @@ export const Wastes = styled.i`
   }
 `;
 
-const Spaceship = ({display, animationType}) => (<Rocket id="rocket" display={display} animationType={animationType}>
-<RocketSpan/>
-<RocketFairing animationType={animationType}/>
-<RocketSecondStage animationType={animationType}/>
-<USFlag src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png"/>
-<SpaceXLogo src="http://i67.tinypic.com/24q6a0k.png"/>
-<FinLeft animationType={animationType} />
-<FinRight animationType={animationType} />
-<Flame animationType={animationType} />
-<RocketEngineBase/>
-<RocketEngineLeft/>
-<RocketEngineRight/>
-<RocketEngineMiddle/>
-<LegLeft animationType={animationType} />
-<LegRight animationType={animationType} />
-<LegMiddle animationType={animationType} />
-<Wastes animationType={animationType} >
+const Spaceship = ({display, animationType, onAnimationEnd}) => (
+<Rocket id="rocket" display={display} animationType={animationType} onAnimationEnd={onAnimationEnd.bind(this)}>
+  <RocketSpan/>
+  <RocketFairing animationType={animationType}/>
+  <RocketSecondStage animationType={animationType}/>
+  <USFlag src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png"/>
+  <SpaceXLogo src="http://i67.tinypic.com/24q6a0k.png"/>
+  <FinLeft animationType={animationType} />
+  <FinRight animationType={animationType} />
+  <Flame animationType={animationType} />
+  <RocketEngineBase/>
+  <RocketEngineLeft/>
+  <RocketEngineRight/>
+  <RocketEngineMiddle/>
+  <LegLeft animationType={animationType} />
+  <LegRight animationType={animationType} />
+  <LegMiddle animationType={animationType} />
+  <Wastes animationType={animationType} >
     <i />
     <i />
     <i />
     <i />
     <i />
-  </Wastes>
+    </Wastes>
 </Rocket> 
 );
 
