@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import Spaceship from './styledElements'
 //import PropTypes from '../../../../Library/Caches/typescript/2.9/node_modules/@types/prop-types';
 import PropTypes from 'prop-types';
-import { Rocket, RocketSpan, RocketFairing, RocketSecondStage, SpaceXLogo, USFlag, FinLeft, FinRight, RocketEngineBase,
+import { Falcon9, RocketFirstStage, RocketFairing, RocketSecondStage, SpaceXLogo, USFlag, FinLeft, FinRight, RocketEngineBase,
           RocketEngineLeft, RocketEngineMiddle, RocketEngineRight,
           LegLeft, LegMiddle, LegRight, Blaze, BlazeInnerExtra, BlazeInnerMedium, Flame, Wastes } from './styledElements';
 

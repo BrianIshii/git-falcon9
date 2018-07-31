@@ -160,26 +160,20 @@ export const Rocket = styled.div`
   animation-timing-function: ${props => ((props.animationType == "LAUNCH") ? "ease-in" : "ease-out")};
   animation-fill-mode: forwards;
 `
-export const RocketCenter = styled.div`
+
+export const Falcon9 = styled.div`
   display: block;
   position: absolute;
   height: 320px;
   left: 0px;
 `
 
-export const RocketRight = styled.div`
-  display: block;
-  position: absolute;
-  height: 320px;
-  left: 24px;
+export const Falcon9Right = Falcon9.extend`
+  left: ${props => ((props.animationType == "LAUNCH") ? "24px;" : "-100px")};
 `
 
-export const RocketLeft = styled.div`
-  display: block;
-  position: absolute;
-  height: 320px;
-  left: -24px;
-
+export const Falcon9Left = Falcon9.extend`
+left: ${props => ((props.animationType == "LAUNCH") ? "-24px;" : "-200px")};
 `
 
 export const RocketFirstStage = styled.span`
@@ -189,7 +183,7 @@ export const RocketFirstStage = styled.span`
   width: 22px;
   height: 155px;
   background-color: #d1d2d6;
-  box-sizing: initial;
+  border-top: 1px solid #a7a9b1;
 `
 
 export const USFlag = styled.img`
@@ -198,7 +192,6 @@ export const USFlag = styled.img`
   height: 5px;
   width: 8px;
   left: 7px;
-
 `
 
 export const SpaceXLogo = styled.img`
@@ -210,7 +203,7 @@ export const SpaceXLogo = styled.img`
 export const RocketFairing = styled.i`
   display: ${props => ((props.animationType == "LAUNCH") ? 'block' : 'none')};
   position: absolute;
-  top: 0;
+  top: -20px;
   height: 60px;
   width: 30px;
   left: -4px;
@@ -236,8 +229,8 @@ export const RocketFairing = styled.i`
 export const RocketSecondStage = styled.i`
   display: ${props => ((props.animationType == "LAUNCH") ? 'block' : 'none')};
   position: absolute;
-  top: 60px;
-  height: 40px;
+  top: 40px;
+  height: 60px;
   width: 20px;
   left: 1px;
   background-color: #d1d2d6;
@@ -245,7 +238,17 @@ export const RocketSecondStage = styled.i`
   border-top: 1px solid #a7a9b1;
   box-sizing: initial;
 `
-export const Fin = styled.i`
+export const RocketCap = styled.i`
+  display: block;
+  position: absolute;
+  top: 80px;
+  height: 65px;
+  width: 22px;
+  border-top-left-radius: 2000%;
+  border-top-right-radius: 2000%;
+  background-color: #d1d2d6;
+`
+export const GridFin = styled.i`
   display: block;
   position: absolute;
   top: 101px;
@@ -258,14 +261,14 @@ export const Fin = styled.i`
   transform: rotate(0deg);
 `
 
-export const FinLeft = Fin.extend`
+export const FinLeft = GridFin.extend`
   left: -2px;
   border-top-left-radius: 50%;
   transform-origin: right top;
   animation-name: ${props => ((props.animationType == "LAUNCH") ? 'none' : openLeftFin)};
 `
 
-export const FinRight = Fin.extend`
+export const FinRight = GridFin.extend`
   right: -23px;
   border-top-right-radius: 50%;
   transform-origin: left top;
@@ -432,79 +435,73 @@ export const Wastes = styled.i`
 `;
 
 const Spaceship = ({display, animationType, onAnimationEnd}) => (
-<Rocket id="rocket" display={display}  animationType={animationType} onAnimationEnd={onAnimationEnd.bind(this)}>  
-<RocketCenter id="rocket" display={display} animationType={animationType}>
-  <RocketFirstStage/>
-  <RocketFairing animationType={animationType}/>
-  <RocketSecondStage animationType={animationType}/>
-  <USFlag src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png"/>
-  <SpaceXLogo src="http://i67.tinypic.com/24q6a0k.png"/>
-  <FinLeft animationType={animationType} />
-  <FinRight animationType={animationType} />
-  <Flame animationType={animationType} />
-  <RocketEngineBase/>
-  <RocketEngineLeft/>
-  <RocketEngineRight/>
-  <RocketEngineMiddle/>
-  <LegLeft animationType={animationType} />
-  <LegRight animationType={animationType} />
-  <LegMiddle animationType={animationType} />
-  <Wastes animationType={animationType} >
-    <i />
-    <i />
-    <i />
-    <i />
-    <i />
-    </Wastes>
-  </RocketCenter> 
-  <RocketLeft display={display} animationType={animationType} onAnimationEnd={onAnimationEnd.bind(this)}>
-  <RocketFirstStage/>
-  <RocketFairing animationType={animationType}/>
-  <RocketSecondStage animationType={animationType}/>
-  <USFlag src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png"/>
-  <SpaceXLogo src="http://i67.tinypic.com/24q6a0k.png"/>
-  <FinLeft animationType={animationType} />
-  <FinRight animationType={animationType} />
-  <Flame animationType={animationType} />
-  <RocketEngineBase/>
-  <RocketEngineLeft/>
-  <RocketEngineRight/>
-  <RocketEngineMiddle/>
-  <LegLeft animationType={animationType} />
-  <LegRight animationType={animationType} />
-  <LegMiddle animationType={animationType} />
-  <Wastes animationType={animationType} >
-    <i />
-    <i />
-    <i />
-    <i />
-    <i />
-    </Wastes>
-  </RocketLeft> 
-  <RocketRight display={display} animationType={animationType} onAnimationEnd={onAnimationEnd.bind(this)}>
-  <RocketFirstStage/>
-  <RocketFairing animationType={animationType}/>
-  <RocketSecondStage animationType={animationType}/>
-  <USFlag src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png"/>
-  <SpaceXLogo src="http://i67.tinypic.com/24q6a0k.png"/>
-  <FinLeft animationType={animationType} />
-  <FinRight animationType={animationType} />
-  <Flame animationType={animationType} />
-  <RocketEngineBase/>
-  <RocketEngineLeft/>
-  <RocketEngineRight/>
-  <RocketEngineMiddle/>
-  <LegLeft animationType={animationType} />
-  <LegRight animationType={animationType} />
-  <LegMiddle animationType={animationType} />
-  <Wastes animationType={animationType} >
-    <i />
-    <i />
-    <i />
-    <i />
-    <i />
-    </Wastes>
-  </RocketRight> 
+  <Rocket id="rocket" display={display} animationType={animationType} onAnimationEnd={onAnimationEnd.bind(this)}>
+    <Falcon9Left animationType={animationType}>
+      <RocketCap />
+      <RocketFirstStage />
+      <FinLeft animationType={animationType} />
+      <FinRight animationType={animationType} />
+      <Flame animationType={animationType} />
+      <RocketEngineBase />
+      <RocketEngineLeft />
+      <RocketEngineRight />
+      <RocketEngineMiddle />
+      <LegLeft animationType={animationType} />
+      <LegRight animationType={animationType} />
+      <LegMiddle animationType={animationType} />
+      <Wastes animationType={animationType} >
+        <i />
+        <i />
+        <i />
+        <i />
+        <i />
+      </Wastes>
+    </Falcon9Left>
+    <Falcon9Right animationType={animationType}>
+      <RocketCap />
+      <RocketFirstStage />
+      <FinLeft animationType={animationType} />
+      <FinRight animationType={animationType} />
+      <Flame animationType={animationType} />
+      <RocketEngineBase />
+      <RocketEngineLeft />
+      <RocketEngineRight />
+      <RocketEngineMiddle />
+      <LegLeft animationType={animationType} />
+      <LegRight animationType={animationType} />
+      <LegMiddle animationType={animationType} />
+      <Wastes animationType={animationType} >
+        <i />
+        <i />
+        <i />
+        <i />
+        <i />
+      </Wastes>
+    </Falcon9Right>
+    <Falcon9>
+      <RocketSecondStage animationType={animationType} />
+      <RocketFairing animationType={animationType} />
+      <RocketFirstStage />
+      <USFlag src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png" />
+      <SpaceXLogo src="http://i67.tinypic.com/24q6a0k.png" />
+      <FinLeft animationType={animationType} />
+      <FinRight animationType={animationType} />
+      <Flame animationType={animationType} />
+      <RocketEngineBase />
+      <RocketEngineLeft />
+      <RocketEngineRight />
+      <RocketEngineMiddle />
+      <LegLeft animationType={animationType} />
+      <LegRight animationType={animationType} />
+      <LegMiddle animationType={animationType} />
+      <Wastes animationType={animationType} >
+        <i />
+        <i />
+        <i />
+        <i />
+        <i />
+      </Wastes>
+    </Falcon9>
   </Rocket>
 );
 
