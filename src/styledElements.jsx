@@ -43,13 +43,21 @@ export const wiggle = keyframes`
     left: calc(90% - 47px); }
 `
 
-export const flameWiggle = keyframes`
+export const flameWiggleLaunch = keyframes`
   0% {
     height: 70px; }
   50% {
     height: 75px; }
   100% {
     height: 70px; }
+`
+export const flameWiggleLand = keyframes`
+  0% {
+    height: 30px; }
+  50% {
+    height: 35px; }
+  100% {
+    height: 30px; }
 `
 
 export const land = keyframes`
@@ -98,35 +106,31 @@ export const engineTurnedOff = keyframes`
     position: absolute;
     left: 11px;
     width: 2px;
-    height: 5px;
   }
   50% {
     opacity: 1;
     position: absolute;
     left: 11px;
     width: 2px;
-    height: 30px;
   }
   90% {
     opacity: 1;
     position: absolute;
     left: 11px;
     width: 2px;
-    height: 20px;
   }
   99% {
     opacity: 1;
     position: absolute;
     left: 11px;
     width: 2px;
-    height: 10px;
   }
   100% {
     opacity: 0;
     position: absolute;
     left: 11px;
     width: 0px;
-    height: 0px;
+    //height: 0px;
   }
 }
 `
@@ -156,8 +160,29 @@ export const Rocket = styled.div`
   animation-timing-function: ${props => ((props.animationType == "LAUNCH") ? "ease-in" : "ease-out")};
   animation-fill-mode: forwards;
 `
+export const RocketCenter = styled.div`
+  display: block;
+  position: absolute;
+  height: 320px;
+  left: 0px;
+`
 
-export const RocketSpan = styled.span`
+export const RocketRight = styled.div`
+  display: block;
+  position: absolute;
+  height: 320px;
+  left: 24px;
+`
+
+export const RocketLeft = styled.div`
+  display: block;
+  position: absolute;
+  height: 320px;
+  left: -24px;
+
+`
+
+export const RocketFirstStage = styled.span`
   display: block;
   position: absolute;
   top: 100px;
@@ -334,7 +359,7 @@ export const Flame = styled.i`
   display: block;
   position: absolute;
   top: 265px;
-  height: 4px;
+  height: 10px;
   width: 1px;
   left: 12px;
   opacity: 0;
@@ -352,9 +377,9 @@ export const Flame = styled.i`
       0 0px 150px 15px #ffd9b3, //global
       0 10px 2px 4px white,
       0 5px 3px 3px white;
-  animation-name: ${flameWiggle}, ${props => ((props.animationType == "LAUNCH") ? engineTurnedOn : engineTurnedOff)};
+  animation-name: ${props => ((props.animationType == "LAUNCH") ? flameWiggleLaunch : flameWiggleLand)}, ${props => ((props.animationType == "LAUNCH") ? engineTurnedOn : engineTurnedOff)};
   animation-duration: 100ms, 9s;
-  animation-delay: 2s, ${props => ((props.animationType == "LAUNCH") ? '2s' : '0s')};
+  animation-delay: ${props => ((props.animationType == "LAUNCH") ? '2s' : '2s')}, ${props => ((props.animationType == "LAUNCH") ? '2s' : '0s')};
   animation-iteration-count: infinite, 1;
   animation-fill-mode: forwards;
   }
@@ -407,8 +432,9 @@ export const Wastes = styled.i`
 `;
 
 const Spaceship = ({display, animationType, onAnimationEnd}) => (
-<Rocket id="rocket" display={display} animationType={animationType} onAnimationEnd={onAnimationEnd.bind(this)}>
-  <RocketSpan/>
+<Rocket id="rocket" display={display}  animationType={animationType} onAnimationEnd={onAnimationEnd.bind(this)}>  
+<RocketCenter id="rocket" display={display} animationType={animationType}>
+  <RocketFirstStage/>
   <RocketFairing animationType={animationType}/>
   <RocketSecondStage animationType={animationType}/>
   <USFlag src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png"/>
@@ -430,7 +456,56 @@ const Spaceship = ({display, animationType, onAnimationEnd}) => (
     <i />
     <i />
     </Wastes>
-</Rocket> 
+  </RocketCenter> 
+  <RocketLeft display={display} animationType={animationType} onAnimationEnd={onAnimationEnd.bind(this)}>
+  <RocketFirstStage/>
+  <RocketFairing animationType={animationType}/>
+  <RocketSecondStage animationType={animationType}/>
+  <USFlag src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png"/>
+  <SpaceXLogo src="http://i67.tinypic.com/24q6a0k.png"/>
+  <FinLeft animationType={animationType} />
+  <FinRight animationType={animationType} />
+  <Flame animationType={animationType} />
+  <RocketEngineBase/>
+  <RocketEngineLeft/>
+  <RocketEngineRight/>
+  <RocketEngineMiddle/>
+  <LegLeft animationType={animationType} />
+  <LegRight animationType={animationType} />
+  <LegMiddle animationType={animationType} />
+  <Wastes animationType={animationType} >
+    <i />
+    <i />
+    <i />
+    <i />
+    <i />
+    </Wastes>
+  </RocketLeft> 
+  <RocketRight display={display} animationType={animationType} onAnimationEnd={onAnimationEnd.bind(this)}>
+  <RocketFirstStage/>
+  <RocketFairing animationType={animationType}/>
+  <RocketSecondStage animationType={animationType}/>
+  <USFlag src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png"/>
+  <SpaceXLogo src="http://i67.tinypic.com/24q6a0k.png"/>
+  <FinLeft animationType={animationType} />
+  <FinRight animationType={animationType} />
+  <Flame animationType={animationType} />
+  <RocketEngineBase/>
+  <RocketEngineLeft/>
+  <RocketEngineRight/>
+  <RocketEngineMiddle/>
+  <LegLeft animationType={animationType} />
+  <LegRight animationType={animationType} />
+  <LegMiddle animationType={animationType} />
+  <Wastes animationType={animationType} >
+    <i />
+    <i />
+    <i />
+    <i />
+    <i />
+    </Wastes>
+  </RocketRight> 
+  </Rocket>
 );
 
 export default Spaceship
