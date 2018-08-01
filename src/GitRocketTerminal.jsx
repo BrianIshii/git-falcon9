@@ -1,9 +1,10 @@
 /* eslint no-underscore-dangle: 0 */
 /* eslint react/no-multi-comp: 0 */
-
+import React, { Component } from 'react'
+import Spaceship from './styledElements'
 //import PropTypes from '../../../../Library/Caches/typescript/2.9/node_modules/@types/prop-types';
 import PropTypes from 'prop-types';
-import { Rocket, RocketSpan, RocketFairing, RocketSecondStage, SpaceXLogo, USFlag, FinLeft, FinRight, RocketEngineBase,
+import { Falcon9, RocketFirstStage, RocketFairing, RocketSecondStage, SpaceXLogo, USFlag, FinLeft, FinRight, RocketEngineBase,
           RocketEngineLeft, RocketEngineMiddle, RocketEngineRight,
           LegLeft, LegMiddle, LegRight, Blaze, BlazeInnerExtra, BlazeInnerMedium, Flame, Wastes } from './styledElements';
 
@@ -44,6 +45,7 @@ exports.middleware = store => next => (action) => {
     const bytes = detectByteCommand(data);
     if (bytes)
     {
+      console.log("bytes");
       store.dispatch({
         type: bytes,
       });
@@ -64,210 +66,141 @@ exports.middleware = store => next => (action) => {
 };
 
 exports.reduceUI = (state, action) => {
-  console.log("reduceUI");
+  //console.log("reduceUI");
   //console.log("action");
   //console.log(action);
-  console.log("state");
-  console.log(state);
+  //console.log("state");
+  //console.log(state);
   switch (action.type) {
     case 'PUSH_MODE_TOGGLE':
-      return state.set('rocketState', 'launch');
+      console.log("REDUCEUI push");
+      return state.set("display", true).set('rocketState', 'LAUNCH');
     case 'PULL_MODE_TOGGLE':
-      return state.set('rocketState', 'land');
+      console.log("REDUCEUI pull");
+      return state.set("display", true).set('rocketState', 'LAND');
     default:
-    //console.log('action.type');
+    console.log('REDUCEUI default');
     //console.log(action.type);
-      if (Number.parseInt(action.type, 10))
+      var numBytes = Number.parseInt(action.type, 10);
+      if (numBytes && numBytes > 63800)
       {
         console.log("is Int");
-        return state.set('bytes', action.type);
+        return state.set('bytes', true);
       }
-      return state.set('rocketState', 'None');
+      return state.set('bytes', false).set('rocketState', 'None');
   }
 };
 
 const passProps = (uid, parentProps, props) => Object.assign(props, {
   rocketState: parentProps.rocketState,
+  display: parentProps.display,
   bytes: parentProps.bytes,
+  animationType: parentProps.animationType,
 });
 
 exports.mapTermsState = (state, map) => Object.assign(map, {
   rocketState: state.ui.rocketState,
+  display: state.ui.display,
   bytes: state.ui.bytes,
+  animationType: state.ui.animationType,
 });
 
 exports.getTermGroupProps = passProps;
 exports.getTermProps = passProps;
 
 exports.decorateTerm = (Term, { React }) => {
-  class GitRocket extends React.Component {
-    constructor() {
-      super();
-
-      this.state = {
-        animationType: "NONE",
-        display: false,
-        bytes: 0,
-      };
-    }
-
-    componentDidMount() {
-      //console.log("componentDidMount");
-      const rocket = document.getElementById('rocket');
-      rocket.addEventListener('animationend', (animationType) => {
-
-        if (animationType.elapsedTime == 10)
-        {
-          console.log(this.state);
-
-          this.setState({
-            animationType: "NONE",
-            display: false,
-            bytes: 0,
-          });
-        }
-        setTimeout(1500);
-        // console.log("Animation end");
-        // console.log(this.state);
-        // console.log(animationType); 
-        // console.log(animation); 
-      });
-    }
-
-
-    componentWillReceiveProps(nextProps) {
-      console.log("ComponentWillReceiveProps");
-      console.log("nextProps");
-      console.log(nextProps);
-      console.log("this.props");
-      console.log(this.props);
-      if (nextProps.rocketState === 'land')
-      {
-        //console.log("component LAND");
-        this.setState({
-          animationType: 'LAND',
-          display: true,
-          bytes: this.props.bytes,
-        });
-      }
-      else if (nextProps.rocketState === 'launch')
-      {
-        //console.log("component LAUNCH")
-        this.setState({
-          animationType: 'LAUNCH',
-          display: true,
-          bytes: this.props.bytes,
-        });
-      }
-      return nextProps;
-    }
-
-    falcon9(animationType) {
-      return (
-        <Rocket id="rocket" display={this.state.display} animationType={animationType}>
-          <RocketSpan/>
-          <RocketFairing animationType={animationType}/>
-          <RocketSecondStage animationType={animationType}/>
-          <USFlag src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png"/>
-          <SpaceXLogo src="http://i67.tinypic.com/24q6a0k.png"/>
-          <FinLeft animationType={animationType} />
-          <FinRight animationType={animationType} />
-          <Flame animationType={animationType} />
-          <RocketEngineBase/>
-          <RocketEngineLeft/>
-          <RocketEngineRight/>
-          <RocketEngineMiddle/>
-          <LegLeft animationType={animationType} />
-          <LegRight animationType={animationType} />
-          <LegMiddle animationType={animationType} />
-          <Wastes animationType={animationType} >
-              <i />
-              <i />
-              <i />
-              <i />
-              <i />
-            </Wastes>
-        </Rocket> 
-      );
-    }
-
-    falconHeavy(animationType) {
-      return (        
-      <Rocket id="rocket" display={this.state.display} animationType={animationType}>
-      <RocketSpan/>
-      <RocketFairing animationType={animationType}/>
-      <RocketSecondStage animationType={animationType}/>
-      <USFlag src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png"/>
-      <SpaceXLogo src="http://i67.tinypic.com/24q6a0k.png"/>
-      <FinLeft animationType={animationType} />
-      <FinRight animationType={animationType} />
-      <Flame animationType={animationType} />
-      <RocketEngineBase/>
-      <RocketEngineLeft/>
-      <RocketEngineRight/>
-      <RocketEngineMiddle/>
-      <Wastes animationType={animationType} >
-          <i />
-          <i />
-          <i />
-          <i />
-          <i />
-        </Wastes>
-    </Rocket> );
-    }
-
-    render() {
-      console.log("rocket render");
-      console.log(this.state);
-      if (this.state.bytes > 200){
-        return this.falconHeavy(this.state.animationType);
-      }
-      return this.falcon9(this.state.animationType);
-    }
-  }
-
   // Define and return our higher order component.
-  class HOCTerm extends React.Component {
+  class HigherOrderComponentTerminal extends React.Component {
     constructor(props, context) {
       super(props, context);
 
-      this._onTerminal = this._onTerminal.bind(this);
-      this._div = null;
-      this._observer = null;
+      this.state = {
+        animationType: "NONE",
+        heavy: false,
+        display: false,
+      };
     }
 
-    _onTerminal(term) {
+    onTerminal(term) {
       if (this.props.onTerminal) this.props.onTerminal(term);
       this._div = term.div_;
       this._window = term.document_.defaultView;
     }
 
+    componentWillReceiveProps(nextProps) {
+      console.log("nextProps");
+      console.log(nextProps);
+      console.log("this.props");
+      console.log(this.props);
+      if (nextProps.rocketState === 'LAND')
+      {
+        console.log("component LAND");
+        this.setState({
+          animationType: 'LAND',
+          display: true,
+        });
+      }
+      else if (nextProps.rocketState === 'LAUNCH')
+      {
+        //this.props.bytes = nextProps.bytes;
+        this.setState({
+          animationType: 'LAUNCH',
+          display: true,
+        });
+      }
+
+      if (nextProps.bytes === true)
+      {
+        console.log("heavy recorded")
+        this.setState({
+          heavy: true
+        });
+      }
+      return nextProps;
+    }
+
+    onAnimationEnd(event) {
+      //console.log(event);
+      if (event.elapsedTime == 10) 
+      { 
+        console.log("animationend");
+        console.log(this.state); 
+        this.props.display = false;
+        this.props.bytes = false;
+        console.log(this.props); 
+        this.setState({ 
+          animationType: "NONE",
+          heavy: false,
+          display: false, 
+        }); 
+      } 
+      setTimeout(1500); 
+    }
+
     render() {
       console.log("renderHOC");
-      console.log(this.props);
+      console.log("display: " + this.state.display);
+      console.log("animationType: " + this.state.animationType);
+      console.log("heavy: " + this.state.heavy);
       return (
         <div style={{ width: '100%', height: '100%', position: 'relative' }}>
           {React.createElement(Term, Object.assign({}, this.props, {
             onTerminal: this._onTerminal,
           }))}
-          <GitRocket rocketState={this.props.rocketState} bytes={this.props.bytes}/>
+          <Spaceship display={this.state.display} animationType={this.state.animationType} heavy={this.state.heavy} onAnimationEnd={this.onAnimationEnd.bind(this)}/>
         </div>
       );
     }
   }
 
-  GitRocket.propTypes = {
-    rocketState: PropTypes.string.isRequired,
-    animationType: PropTypes.string.isRequired,
-    bytes: PropTypes.number.isRequired,
-  };
-
-  HOCTerm.propTypes = {
+  HigherOrderComponentTerminal.propTypes = {
     onTerminal: PropTypes.func.isRequired,
     rocketState: PropTypes.number.isRequired,
+    display: PropTypes.bool.isRequired,
+    animationType: PropTypes.string.isRequired,
     type: PropTypes.number.isRequired,
-    bytes: PropTypes.number.isRequired,
+    bytes: PropTypes.bool.isRequired,
   };
 
-  return HOCTerm;
+  return HigherOrderComponentTerminal;
 };
