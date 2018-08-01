@@ -169,11 +169,13 @@ export const Falcon9 = styled.div`
 `
 
 export const Falcon9Right = Falcon9.extend`
+  display: ${props => (props.heavy ? 'block' : 'none')};
   left: ${props => ((props.animationType == "LAUNCH") ? "24px;" : "-100px")};
 `
 
 export const Falcon9Left = Falcon9.extend`
-left: ${props => ((props.animationType == "LAUNCH") ? "-24px;" : "-200px")};
+  display: ${props => (props.heavy ? 'block' : 'none')};
+  left: ${props => ((props.animationType == "LAUNCH") ? "-24px;" : "-200px")};
 `
 
 export const RocketFirstStage = styled.span`
@@ -202,6 +204,7 @@ export const SpaceXLogo = styled.img`
 `
 export const RocketFairing = styled.i`
   display: ${props => ((props.animationType == "LAUNCH") ? 'block' : 'none')};
+  //display: ${props => (props.heavy ? 'block' : 'none')};
   position: absolute;
   top: -20px;
   height: 60px;
@@ -434,9 +437,9 @@ export const Wastes = styled.i`
   }
 `;
 
-const Spaceship = ({display, animationType, onAnimationEnd}) => (
+const Spaceship = ({display, animationType, heavy, onAnimationEnd}) => (
   <Rocket id="rocket" display={display} animationType={animationType} onAnimationEnd={onAnimationEnd.bind(this)}>
-    <Falcon9Left animationType={animationType}>
+    <Falcon9Left heavy={heavy} animationType={animationType}>
       <RocketCap />
       <RocketFirstStage />
       <FinLeft animationType={animationType} />
@@ -457,7 +460,7 @@ const Spaceship = ({display, animationType, onAnimationEnd}) => (
         <i />
       </Wastes>
     </Falcon9Left>
-    <Falcon9Right animationType={animationType}>
+    <Falcon9Right heavy={heavy} animationType={animationType}>
       <RocketCap />
       <RocketFirstStage />
       <FinLeft animationType={animationType} />
@@ -480,7 +483,7 @@ const Spaceship = ({display, animationType, onAnimationEnd}) => (
     </Falcon9Right>
     <Falcon9>
       <RocketSecondStage animationType={animationType} />
-      <RocketFairing animationType={animationType} />
+      <RocketFairing animationType={animationType} heavy={heavy} />
       <RocketFirstStage />
       <USFlag src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png" />
       <SpaceXLogo src="http://i67.tinypic.com/24q6a0k.png" />

@@ -45,6 +45,7 @@ exports.middleware = store => next => (action) => {
     const bytes = detectByteCommand(data);
     if (bytes)
     {
+      console.log("bytes");
       store.dispatch({
         type: bytes,
       });
@@ -72,29 +73,34 @@ exports.reduceUI = (state, action) => {
   //console.log(state);
   switch (action.type) {
     case 'PUSH_MODE_TOGGLE':
-      return state.set('rocketState', 'LAUNCH');
+      console.log("REDUCEUI push");
+      return state.set("display", true).set('rocketState', 'LAUNCH');
     case 'PULL_MODE_TOGGLE':
-      return state.set('rocketState', 'LAND');
+      console.log("REDUCEUI pull");
+      return state.set("display", true).set('rocketState', 'LAND');
     default:
-    //console.log('action.type');
+    console.log('REDUCEUI default');
     //console.log(action.type);
-      if (Number.parseInt(action.type, 10))
+      var numBytes = Number.parseInt(action.type, 10);
+      if (numBytes && numBytes > 63800)
       {
         console.log("is Int");
-        return state.set('bytes', action.type);
+        return state.set('bytes', true);
       }
-      return state.set('rocketState', 'None');
+      return state.set('bytes', false).set('rocketState', 'None');
   }
 };
 
 const passProps = (uid, parentProps, props) => Object.assign(props, {
   rocketState: parentProps.rocketState,
+  display: parentProps.display,
   bytes: parentProps.bytes,
   animationType: parentProps.animationType,
 });
 
 exports.mapTermsState = (state, map) => Object.assign(map, {
   rocketState: state.ui.rocketState,
+  display: state.ui.display,
   bytes: state.ui.bytes,
   animationType: state.ui.animationType,
 });
@@ -108,14 +114,10 @@ exports.decorateTerm = (Term, { React }) => {
     constructor(props, context) {
       super(props, context);
 
-      //this._onTerminal = this._onTerminal.bind(this);
-      //this._div = null;
-      //this._observer = null;
-
       this.state = {
         animationType: "NONE",
+        heavy: false,
         display: false,
-        bytes: 0,
       };
     }
 
@@ -126,42 +128,50 @@ exports.decorateTerm = (Term, { React }) => {
     }
 
     componentWillReceiveProps(nextProps) {
-      console.log("ComponentWillReceiveProps");
       console.log("nextProps");
-      console.log(nextProps.rocketState);
+      console.log(nextProps);
       console.log("this.props");
-      console.log(this.props.rocketState);
+      console.log(this.props);
       if (nextProps.rocketState === 'LAND')
       {
-        //console.log("component LAND");
+        console.log("component LAND");
         this.setState({
           animationType: 'LAND',
           display: true,
-          bytes: this.props.bytes,
         });
       }
       else if (nextProps.rocketState === 'LAUNCH')
       {
-        //console.log("component LAUNCH")
+        //this.props.bytes = nextProps.bytes;
         this.setState({
           animationType: 'LAUNCH',
           display: true,
-          bytes: this.props.bytes,
+        });
+      }
+
+      if (nextProps.bytes === true)
+      {
+        console.log("heavy recorded")
+        this.setState({
+          heavy: true
         });
       }
       return nextProps;
     }
 
     onAnimationEnd(event) {
-      console.log(event);
+      //console.log(event);
       if (event.elapsedTime == 10) 
       { 
+        console.log("animationend");
         console.log(this.state); 
-
+        this.props.display = false;
+        this.props.bytes = false;
+        console.log(this.props); 
         this.setState({ 
-          animationType: "NONE", 
+          animationType: "NONE",
+          heavy: false,
           display: false, 
-          bytes: 0, 
         }); 
       } 
       setTimeout(1500); 
@@ -169,14 +179,15 @@ exports.decorateTerm = (Term, { React }) => {
 
     render() {
       console.log("renderHOC");
-      console.log(this.props);
-      console.log(this.props.display);
+      console.log("display: " + this.state.display);
+      console.log("animationType: " + this.state.animationType);
+      console.log("heavy: " + this.state.heavy);
       return (
         <div style={{ width: '100%', height: '100%', position: 'relative' }}>
           {React.createElement(Term, Object.assign({}, this.props, {
             onTerminal: this._onTerminal,
           }))}
-          <Spaceship display={this.state.display} animationType={this.state.animationType} onAnimationEnd={this.onAnimationEnd.bind(this)}/>
+          <Spaceship display={this.state.display} animationType={this.state.animationType} heavy={this.state.heavy} onAnimationEnd={this.onAnimationEnd.bind(this)}/>
         </div>
       );
     }
@@ -185,9 +196,10 @@ exports.decorateTerm = (Term, { React }) => {
   HigherOrderComponentTerminal.propTypes = {
     onTerminal: PropTypes.func.isRequired,
     rocketState: PropTypes.number.isRequired,
+    display: PropTypes.bool.isRequired,
     animationType: PropTypes.string.isRequired,
     type: PropTypes.number.isRequired,
-    bytes: PropTypes.number.isRequired,
+    bytes: PropTypes.bool.isRequired,
   };
 
   return HigherOrderComponentTerminal;
