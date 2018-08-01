@@ -152,13 +152,27 @@ export const Rocket = styled.div`
   position: absolute;
   height: 320px;
   left: calc(90% - 50px);
-  ${props => ((props.animationType == "LAUNCH") ? 'top: calc(100% - 280px);' : 'top: calc(0%-300px);')}
-  animation-name: ${wiggle}, ${props => ((props.animationType == "LAUNCH") ? launch : land)};
-  animation-duration: 200ms, 10s;
-  animation-delay: 2s, 0s;
-  animation-iteration-count: 30, 1;
-  animation-timing-function: ${props => ((props.animationType == "LAUNCH") ? "ease-in" : "ease-out")};
-  animation-fill-mode: forwards;
+  ${props => ((props.animationType == "LAUNCH")
+    ?
+    // on LAUNCH
+      'top: calc(100% - 280px);' +
+      'animation-name: ' + wiggle + "," + launch + ";" +
+      'animation-duration: 200ms, 10s;' +
+      'animation-delay: 2s, 0s;' +
+      'animation-iteration-count: 30, 1;' +
+      'animation-fill-mode: forwards;' +
+      'animation-timing-function: ease-in;'
+    :
+    // on LAND
+    'top: calc(0%-300x);' +
+    'bottom: calc(100%);' +
+    'animation-name: ' + wiggle + ',' + land + ";" +
+    'animation-duration: 200ms, 10s;' +
+    'animation-delay: 2s, 0s;' +
+    'animation-iteration-count: 30, 1;' +
+    'animation-fill-mode: forwards;' +
+    'animation-timing-function: ease-out;'
+  )}
 `
 
 export const Falcon9 = styled.div`
@@ -166,16 +180,39 @@ export const Falcon9 = styled.div`
   position: absolute;
   height: 320px;
   left: 0px;
+  'top: calc(0%-300px);'
+  ${props => ((props.animationType == "LAUNCH")
+  ?
+  // on LAUNCH see Rocket
+    ';'
+  :
+  // on LAND
+  ';'
+)}
 `
 
 export const Falcon9Right = Falcon9.extend`
   display: ${props => (props.heavy ? 'block' : 'none')};
-  left: ${props => ((props.animationType == "LAUNCH") ? "24px;" : "-100px")};
+  ${props => ((props.animationType == "LAUNCH")
+  ?
+  // on LAUNCH
+    'left: 24px;'
+  :
+  // on LAND
+    'left: -100px;'
+  )}
 `
 
 export const Falcon9Left = Falcon9.extend`
   display: ${props => (props.heavy ? 'block' : 'none')};
-  left: ${props => ((props.animationType == "LAUNCH") ? "-24px;" : "-200px")};
+  ${props => ((props.animationType == "LAUNCH")
+  ?
+  // on LAUNCH
+    'left: -24px;'
+  :
+  // on LAND
+    'left: -200px;'
+  )}
 `
 
 export const RocketFirstStage = styled.span`
@@ -481,7 +518,7 @@ const Spaceship = ({display, animationType, heavy, onAnimationEnd}) => (
         <i />
       </Wastes>
     </Falcon9Right>
-    <Falcon9>
+    <Falcon9 animationType={animationType} >
       <RocketSecondStage animationType={animationType} />
       <RocketFairing animationType={animationType} heavy={heavy} />
       <RocketFirstStage />
