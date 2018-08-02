@@ -27,11 +27,13 @@ function detectPullCommand(data) {
 }
 
 function detectByteCommand(data) {
-  const patterns = ['Writing(.+),(.+)bytes'];
+  const patterns = ['Writing(.+),(.+)KiB'];
+  console.log("Check Bytes");
+  console.log(data);
   if (new RegExp(`(${patterns.join(')|(')})`).test(data))
   {
-    var array = data.split(" ");
-    return array[array.length - 2];
+    var array = data.split(/\n| /);
+    return array[array.indexOf("KiB") - 1];
   }
   return 0;
 }
@@ -45,7 +47,6 @@ exports.middleware = store => next => (action) => {
     const bytes = detectByteCommand(data);
     if (bytes)
     {
-      console.log("bytes");
       store.dispatch({
         type: bytes,
       });
@@ -81,10 +82,10 @@ exports.reduceUI = (state, action) => {
     default:
     console.log('REDUCEUI default');
     //console.log(action.type);
-      var numBytes = Number.parseInt(action.type, 10);
-      if (numBytes && numBytes > 63800)
+      var numBytes = Number.parseFloat(action.type, 10);
+      if (numBytes && numBytes > 63.8)
       {
-        console.log("is Int");
+        console.log("is Float");
         return state.set('bytes', true);
       }
       return state.set('bytes', false).set('rocketState', 'None');

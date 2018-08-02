@@ -303,7 +303,7 @@ export const GridFin = styled.i`
 
 export const FinLeft = GridFin.extend`
   left: -2px;
-  border-top-left-radius: 50%;
+  border-=top-left-radius: 50%;
   transform-origin: right top;
   animation-name: ${props => ((props.animationType == "LAUNCH") ? 'none' : openLeftFin)};
 `
