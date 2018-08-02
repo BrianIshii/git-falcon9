@@ -60,7 +60,6 @@ exports.reduceUI = (state, action) => {
     default:
       var numBytes = Number.parseFloat(action.type, 10);
       if (numBytes && numBytes > 63.8) {
-        console.log("is Float");
         return state.set('bytes', true);
       }
       return state.set('bytes', false).set('rocketState', 'None');
