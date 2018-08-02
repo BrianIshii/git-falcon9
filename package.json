@@ -1,7 +1,7 @@
 {
-  "name": "gitrocket",
-  "version": "1.0.4",
-  "description": "A rocket ship that launches in your Hyper terminal when you push code with Git.",
+  "name": "git-falcon9",
+  "version": "1.0.0",
+  "description": "Falcon9 Rocket launches and lands in Hyper terminal when pushing and pulling with Git",
   "main": "dist/index.js",
   "files": [
     "dist/index.js",
@@ -14,10 +14,10 @@
     "fix": "eslint --ext .jsx --ext .js src/ --ignore-path .gitignore --fix; exit 0"
   },
   "author": {
-    "name": "Bomani McClendon",
-    "email": "bomanimc@gmail.com"
+    "name": "Brian Ishii"
   },
   "license": "MIT",
+  
   "keyword": [
     "hyper",
     "hyper.app",
@@ -28,9 +28,9 @@
     "ship",
     "animation"
   ],
-  "repository": "bomanimc/gitrocket",
+  "repository": "brianishii/git-falcon9",
   "bugs": {
-    "url": "https://github.com/bomanimc/gitrocket/issues"
+    "url": "https://github.com/BrianIshii/git-falcon9"
   },
   "dependencies": {
     "path": "^0.12.7",
