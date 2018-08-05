@@ -21,8 +21,8 @@ export const GridFin = styled.i`
   height: 15px;
   width: 3px;
   background-color: #3a3a3b;
-  animation-duration: 1s;
-  animation-delay: 1s;
+  animation-duration: 0.5s;
+  animation-delay: 0s;
   animation-fill-mode: forwards;
   transform: rotate(0deg);
 `

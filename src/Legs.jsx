@@ -21,8 +21,8 @@ export const openRightLeg = keyframes`
 `
 
 export const LegBaseStyling = styled.i`
-  animation-duration: 2s;
-  animation-delay: 6s;
+  animation-duration: 0.5s;
+  animation-delay: 1s;
   animation-fill-mode: forwards;
 `
 export const Leg = LegBaseStyling.extend`

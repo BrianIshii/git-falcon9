@@ -17,21 +17,15 @@ export const flameWiggleLand = keyframes`
     height: 30px; }
 `
 export const engineTurnedOn = keyframes`
-  0% {
+  from {
     opacity: 1;
-    display: 'none';    
+    display: block;    
     left: 8px;
     width: 8px;
   }
-  50% {
+  to {
     opacity: 1;
     display: block; 
-    left: 8px;
-    width: 8px;
-  }
-  100% {
-    opacity: 1;
-    display: 'none';
     left: 8px;
     width: 8px;
   }
@@ -108,9 +102,20 @@ export const Thrust = styled.i`
       0 0px 150px 15px #ffd9b3, //global
       0 10px 2px 4px white,
       0 5px 3px 3px white;
-  animation-name: ${props => ((props.animationType == "LAUNCH") ? flameWiggleLaunch : flameWiggleLand)}, ${props => ((props.animationType == "LAUNCH") ? engineTurnedOn : engineTurnedOff)};
-  animation-duration: 100ms, 9s;
-  animation-delay: ${props => ((props.animationType == "LAUNCH") ? '2s' : '2s')}, ${props => ((props.animationType == "LAUNCH") ? '2s' : '0s')};
+  ${props => (props.animationType == "None" ? ';' :
+  props => ((props.animationType == "LAUNCH")  ?
+    // on LAUNCH
+    'animation-name: ' + flameWiggleLaunch + ', ' + engineTurnedOn + ';' +
+    'animation-duration: 100ms, 2.5s;' +
+    'animation-delay: 0.5s, 0.5s;' +
+    'animation-iteration-count: 13, 1;'
+    :
+    // on LAND
+    'animation-name: ' + flameWiggleLand + ', ' + engineTurnedOff + ';' +
+    'animation-duration: 100ms, 2.5s;' +
+    'animation-delay: 1s, 0.0s;' +
+    'animation-iteration-count: 5, 1;'
+  ))}
   animation-iteration-count: infinite, 1;
   animation-fill-mode: forwards;
   }
@@ -133,7 +138,7 @@ export const Wastes = styled.i`
   height: 8px;
   width: 8px;
   left: 11px;
-  animation-delay: 2s;
+  animation-delay: 0s;
   i {
     position: absolute;
     width: 1px;

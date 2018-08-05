@@ -2,8 +2,10 @@ import styled, {keyframes} from 'styled-components'
 import {LegLeft, LegMiddle, LegRight} from './Legs'
 import {FinLeft, FinRight} from './Fins'
 import {Octaweb, MerlinEngineLeft, MerlinEngineMiddle, MerlinEngineRight} from './Engines'
-import {Thrust, Wastes} from './Thrust'
+import {Thrust, Wastes, Platform} from './Thrust'
 import React from 'react'
+
+// Animation Duration: 3 seconds
 
 export const wiggle = keyframes`
   0% {
@@ -17,7 +19,9 @@ export const wiggle = keyframes`
 export const land = keyframes`
   0% {
     top: -260px; }
-  80% {
+  50% {
+      top: calc(100% - 300px); }
+  67% {
     top: calc(100% - 285px); }
   100% {
     top: calc(100% - 285px); }
@@ -25,11 +29,11 @@ export const land = keyframes`
 
 export const launch = keyframes`
   0% {
-  top: calc(100% - 280px); }
-  25% {
-  top: calc(100% - 280px); }
+    top: calc(100% - 280px); }
+  33% {
+    top: calc(100% - 280px); }
   100% {
-  top: calc(0% - 300px); }
+    top: calc(0% - 300px); }
 `
 
 export const Rocket = styled.div`
@@ -43,9 +47,9 @@ export const Rocket = styled.div`
     // on LAUNCH
       'top: calc(100% - 280px);' +
       'animation-name: ' + wiggle + "," + launch + ";" +
-      'animation-duration: 200ms, 10s;' +
-      'animation-delay: 2s, 0s;' +
-      'animation-iteration-count: 30, 1;' +
+      'animation-duration: 200ms, 3s;' +
+      'animation-delay: 0.5s, 0s;' +
+      'animation-iteration-count: 13, 1;' +
       'animation-fill-mode: forwards;' +
       'animation-timing-function: ease-in;'
     :
@@ -53,9 +57,9 @@ export const Rocket = styled.div`
     'top: calc(0%-300x);' +
     'bottom: calc(100%);' +
     'animation-name: ' + wiggle + ',' + land + ";" +
-    'animation-duration: 200ms, 10s;' +
-    'animation-delay: 2s, 0s;' +
-    'animation-iteration-count: 30, 1;' +
+    'animation-duration: 200ms, 3s;' +
+    'animation-delay: 1s, 0s;' +
+    'animation-iteration-count: 5, 1;' +
     'animation-fill-mode: forwards;' +
     'animation-timing-function: ease-out;'
   ))}
@@ -114,7 +118,7 @@ export const RocketFirstStage = styled.span`
 export const USFlag = styled.img`
   position: absolute;
   top: 115px;
-  height: 5px;
+  height: 5px;ß
   width: 8px;
   left: 7px;
 `
