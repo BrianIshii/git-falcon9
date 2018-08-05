@@ -14,7 +14,7 @@ export const exhaust = keyframes`
 `
 export const LaunchPad = styled.div `
     position: absolute;
-    display: ${props => (props.display ? 'block' : 'none')};
+    display: none;
     top: calc(100%);
     height: 1px;
     width: 100px;
