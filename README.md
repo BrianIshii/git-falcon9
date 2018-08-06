@@ -1,6 +1,8 @@
 # git-falcon9
 This is a plugin for the [Hyper](https://hyper.is/) terminal that launches a Falcon 9 when you push code and lands when you pull code with Git.
 
+![Alt Text](https://github.com/BrianIshii/git-falcon9/edit/master/git-falcon9.gif)
+
 ### Installation
 To use this plugin in [Hyper](https://hyper.is/), add the plugin's name in your `~/.hyper.js` file as an item in the
 `plugins` array.
