@@ -1,6 +1,6 @@
 {
   "name": "git-falcon9",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Falcon9 Rocket launches and lands in Hyper terminal when pushing and pulling with Git",
   "main": "dist/index.js",
   "files": [
@@ -17,7 +17,6 @@
     "name": "Brian Ishii"
   },
   "license": "MIT",
-
   "keyword": [
     "hyper",
     "hyper.app",
@@ -38,7 +37,6 @@
     "react": "^15.6.1",
     "styled-components": "^2.1.1"
   },
-  
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
