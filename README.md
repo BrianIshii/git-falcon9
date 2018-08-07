@@ -11,7 +11,6 @@ $ cd ~/.hyper_plugins
 $ npm install gitrocket
 ```
 Then, add the plugin's name in your `~/.hyper.js` file as an item in the
-```
 `plugins` array.
 ```
 plugins: [
