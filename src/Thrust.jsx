@@ -2,11 +2,11 @@ import styled, {keyframes} from 'styled-components'
 
 export const flameWiggleLaunch = keyframes`
   0% {
-    height: 70px; }
+    height: 80px; }
   50% {
-    height: 75px; }
+    height: 90px; }
   100% {
-    height: 70px; }
+    height: 80px; }
 `
 export const flameWiggleLand = keyframes`
   0% {
@@ -20,14 +20,14 @@ export const engineTurnedOn = keyframes`
   from {
     opacity: 1;
     display: block;    
-    left: 8px;
-    width: 8px;
+    left: 5px;
+    width: 13px;
   }
   to {
     opacity: 1;
     display: block; 
-    left: 8px;
-    width: 8px;
+    left: 5px;
+    width: 13px;
   }
 }
 `
@@ -134,7 +134,7 @@ export const Thrust = styled.i`
 
 export const Wastes = styled.i`
   position: absolute;
-  top: ${props => ((props.animationType == "LAUNCH") ? '320px': '265px')};
+  top: ${props => ((props.animationType == "LAUNCH") ? '340px': '265px')};
   height: 8px;
   width: 8px;
   left: 11px;

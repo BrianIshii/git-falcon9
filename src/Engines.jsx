@@ -25,13 +25,17 @@ export const MerlinEngine = styled.i`
 `
 
 export const MerlinEngineLeft = MerlinEngine.extend`
-  left: 14px;
+  left: 15px;
 `
 
-export const MerlinEngineMiddle = MerlinEngine.extend`
-  left: 8px;
+export const MerlinEngineLeftMiddle = MerlinEngine.extend`
+  left: 11px;
+`
+
+export const MerlinEngineRightMiddle = MerlinEngine.extend`
+  left: 4px;
 `
 
 export const MerlinEngineRight= MerlinEngine.extend`
-  left: 2px;
+  left: 0px;
 `

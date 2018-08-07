@@ -1,7 +1,7 @@
 import styled, {keyframes} from 'styled-components'
 import {LegLeft, LegMiddle, LegRight} from './Legs'
 import {FinLeft, FinRight} from './Fins'
-import {Octaweb, MerlinEngineLeft, MerlinEngineMiddle, MerlinEngineRight} from './Engines'
+import {Octaweb, MerlinEngineLeft, MerlinEngineLeftMiddle, MerlinEngineRightMiddle, MerlinEngineRight} from './Engines'
 import {Thrust, Wastes, Platform} from './Thrust'
 import React from 'react'
 
@@ -69,43 +69,21 @@ export const Falcon9 = styled.div`
   display: block;
   position: absolute;
   height: 320px;
-  left: 0px;
-  'top: calc(0%-300px);'
+  top: calc(0%-300px);
   ${props => (props.animationType == "None" ? ';' :
     props => ((props.animationType == "LAUNCH")  ?
   // on LAUNCH see Rocket
-    ';'
+    'left: ' + props.position + ';'
   :
   // on LAND
-  ';'
+    'left: ' + props.position + ';'
   ))}
 `
 
-export const Falcon9Right = Falcon9.extend`
-  display: ${props => (props.heavy ? 'block' : 'none')};
-  ${props => (props.animationType == "None" ? ';' :
-    props => ((props.animationType == "LAUNCH")  ?
-  // on LAUNCH
-    'left: 24px;'
-  :
-  // on LAND
-    'left: -100px;'
-  ))}
-`
+export const FirstStageDiv = styled.div`
 
-export const Falcon9Left = Falcon9.extend`
-  display: ${props => (props.heavy ? 'block' : 'none')};
-  ${props => (props.animationType == "None" ? ';' :
-    props => ((props.animationType == "LAUNCH")  ?
-  // on LAUNCH
-    'left: -24px;'
-  :
-  // on LAND
-    'left: -200px;'
-  ))}
 `
-
-export const RocketFirstStage = styled.span`
+export const FirstStageSpan = styled.span`
   display: block;
   position: absolute;
   top: 100px;
@@ -180,75 +158,53 @@ export const RocketCap = styled.i`
   background-color: #d1d2d6;
 `
 
-const Falcon9Rocket = ({display, animationType, heavy, onAnimationEnd}) => (
+const FirstStage = ({ animationType }) => (
+  <FirstStageDiv>
+    <FirstStageSpan />
+    <FinLeft animationType={animationType} />
+    <FinRight animationType={animationType} />
+    <Thrust animationType={animationType} />
+    <Octaweb />
+    <MerlinEngineLeft />
+    <MerlinEngineRight />
+    <MerlinEngineLeftMiddle />
+    <MerlinEngineRightMiddle />
+    <LegLeft animationType={animationType} />
+    <LegRight animationType={animationType} />
+    <LegMiddle animationType={animationType} />
+    <Wastes animationType={animationType} >
+      <i />
+      <i />
+      <i />
+      <i />
+      <i />
+    </Wastes>
+  </FirstStageDiv>
+);
+
+const Falcon9SideRocket = ({position, heavy, animationType}) => (
+  <Falcon9 position={position} heavy={heavy} animationType={animationType}>
+    <RocketCap />
+    <FirstStage animationType={animationType} />
+  </Falcon9>
+);
+
+const Falcon9Rocket = ({position, heavy, animationType}) => (
+  <Falcon9 position={position} animationType={animationType} >
+    <RocketSecondStage animationType={animationType} />
+    <RocketFairing animationType={animationType} heavy={heavy} />
+    <FirstStage animationType={animationType} />
+    <USFlag src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png" />
+    <SpaceXLogo src="http://i67.tinypic.com/24q6a0k.png" />
+  </Falcon9>
+);
+
+const FalconRocket = ({display, animationType, heavy, onAnimationEnd}) => (
   <Rocket id="rocket" display={display} animationType={animationType} onAnimationEnd={onAnimationEnd.bind(this)}>
-    <Falcon9Left heavy={heavy} animationType={animationType}>
-      <RocketCap />
-      <RocketFirstStage />
-      <FinLeft animationType={animationType} />
-      <FinRight animationType={animationType} />
-      <Thrust animationType={animationType} />
-      <Octaweb />
-      <MerlinEngineLeft />
-      <MerlinEngineRight />
-      <MerlinEngineMiddle />
-      <LegLeft animationType={animationType} />
-      <LegRight animationType={animationType} />
-      <LegMiddle animationType={animationType} />
-      <Wastes animationType={animationType} >
-        <i />
-        <i />
-        <i />
-        <i />
-        <i />
-      </Wastes>
-    </Falcon9Left>
-    <Falcon9Right heavy={heavy} animationType={animationType}>
-      <RocketCap />
-      <RocketFirstStage />
-      <FinLeft animationType={animationType} />
-      <FinRight animationType={animationType} />
-      <Thrust animationType={animationType} />
-      <Octaweb />
-      <MerlinEngineLeft />
-      <MerlinEngineRight />
-      <MerlinEngineMiddle />
-      <LegLeft animationType={animationType} />
-      <LegRight animationType={animationType} />
-      <LegMiddle animationType={animationType} />
-      <Wastes animationType={animationType} >
-        <i />
-        <i />
-        <i />
-        <i />
-        <i />
-      </Wastes>
-    </Falcon9Right>
-    <Falcon9 animationType={animationType} >
-      <RocketSecondStage animationType={animationType} />
-      <RocketFairing animationType={animationType} heavy={heavy} />
-      <RocketFirstStage />
-      <USFlag src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png" />
-      <SpaceXLogo src="http://i67.tinypic.com/24q6a0k.png" />
-      <FinLeft animationType={animationType} />
-      <FinRight animationType={animationType} />
-      <Thrust animationType={animationType} />
-      <Octaweb />
-      <MerlinEngineLeft />
-      <MerlinEngineRight />
-      <MerlinEngineMiddle />
-      <LegLeft animationType={animationType} />
-      <LegRight animationType={animationType} />
-      <LegMiddle animationType={animationType} />
-      <Wastes animationType={animationType} >
-        <i />
-        <i />
-        <i />
-        <i />
-        <i />
-      </Wastes>
-    </Falcon9>
+    <Falcon9SideRocket position='24px' heavy={heavy} animationType={animationType} />
+    <Falcon9SideRocket position='-24px' heavy={heavy} animationType={animationType} />
+    <Falcon9Rocket position='0px' heavy={heavy} animationType={animationType} />    
   </Rocket>
 );
 
-export default Falcon9Rocket
+export default FalconRocket

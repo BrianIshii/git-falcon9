@@ -1,4 +1,4 @@
-import Falcon9Rocket from './Falcon9';
+import FalconRocket from './Falcon9';
 import Platform from './Platform';
 import PropTypes from 'prop-types';
 
@@ -60,7 +60,8 @@ exports.reduceUI = (state, action) => {
       return state.set("display", true).set('rocketState', 'LAND');
     default:
       var numBytes = Number.parseFloat(action.type, 10);
-      if (numBytes && numBytes > 63.8) {
+      // if more than 22.8 kBs we need the falcon heavy
+      if (numBytes && numBytes > 22.8) {
         return state.set('bytes', true);
       }
       return state.set('bytes', false).set('rocketState', 'None');
@@ -139,7 +140,7 @@ exports.decorateTerm = (Term, { React }) => {
           {React.createElement(Term, Object.assign({}, this.props, {
             onTerminal: this._onTerminal,
           }))}
-          <Falcon9Rocket display={this.state.display} animationType={this.state.animationType} heavy={this.state.heavy} onAnimationEnd={this.onAnimationEnd.bind(this)} />
+          <FalconRocket display={this.state.display} animationType={this.state.animationType} heavy={this.state.heavy} onAnimationEnd={this.onAnimationEnd.bind(this)} />
           <Platform display={this.state.display}/>
         </div>
       );
