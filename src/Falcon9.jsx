@@ -1,8 +1,8 @@
-import styled, {keyframes} from 'styled-components'
-import {LegLeft, LegMiddle, LegRight} from './Legs'
-import {FinLeft, FinRight} from './Fins'
-import {Octaweb, MerlinEngineLeft, MerlinEngineLeftMiddle, MerlinEngineRightMiddle, MerlinEngineRight} from './Engines'
-import {Thrust, Wastes, Platform} from './Thrust'
+import styled, { keyframes } from 'styled-components'
+import { LegLeft, LegMiddle, LegRight } from './Legs'
+import { FinLeft, FinRight } from './Fins'
+import { Octaweb, MerlinEngineLeft, MerlinEngineLeftMiddle, MerlinEngineRightMiddle, MerlinEngineRight } from './Engines'
+import { Thrust, Wastes, Platform } from './Thrust'
 import React from 'react'
 
 // Animation Duration: 3 seconds
@@ -43,8 +43,8 @@ export const Rocket = styled.div`
   left: calc(90% - 50px);
   ${props => (props.animationType == "None" ? ';' :
     props => ((props.animationType == "LAUNCH")
-    ?
-    // on LAUNCH
+      ?
+      // on LAUNCH
       'top: calc(100% - 280px);' +
       'animation-name: ' + wiggle + "," + launch + ";" +
       'animation-duration: 200ms, 3s;' +
@@ -52,32 +52,38 @@ export const Rocket = styled.div`
       'animation-iteration-count: 13, 1;' +
       'animation-fill-mode: forwards;' +
       'animation-timing-function: ease-in;'
-    :
-    // on LAND
-    'top: calc(0%-300x);' +
-    'bottom: calc(100%);' +
-    'animation-name: ' + wiggle + ',' + land + ";" +
-    'animation-duration: 200ms, 3s;' +
-    'animation-delay: 1s, 0s;' +
-    'animation-iteration-count: 5, 1;' +
-    'animation-fill-mode: forwards;' +
-    'animation-timing-function: ease-out;'
-  ))}
+      :
+      // on LAND
+      'top: calc(0%-300x);' +
+      'bottom: calc(100%);' +
+      'animation-name: ' + wiggle + ',' + land + ";" +
+      'animation-duration: 200ms, 3s;' +
+      'animation-delay: 1s, 0s;' +
+      'animation-iteration-count: 5, 1;' +
+      'animation-fill-mode: forwards;' +
+      'animation-timing-function: ease-out;'
+    ))}
 `
 
 export const Falcon9 = styled.div`
-  display: block;
+  ${props => (props.position == '0px' ? 'display: block;' :
+    props => ((props.heavy) ?
+      'display: block;'
+      :
+      // on LAND
+      'display: none;'
+    ))}
   position: absolute;
   height: 320px;
   top: calc(0%-300px);
   ${props => (props.animationType == "None" ? ';' :
-    props => ((props.animationType == "LAUNCH")  ?
-  // on LAUNCH see Rocket
-    'left: ' + props.position + ';'
-  :
-  // on LAND
-    'left: ' + props.position + ';'
-  ))}
+    props => ((props.animationType == "LAUNCH") ?
+      // on LAUNCH see Rocket
+      'left: ' + props.position + ';'
+      :
+      // on LAND
+      'left: ' + props.position + ';'
+    ))}
 `
 
 export const FirstStageDiv = styled.div`
@@ -182,15 +188,15 @@ const FirstStage = ({ animationType }) => (
   </FirstStageDiv>
 );
 
-const Falcon9SideRocket = ({position, heavy, animationType}) => (
+const Falcon9SideRocket = ({ position, heavy, animationType }) => (
   <Falcon9 position={position} heavy={heavy} animationType={animationType}>
     <RocketCap />
     <FirstStage animationType={animationType} />
   </Falcon9>
 );
 
-const Falcon9Rocket = ({position, heavy, animationType}) => (
-  <Falcon9 position={position} animationType={animationType} >
+const Falcon9Rocket = ({ position, heavy, animationType }) => (
+  <Falcon9 position={position} heavy={heavy} animationType={animationType} >
     <RocketSecondStage animationType={animationType} />
     <RocketFairing animationType={animationType} heavy={heavy} />
     <FirstStage animationType={animationType} />
@@ -199,11 +205,11 @@ const Falcon9Rocket = ({position, heavy, animationType}) => (
   </Falcon9>
 );
 
-const FalconRocket = ({display, animationType, heavy, onAnimationEnd}) => (
+const FalconRocket = ({ display, animationType, heavy, onAnimationEnd }) => (
   <Rocket id="rocket" display={display} animationType={animationType} onAnimationEnd={onAnimationEnd.bind(this)}>
     <Falcon9SideRocket position='24px' heavy={heavy} animationType={animationType} />
     <Falcon9SideRocket position='-24px' heavy={heavy} animationType={animationType} />
-    <Falcon9Rocket position='0px' heavy={heavy} animationType={animationType} />    
+    <Falcon9Rocket position='0px' heavy={heavy} animationType={animationType} />
   </Rocket>
 );
 
