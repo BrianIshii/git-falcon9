@@ -102,7 +102,7 @@ export const FirstStageSpan = styled.span`
 export const USFlag = styled.img`
   position: absolute;
   top: 115px;
-  height: 5px;ß
+  height: 5px;
   width: 8px;
   left: 7px;
 `
