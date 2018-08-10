@@ -1,5 +1,6 @@
 import FalconRocket from './Falcon9';
 import Platform from './Platform';
+import Exhaust from './Exhaust';
 import PropTypes from 'prop-types';
 
 // This function performs regex matching on expected shell output for git push result being input
@@ -140,8 +141,9 @@ exports.decorateTerm = (Term, { React }) => {
           {React.createElement(Term, Object.assign({}, this.props, {
             onTerminal: this._onTerminal,
           }))}
+          <Exhaust display={this.state.display} animationType={this.state.animationType} />
           <FalconRocket display={this.state.display} animationType={this.state.animationType} heavy={this.state.heavy} onAnimationEnd={this.onAnimationEnd.bind(this)} />
-          <Platform display={this.state.display}/>
+          <Platform display={this.state.display} animationType={this.state.animationType} />
         </div>
       );
     }
