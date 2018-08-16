@@ -9,13 +9,13 @@ To use this plugin, first install the plugin in your `~/.hyper_plugins`
 folder.
 ```
 $ cd ~/.hyper_plugins
-$ npm install gitrocket
+$ npm install git-falcon9
 ```
 Then, add the plugin's name in your `~/.hyper.js` file as an item in the
 `plugins` array.
 ```
 plugins: [
-  "gitrocket"
+  "git-falcon9"
 ],
 ```
 Afterwards, refresh your Hyper terminal with _View > Full Reload_.
