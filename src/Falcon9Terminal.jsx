@@ -13,7 +13,7 @@ function detectPushCommand(data) {
 
 function detectPullCommand(data) {
   //const patterns = ['Updating'] // for development
-  const patterns = ['Updating {0,}([a-z0-9A-Z]+\.{2,3}[a-z0-9A-Z]+)|(\[[a-z0-9A-Z]+\.{2,3}[a-z0-9A-Z]+\])$']
+  const patterns = ['(.+)files changed,(.+)insertions\(\+\),(.+)deletions\(\-\)']
   const antiPattern = /CONFLICT/
   return new RegExp(`(${patterns.join(')|(')})`).test(data) && !antiPattern.test(data)
 }
