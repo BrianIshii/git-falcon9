@@ -3,6 +3,7 @@ import Platform from './Platform';
 import Exhaust from './Exhaust';
 import PropTypes from 'prop-types';
 
+
 // This function performs regex matching on expected shell output for git push result being input
 // at the command line. Currently it supports output from bash, zsh, fish, cmd and powershell.
 function detectPushCommand(data) {
