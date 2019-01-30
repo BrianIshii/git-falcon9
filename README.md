@@ -1,4 +1,4 @@
-https://travis-ci.org/BrianIshii/git-falcon9.svg?branch=master
+[!https://travis-ci.org/BrianIshii/git-falcon9.svg?branch=master]
 
 # git-falcon9
 This is a plugin for the [Hyper](https://hyper.is/) terminal that launches a Falcon 9 when you push code and lands when you pull code with Git.
