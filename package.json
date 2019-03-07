@@ -8,7 +8,7 @@
     "dist/index.js.map"
   ],
   "scripts": {
-    "build": "webpack --mode production --watch",
+    "build": "webpack --mode production",
     "dev": "webpack --mode development --watch",
     "lint": "eslint --ext .jsx --ext .js src/ --ignore-path .gitignore; exit 0",
     "fix": "eslint --ext .jsx --ext .js src/ --ignore-path .gitignore --fix; exit 0"
