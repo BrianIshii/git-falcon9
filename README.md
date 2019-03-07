@@ -27,7 +27,7 @@ If this does not work, restarting your Hyper Terminal might help.
 Inspired by [gitrocket](https://github.com/bomanimc/gitrocket), [space-pull](https://github.com/lukaszromerowicz/space-pull) and [SpaceX Falcon 9 Landing CSS](https://codepen.io/simoberny/pen/PEJxPQ)
 
 #### Special launch for very large commits
-The max payload for a Falcon 9 is 22.8kg.
+The max payload for a Falcon 9 is 22.8kB.
 Commits larger than 22.8kB may require something special.
 
 ![Alt Text](https://github.com/BrianIshii/git-falcon9/raw/master/Assets/falconHeavyLaunch.gif)
