@@ -1,6 +1,6 @@
 {
   "name": "git-falcon9",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Falcon9 Rocket launches and lands in Hyper terminal when pushing and pulling with Git",
   "main": "dist/index.js",
   "files": [
@@ -53,7 +53,6 @@
     "webpack-cli": "^3.2.3",
     "webpack-node-externals": "^1.7.2"
   },
-
   "resolutions": {
     "babel-cli/chokidar": "^2.0.4"
   }
