@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 // at the command line. Currently it supports output from bash, zsh, fish, cmd and powershell.
 function detectPushCommand(data) {
   const patterns = ['To(.+)\.git'];
-  const antiPatterns = ['error:'];
+  const antiPatterns = ['error:']
   return new RegExp(`(${patterns.join(')|(')})`).test(data) && !new RegExp(`(${antiPatterns.join(')|(')})`).test(data);
 }
 
@@ -30,22 +30,32 @@ function detectByteCommand(data) {
 }
 
 exports.middleware = store => next => (action) => {
+  // console.log("in middleware");
+  // console.log(action);
+  // console.log(store.getState());
+
   if (action.type === 'SESSION_ADD_DATA') {
 
     const { data } = action;
+    const uid = store.getState().ui.activeUid;
+
     const bytes = detectByteCommand(data);
     if (bytes) {
       store.dispatch({
-        type: bytes,
+        type: 'UPDATE_BYTE_COUNT',
+        uid: uid,
+        bytes: bytes,
       });
     }
     if (detectPushCommand(data)) {
       store.dispatch({
         type: 'PUSH_MODE_TOGGLE',
+        uid: uid,
       });
     } else if (detectPullCommand(data)) {
       store.dispatch({
         type: 'PULL_MODE_TOGGLE',
+        uid: uid,
       });
     }
     next(action);
@@ -55,29 +65,41 @@ exports.middleware = store => next => (action) => {
 };
 
 exports.reduceUI = (state, action) => {
-  switch (action.type) {
-    case 'PUSH_MODE_TOGGLE':
-      return state.set("display", true).set('rocketState', 'LAUNCH');
-    case 'PULL_MODE_TOGGLE':
-      return state.set("display", true).set('rocketState', 'LAND');
-    default:
-      var numBytes = Number.parseFloat(action.type, 10);
-      // if more than 22.8 kBs we need the falcon heavy
-      if (numBytes && numBytes > 22.8) {
-        return state.set('bytes', true);
-      }
-      return state.set('bytes', false).set('rocketState', 'None');
+  // console.log("action");
+  // console.log(state);
+  // console.log(action.uid);
+
+  let gitFalcon9 = ({
+    'uid': action.uid,
+    'rocketState': 'None',
+    'heavy': false,
+  });
+
+  if (action.type === 'PUSH_MODE_TOGGLE') {
+    gitFalcon9.rocketState = 'LAUNCH';
+    return state.set('gitFalcon9', gitFalcon9);
+  } else if (action.type === 'PULL_MODE_TOGGLE') {
+    gitFalcon9.rocketState = 'LAND';
+    return state.set('gitFalcon9', gitFalcon9);
+  } else if (action.type === 'UPDATE_BYTE_COUNT') {
+    var numBytes = Number.parseFloat(action.bytes, 10);
+    // if more than 22.8 kBs we need the falcon heavy
+    if (numBytes && numBytes > 22.8) {
+      gitFalcon9.heavy = true;
+      return state.set('gitFalcon9', gitFalcon9);
+    }
+    return state.set('gitFalcon9', gitFalcon9);
   }
+
+  return state;
 };
 
 const passProps = (uid, parentProps, props) => Object.assign(props, {
-  rocketState: parentProps.rocketState,
-  bytes: parentProps.bytes,
+  gitFalcon9: parentProps.gitFalcon9,
 });
 
 exports.mapTermsState = (state, map) => Object.assign(map, {
-  rocketState: state.ui.rocketState,
-  bytes: state.ui.bytes,
+  gitFalcon9: state.ui.gitFalcon9,
 });
 
 exports.getTermGroupProps = passProps;
@@ -93,6 +115,7 @@ exports.decorateTerm = (Term, { React }) => {
         animationType: "NONE",
         heavy: false,
         display: false,
+        uid: props.uid
       };
     }
 
@@ -103,25 +126,30 @@ exports.decorateTerm = (Term, { React }) => {
     }
 
     componentWillReceiveProps(nextProps) {
-      if (nextProps.rocketState === 'LAND') {
-        this.setState({
-          animationType: 'LAND',
-          display: true,
-        });
-      }
-      else if (nextProps.rocketState === 'LAUNCH') {
-        this.setState({
-          animationType: 'LAUNCH',
-          display: true,
-        });
-      }
 
-      if (nextProps.bytes === true) {
-        this.setState({
-          heavy: true
-        });
-      }
+      const { uid } = this.state;
+      const { gitFalcon9 } = nextProps;
 
+      if (gitFalcon9) {
+
+        // console.log(rocketUID);
+        // console.log(nextProps.rocketUID);
+        // console.log(uid);
+
+        if (gitFalcon9.uid == uid) {
+          this.setState({
+            animationType: gitFalcon9.rocketState,
+            display: true,
+          });
+
+          if (gitFalcon9.heavy) {
+            this.setState({
+              heavy: true
+            });
+          }
+
+        }
+      }
       return nextProps;
     }
 
@@ -152,9 +180,6 @@ exports.decorateTerm = (Term, { React }) => {
 
   HigherOrderComponentTerminal.propTypes = {
     onTerminal: PropTypes.func.isRequired,
-    rocketState: PropTypes.number.isRequired,
-    bytes: PropTypes.bool.isRequired,
-    type: PropTypes.number.isRequired,
   };
 
   return HigherOrderComponentTerminal;
