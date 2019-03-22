@@ -2,6 +2,7 @@ import FalconRocket from './Falcon9';
 import Platform from './Platform';
 import Exhaust from './Exhaust';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 
 // This function performs regex matching on expected shell output for git push result being input
@@ -105,6 +106,12 @@ exports.mapTermsState = (state, map) => Object.assign(map, {
 exports.getTermGroupProps = passProps;
 exports.getTermProps = passProps;
 
+export const div_style= styled.div`
+    width: '100%';
+    height: '100%';
+    position: 'relative'
+`
+
 exports.decorateTerm = (Term, { React }) => {
   // Define and return our higher order component.
   class HigherOrderComponentTerminal extends React.Component {
@@ -166,7 +173,7 @@ exports.decorateTerm = (Term, { React }) => {
 
     render() {
       return (
-        <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+        <div style={div_style}>
           {React.createElement(Term, Object.assign({}, this.props, {
             onTerminal: this._onTerminal,
           }))}
@@ -180,6 +187,8 @@ exports.decorateTerm = (Term, { React }) => {
 
   HigherOrderComponentTerminal.propTypes = {
     onTerminal: PropTypes.func.isRequired,
+    uid: PropTypes.string.isRequired,
+    gitFalcon9: PropTypes.object.isRequired,
   };
 
   return HigherOrderComponentTerminal;

@@ -2,8 +2,9 @@ import styled, { keyframes } from 'styled-components'
 import { LegLeft, LegMiddle, LegRight } from './Legs'
 import { FinLeft, FinRight } from './Fins'
 import { Octaweb, MerlinEngineLeft, MerlinEngineLeftMiddle, MerlinEngineRightMiddle, MerlinEngineRight } from './Falcon9/Engines'
-import { Thrust, Wastes, Platform } from './Thrust'
+import { Thrust, Wastes } from './Thrust'
 import React from 'react'
+import PropTypes from 'prop-types'
 
 // Animation Duration: 3 seconds
 
@@ -164,53 +165,95 @@ export const RocketCap = styled.i`
   background-color: #d1d2d6;
 `
 
-const FirstStage = ({ animationType }) => (
-  <FirstStageDiv>
-    <FirstStageSpan />
-    <FinLeft animationType={animationType} />
-    <FinRight animationType={animationType} />
-    <Thrust animationType={animationType} />
-    <Octaweb />
-    <MerlinEngineLeft />
-    <MerlinEngineRight />
-    <MerlinEngineLeftMiddle />
-    <MerlinEngineRightMiddle />
-    <LegLeft animationType={animationType} />
-    <LegRight animationType={animationType} />
-    <LegMiddle animationType={animationType} />
-    <Wastes animationType={animationType} >
-      <i />
-      <i />
-      <i />
-      <i />
-      <i />
-    </Wastes>
-  </FirstStageDiv>
-);
+class FirstStage extends React.Component {
+    render() {
+        return (
+            <FirstStageDiv>
+                <FirstStageSpan/>
+                <FinLeft animationType={this.animationType}/>
+                <FinRight animationType={this.animationType}/>
+                <Thrust animationType={this.animationType}/>
+                <Octaweb/>
+                <MerlinEngineLeft/>
+                <MerlinEngineRight/>
+                <MerlinEngineLeftMiddle/>
+                <MerlinEngineRightMiddle/>
+                <LegLeft animationType={this.animationType}/>
+                <LegRight animationType={this.animationType}/>
+                <LegMiddle animationType={this.animationType}/>
+                <Wastes animationType={this.animationType}>
+                    <i/>
+                    <i/>
+                    <i/>
+                    <i/>
+                    <i/>
+                </Wastes>
+            </FirstStageDiv>
+        )
+    }
 
-const Falcon9SideRocket = ({ position, heavy, animationType }) => (
-  <Falcon9 position={position} heavy={heavy} animationType={animationType}>
-    <RocketCap />
-    <FirstStage animationType={animationType} />
-  </Falcon9>
-);
+    static propTypes = {
+        animationType: PropTypes.string.isRequired,
+    }
+}
 
-const Falcon9Rocket = ({ position, heavy, animationType }) => (
-  <Falcon9 position={position} heavy={heavy} animationType={animationType} >
-    <RocketSecondStage animationType={animationType} />
-    <RocketFairing animationType={animationType} heavy={heavy} />
-    <FirstStage animationType={animationType} />
-    <USFlag src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png" />
-    <SpaceXLogo src="http://i67.tinypic.com/24q6a0k.png" />
-  </Falcon9>
-);
+class Falcon9SideRocket extends React.Component {
+    render() {
+        return (
+            <Falcon9 position={this.position} heavy={this.heavy} animationType={this.animationType}>
+                <RocketCap/>
+                <FirstStage animationType={this.animationType}/>
+            </Falcon9>
+        )
+    }
+    static propTypes = {
+        display: PropTypes.bool.isRequired,
+        heavy: PropTypes.bool.isRequired,
+        animationType: PropTypes.string.isRequired,
+        position: PropTypes.string.isRequired
+    }
+}
 
-const FalconRocket = ({ display, animationType, heavy, onAnimationEnd }) => (
-  <Rocket id="rocket" display={display} animationType={animationType} onAnimationEnd={onAnimationEnd.bind(this)}>
-    <Falcon9SideRocket position='24px' heavy={heavy} animationType={animationType} />
-    <Falcon9SideRocket position='-24px' heavy={heavy} animationType={animationType} />
-    <Falcon9Rocket position='0px' heavy={heavy} animationType={animationType} />
-  </Rocket>
-);
+class Falcon9Rocket extends React.Component {
+    render() {
+        return (
+            <Falcon9 position={this.position} heavy={this.heavy} animationType={this.animationType}>
+                <RocketSecondStage animationType={this.animationType}/>
+                <RocketFairing animationType={this.animationType} heavy={this.heavy}/>
+                <FirstStage animationType={this.animationType}/>
+                <USFlag
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png"/>
+                <SpaceXLogo src="http://i67.tinypic.com/24q6a0k.png"/>
+            </Falcon9>
+        )
+    }
+
+    static propTypes = {
+        display: PropTypes.bool.isRequired,
+        heavy: PropTypes.bool.isRequired,
+        animationType: PropTypes.string.isRequired,
+        position: PropTypes.string.isRequired
+    }
+}
+
+class FalconRocket extends React.Component {
+    render() {
+        return (
+            <Rocket id="rocket" display={this.display} animationType={this.animationType}
+                    onAnimationEnd={this.onAnimationEnd.bind(this)}>
+                <Falcon9SideRocket position='24px' heavy={this.heavy} animationType={this.animationType}/>
+                <Falcon9SideRocket position='-24px' heavy={this.heavy} animationType={this.animationType}/>
+                <Falcon9Rocket position='0px' heavy={this.heavy} animationType={this.animationType}/>
+            </Rocket>
+        )
+    }
+
+    static propTypes = {
+        display: PropTypes.bool.isRequired,
+        heavy: PropTypes.bool.isRequired,
+        animationType: PropTypes.string.isRequired,
+        onAnimationEnd: PropTypes.func.isRequired
+    }
+}
 
 export default FalconRocket

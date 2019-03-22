@@ -60,11 +60,11 @@ class Exhaust extends React.Component {
         </Smoke>)
     }
 
-    propTypes = {
+    static propTypes = {
         display: PropTypes.bool.isRequired,
         heavy: PropTypes.bool.isRequired,
         animationType: PropTypes.string.isRequired
-    }
+    };
 }
 
 export default Exhaust

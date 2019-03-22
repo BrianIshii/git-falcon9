@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export const SmokeLand = keyframes`
   0%{
@@ -76,10 +77,20 @@ export const PlatformSmoke = styled.i`
   ))}
 `
 
-const Platform = ({ display, animationType }) => (
-  <LaunchPad id="platform" display={display} animationType={animationType}>
-    <PlatformSmoke animationType={animationType}/>
-  </LaunchPad>
-);
+class Platform extends React.Component {
+    render() {
+        return (
+        <LaunchPad id="platform" display={this.display} animationType={this.animationType}>
+            <PlatformSmoke animationType={this.animationType}/>
+        </LaunchPad>
+        )
+    }
+
+}
+
+Platform.propTypes = {
+    display: PropTypes.bool.isRequired,
+    animationType: PropTypes.string.isRequired
+};
 
 export default Platform
