@@ -9,13 +9,12 @@ import PropTypes from 'prop-types';
 function detectPushCommand(data) {
   const patterns = ['To(.+)\.git'];
   const antiPatterns = ['error:']
-  console.log(data);
   return new RegExp(`(${patterns.join(')|(')})`).test(data) && !new RegExp(`(${antiPatterns.join(')|(')})`).test(data);
 }
 
 function detectPullCommand(data) {
-  const patterns = ['Updating'] // for development
-  //const patterns = ['Unpacking objects:(.+)done.'];
+  //const patterns = ['Updating'] // for development
+  const patterns = ['Unpacking objects:(.+)done.'];
   const antiPattern = /CONFLICT/
   return new RegExp(`(${patterns.join(')|(')})`).test(data) && !antiPattern.test(data)
 }
@@ -31,9 +30,9 @@ function detectByteCommand(data) {
 }
 
 exports.middleware = store => next => (action) => {
-  console.log("in middleware");
-  console.log(action);
-  console.log(store.getState());
+  // console.log("in middleware");
+  // console.log(action);
+  // console.log(store.getState());
 
   if (action.type === 'SESSION_ADD_DATA') {
 
@@ -44,6 +43,7 @@ exports.middleware = store => next => (action) => {
     if (bytes) {
       store.dispatch({
         type: 'UPDATE_BYTE_COUNT',
+        uid: uid,
         bytes: bytes,
       });
     }
@@ -65,9 +65,9 @@ exports.middleware = store => next => (action) => {
 };
 
 exports.reduceUI = (state, action) => {
-  console.log("action");
-  console.log(state);
-  console.log(action.uid);
+  // console.log("action");
+  // console.log(state);
+  // console.log(action.uid);
 
   let gitFalcon9 = ({
     'uid': action.uid,
@@ -86,8 +86,7 @@ exports.reduceUI = (state, action) => {
     // if more than 22.8 kBs we need the falcon heavy
     if (numBytes && numBytes > 22.8) {
       gitFalcon9.heavy = true;
-      return state.set('bytes', true)
-          .set('gitFalcon9', gitFalcon9);
+      return state.set('gitFalcon9', gitFalcon9);
     }
     return state.set('gitFalcon9', gitFalcon9);
   }
@@ -96,12 +95,10 @@ exports.reduceUI = (state, action) => {
 };
 
 const passProps = (uid, parentProps, props) => Object.assign(props, {
-  bytes: parentProps.bytes,
   gitFalcon9: parentProps.gitFalcon9,
 });
 
 exports.mapTermsState = (state, map) => Object.assign(map, {
-  bytes: state.ui.bytes,
   gitFalcon9: state.ui.gitFalcon9,
 });
 
@@ -145,7 +142,7 @@ exports.decorateTerm = (Term, { React }) => {
             display: true,
           });
 
-          if (nextProps.bytes === true) {
+          if (gitFalcon9.heavy) {
             this.setState({
               heavy: true
             });
@@ -183,10 +180,6 @@ exports.decorateTerm = (Term, { React }) => {
 
   HigherOrderComponentTerminal.propTypes = {
     onTerminal: PropTypes.func.isRequired,
-    rocketState: PropTypes.number.isRequired,
-    bytes: PropTypes.bool.isRequired,
-    type: PropTypes.number.isRequired,
-    uid: PropTypes.string.isRequired,
   };
 
   return HigherOrderComponentTerminal;

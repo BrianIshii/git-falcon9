@@ -417,13 +417,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function detectPushCommand(data) {
   var patterns = ['To(.+)\.git'];
   var antiPatterns = ['error:'];
-  console.log(data);
   return new RegExp('(' + patterns.join(')|(') + ')').test(data) && !new RegExp('(' + antiPatterns.join(')|(') + ')').test(data);
 }
 
 function detectPullCommand(data) {
-  var patterns = ['Updating']; // for development
-  //const patterns = ['Unpacking objects:(.+)done.'];
+  //const patterns = ['Updating'] // for development
+  var patterns = ['Unpacking objects:(.+)done.'];
   var antiPattern = /CONFLICT/;
   return new RegExp('(' + patterns.join(')|(') + ')').test(data) && !antiPattern.test(data);
 }
@@ -440,9 +439,9 @@ function detectByteCommand(data) {
 exports.middleware = function (store) {
   return function (next) {
     return function (action) {
-      console.log("in middleware");
-      console.log(action);
-      console.log(store.getState());
+      // console.log("in middleware");
+      // console.log(action);
+      // console.log(store.getState());
 
       if (action.type === 'SESSION_ADD_DATA') {
         var data = action.data;
@@ -453,6 +452,7 @@ exports.middleware = function (store) {
         if (bytes) {
           store.dispatch({
             type: 'UPDATE_BYTE_COUNT',
+            uid: uid,
             bytes: bytes
           });
         }
@@ -476,9 +476,9 @@ exports.middleware = function (store) {
 };
 
 exports.reduceUI = function (state, action) {
-  console.log("action");
-  console.log(state);
-  console.log(action.uid);
+  // console.log("action");
+  // console.log(state);
+  // console.log(action.uid);
 
   var gitFalcon9 = {
     'uid': action.uid,
@@ -497,7 +497,7 @@ exports.reduceUI = function (state, action) {
     // if more than 22.8 kBs we need the falcon heavy
     if (numBytes && numBytes > 22.8) {
       gitFalcon9.heavy = true;
-      return state.set('bytes', true).set('gitFalcon9', gitFalcon9);
+      return state.set('gitFalcon9', gitFalcon9);
     }
     return state.set('gitFalcon9', gitFalcon9);
   }
@@ -507,14 +507,12 @@ exports.reduceUI = function (state, action) {
 
 var passProps = function passProps(uid, parentProps, props) {
   return Object.assign(props, {
-    bytes: parentProps.bytes,
     gitFalcon9: parentProps.gitFalcon9
   });
 };
 
 exports.mapTermsState = function (state, map) {
   return Object.assign(map, {
-    bytes: state.ui.bytes,
     gitFalcon9: state.ui.gitFalcon9
   });
 };
@@ -569,7 +567,7 @@ exports.decorateTerm = function (Term, _ref) {
               display: true
             });
 
-            if (nextProps.bytes === true) {
+            if (gitFalcon9.heavy) {
               this.setState({
                 heavy: true
               });
@@ -610,11 +608,7 @@ exports.decorateTerm = function (Term, _ref) {
   }(React.Component);
 
   HigherOrderComponentTerminal.propTypes = {
-    onTerminal: _propTypes2.default.func.isRequired,
-    rocketState: _propTypes2.default.number.isRequired,
-    bytes: _propTypes2.default.bool.isRequired,
-    type: _propTypes2.default.number.isRequired,
-    uid: _propTypes2.default.string.isRequired
+    onTerminal: _propTypes2.default.func.isRequired
   };
 
   return HigherOrderComponentTerminal;
