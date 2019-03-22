@@ -68,7 +68,7 @@ exports.reduceUI = (state, action) => {
   console.log("action");
   console.log(state);
   console.log(action.uid);
-  
+
   let gitFalcon9 = ({
     'uid': action.uid,
     'rocketState': 'None',
@@ -89,7 +89,7 @@ exports.reduceUI = (state, action) => {
       return state.set('bytes', true)
           .set('gitFalcon9', gitFalcon9);
     }
-    return state.set('bytes', false);
+    return state.set('gitFalcon9', gitFalcon9);
   }
 
   return state;

@@ -499,7 +499,7 @@ exports.reduceUI = function (state, action) {
       gitFalcon9.heavy = true;
       return state.set('bytes', true).set('gitFalcon9', gitFalcon9);
     }
-    return state.set('bytes', false);
+    return state.set('gitFalcon9', gitFalcon9);
   }
 
   return state;
