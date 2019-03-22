@@ -14,8 +14,8 @@ function detectPushCommand(data) {
 }
 
 function detectPullCommand(data) {
-  //const patterns = ['Updating'] // for development
-  const patterns = ['Unpacking objects:(.+)done.'];
+  const patterns = ['Updating'] // for development
+  //const patterns = ['Unpacking objects:(.+)done.'];
   const antiPattern = /CONFLICT/
   return new RegExp(`(${patterns.join(')|(')})`).test(data) && !antiPattern.test(data)
 }
@@ -43,7 +43,8 @@ exports.middleware = store => next => (action) => {
     const bytes = detectByteCommand(data);
     if (bytes) {
       store.dispatch({
-        type: bytes,
+        type: 'UPDATE_BYTE_COUNT',
+        bytes: bytes,
       });
     }
     if (detectPushCommand(data)) {
@@ -65,33 +66,33 @@ exports.middleware = store => next => (action) => {
 
 exports.reduceUI = (state, action) => {
   console.log("action");
-  console.log(action);
+  console.log(state);
   console.log(action.uid);
-  var gitFalcon9 = ({
-    'uid' : action.uid,
-    'rocketState' : 'None',
-    'bytes' : false,
+  
+  let gitFalcon9 = ({
+    'uid': action.uid,
+    'rocketState': 'None',
+    'heavy': false,
   });
 
-  console.log('gitfalcon9');
-  console.log(gitFalcon9);
-  console.log('gitfalcon9 changed');
-  gitFalcon9.rocketState = 'LAUNCH';
-  console.log(gitFalcon9);
-  switch (action.type) {
-    case 'PUSH_MODE_TOGGLE':
-      return state.set('gitFalcon9', {'uid' : action.uid, 'rocketState': 'LAUNCH'});
-    case 'PULL_MODE_TOGGLE':
-      return state.set('gitFalcon9', {'uid' : action.uid, 'rocketState': 'LAND'});
-
-    default:
-      var numBytes = Number.parseFloat(action.type, 10);
-      // if more than 22.8 kBs we need the falcon heavy
-      if (numBytes && numBytes > 22.8) {
-        return state.set('bytes', true);
-      }
-      return state.set('bytes', false).set('rocketState', 'None');
+  if (action.type === 'PUSH_MODE_TOGGLE') {
+    gitFalcon9.rocketState = 'LAUNCH';
+    return state.set('gitFalcon9', gitFalcon9);
+  } else if (action.type === 'PULL_MODE_TOGGLE') {
+    gitFalcon9.rocketState = 'LAND';
+    return state.set('gitFalcon9', gitFalcon9);
+  } else if (action.type === 'UPDATE_BYTE_COUNT') {
+    var numBytes = Number.parseFloat(action.bytes, 10);
+    // if more than 22.8 kBs we need the falcon heavy
+    if (numBytes && numBytes > 22.8) {
+      gitFalcon9.heavy = true;
+      return state.set('bytes', true)
+          .set('gitFalcon9', gitFalcon9);
+    }
+    return state.set('bytes', false);
   }
+
+  return state;
 };
 
 const passProps = (uid, parentProps, props) => Object.assign(props, {
