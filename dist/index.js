@@ -422,8 +422,8 @@ function detectPushCommand(data) {
 }
 
 function detectPullCommand(data) {
-  var patterns = ['Updating']; // for development
-  //const patterns = ['Unpacking objects:(.+)done.'];
+  //const patterns = ['Updating'] // for development
+  var patterns = ['Unpacking objects:(.+)done.'];
   var antiPattern = /CONFLICT/;
   return new RegExp('(' + patterns.join(')|(') + ')').test(data) && !antiPattern.test(data);
 }
@@ -478,11 +478,22 @@ exports.reduceUI = function (state, action) {
   console.log("action");
   console.log(action);
   console.log(action.uid);
+  var gitFalcon9 = {
+    'uid': action.uid,
+    'rocketState': 'None',
+    'bytes': false
+  };
+
+  console.log('gitfalcon9');
+  console.log(gitFalcon9);
+  console.log('gitfalcon9 changed');
+  gitFalcon9.rocketState = 'LAUNCH';
+  console.log(gitFalcon9);
   switch (action.type) {
     case 'PUSH_MODE_TOGGLE':
-      return state.set('rocketUID', action.uid).set('rocketState', 'LAUNCH').set('gitFalcon9', { 'uid': action.uid, 'rocketState': 'LAUNCH' });
+      return state.set('gitFalcon9', { 'uid': action.uid, 'rocketState': 'LAUNCH' });
     case 'PULL_MODE_TOGGLE':
-      return state.set('rocketUID', action.uid).set('rocketState', 'LAND').set('gitFalcon9', { 'uid': action.uid, 'rocketState': 'LAND' });
+      return state.set('gitFalcon9', { 'uid': action.uid, 'rocketState': 'LAND' });
 
     default:
       var numBytes = Number.parseFloat(action.type, 10);
@@ -496,18 +507,14 @@ exports.reduceUI = function (state, action) {
 
 var passProps = function passProps(uid, parentProps, props) {
   return Object.assign(props, {
-    rocketState: parentProps.rocketState,
     bytes: parentProps.bytes,
-    rocketUID: parentProps.rocketUID,
     gitFalcon9: parentProps.gitFalcon9
   });
 };
 
 exports.mapTermsState = function (state, map) {
   return Object.assign(map, {
-    rocketState: state.ui.rocketState,
     bytes: state.ui.bytes,
-    rocketUID: state.ui.rocketUID,
     gitFalcon9: state.ui.gitFalcon9
   });
 };
