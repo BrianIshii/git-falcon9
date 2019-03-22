@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 // This function performs regex matching on expected shell output for git push result being input
 // at the command line. Currently it supports output from bash, zsh, fish, cmd and powershell.
 function detectPushCommand(data) {
-  const patterns = ['To(.+)\.git'];
+  const patterns = ['To(.+).git'];
   const antiPatterns = ['error:']
   return new RegExp(`(${patterns.join(')|(')})`).test(data) && !new RegExp(`(${antiPatterns.join(')|(')})`).test(data);
 }

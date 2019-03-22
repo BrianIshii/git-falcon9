@@ -1,5 +1,6 @@
 import styled, {keyframes} from 'styled-components'
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export const smokeUp = keyframes`
 0%{
@@ -49,12 +50,21 @@ i:nth-child(3) {
 }
 `
 
-const Exhaust = ({display, animationType, heavy}) => (
-    <Smoke id="smoke" display={display} animationType={animationType} heavy={heavy}>
-      <i/>
-      <i/>
-      <i/>
-    </Smoke>
-)
+class Exhaust extends React.Component {
+    render() {
+        //display, animationType, heavy
+        return (<Smoke id="smoke" display={this.display} animationType={this.animationType} heavy={this.heavy}>
+            <i/>
+            <i/>
+            <i/>
+        </Smoke>)
+    }
+
+    propTypes = {
+        display: PropTypes.bool.isRequired,
+        heavy: PropTypes.bool.isRequired,
+        animationType: PropTypes.string.isRequired
+    }
+}
 
 export default Exhaust
