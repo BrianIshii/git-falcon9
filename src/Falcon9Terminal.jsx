@@ -118,6 +118,7 @@ exports.decorateTerm = (Term, { React }) => {
     constructor(props, context) {
       super(props, context);
 
+      this.onAnimationEnd = this.onAnimationEnd.bind(this);
       this.state = {
         animationType: "NONE",
         heavy: false,
@@ -143,7 +144,7 @@ exports.decorateTerm = (Term, { React }) => {
         // console.log(nextProps.rocketUID);
         // console.log(uid);
 
-        if (gitFalcon9.uid == uid) {
+        if (gitFalcon9.uid === uid) {
           this.setState({
             animationType: gitFalcon9.rocketState,
             display: true,
@@ -178,7 +179,7 @@ exports.decorateTerm = (Term, { React }) => {
             onTerminal: this._onTerminal,
           }))}
           <Exhaust display={this.state.display} animationType={this.state.animationType} heavy={this.state.heavy} />
-          <FalconRocket display={this.state.display} animationType={this.state.animationType} heavy={this.state.heavy} onAnimationEnd={this.onAnimationEnd.bind(this)} />
+          <FalconRocket display={this.state.display} animationType={this.state.animationType} heavy={this.state.heavy} onAnimationEnd={this.onAnimationEnd} />
           <Platform display={this.state.display} animationType={this.state.animationType} />
         </div>
       );

@@ -191,10 +191,10 @@ class FirstStage extends React.Component {
             </FirstStageDiv>
         )
     }
+}
 
-    static propTypes = {
-        animationType: PropTypes.string.isRequired,
-    }
+FirstStage.propTypes = {
+    animationType: PropTypes.string.isRequired,
 }
 
 class Falcon9SideRocket extends React.Component {
@@ -206,12 +206,13 @@ class Falcon9SideRocket extends React.Component {
             </Falcon9>
         )
     }
-    static propTypes = {
-        display: PropTypes.bool.isRequired,
-        heavy: PropTypes.bool.isRequired,
-        animationType: PropTypes.string.isRequired,
-        position: PropTypes.string.isRequired
-    }
+}
+
+Falcon9SideRocket.propTypes = {
+    display: PropTypes.bool.isRequired,
+    heavy: PropTypes.bool.isRequired,
+    animationType: PropTypes.string.isRequired,
+    position: PropTypes.string.isRequired
 }
 
 class Falcon9Rocket extends React.Component {
@@ -227,33 +228,38 @@ class Falcon9Rocket extends React.Component {
             </Falcon9>
         )
     }
-
-    static propTypes = {
-        display: PropTypes.bool.isRequired,
-        heavy: PropTypes.bool.isRequired,
-        animationType: PropTypes.string.isRequired,
-        position: PropTypes.string.isRequired
-    }
 }
 
+Falcon9Rocket.propTypes = {
+    display: PropTypes.bool.isRequired,
+    heavy: PropTypes.bool.isRequired,
+    animationType: PropTypes.string.isRequired,
+    position: PropTypes.string.isRequired
+};
+
 class FalconRocket extends React.Component {
+    constructor(props) {
+        super(props);
+        this.onAnimationEnd = props.onAnimationEnd.bind(this)
+    }
+
     render() {
         return (
             <Rocket id="rocket" display={this.display} animationType={this.animationType}
-                    onAnimationEnd={this.onAnimationEnd.bind(this)}>
+                    onAnimationEnd={this.onAnimationEnd}>
                 <Falcon9SideRocket position='24px' heavy={this.heavy} animationType={this.animationType}/>
                 <Falcon9SideRocket position='-24px' heavy={this.heavy} animationType={this.animationType}/>
                 <Falcon9Rocket position='0px' heavy={this.heavy} animationType={this.animationType}/>
             </Rocket>
         )
     }
-
-    static propTypes = {
-        display: PropTypes.bool.isRequired,
-        heavy: PropTypes.bool.isRequired,
-        animationType: PropTypes.string.isRequired,
-        onAnimationEnd: PropTypes.func.isRequired
-    }
 }
+
+FalconRocket.propTypes = {
+    display: PropTypes.bool.isRequired,
+    heavy: PropTypes.bool.isRequired,
+    animationType: PropTypes.string.isRequired,
+    onAnimationEnd: PropTypes.func.isRequired
+};
 
 export default FalconRocket
