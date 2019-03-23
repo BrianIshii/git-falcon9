@@ -144,7 +144,6 @@ exports.decorateTerm = (Term, { React }) => {
         // console.log(uid);
 
         if (gitFalcon9.uid === uid) {
-          console.log("good to go");
           this.setState({
             animationType: gitFalcon9.rocketState,
             display: true,
@@ -155,8 +154,6 @@ exports.decorateTerm = (Term, { React }) => {
               heavy: true
             });
           }
-          console.log(this.onAnimationEnd);
-
         }
       }
       return nextProps;
