@@ -1,8 +1,5 @@
 import styled, { keyframes } from 'styled-components'
-import { LegLeft, LegMiddle, LegRight } from './Legs'
-import { FinLeft, FinRight } from './Fins'
-import { Octaweb, MerlinEngineLeft, MerlinEngineLeftMiddle, MerlinEngineRightMiddle, MerlinEngineRight } from './Engines'
-import { Thrust, Wastes } from './Thrust'
+import FirstStage from './FirstStage/FirstStage'
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -87,19 +84,6 @@ export const Falcon9 = styled.div`
     ))}
 `
 
-export const FirstStageDiv = styled.div`
-
-`
-export const FirstStageSpan = styled.span`
-  display: block;
-  position: absolute;
-  top: 100px;
-  width: 22px;
-  height: 155px;
-  background-color: #d1d2d6;
-  border-top: 1px solid #a7a9b1;
-`
-
 export const USFlag = styled.img`
   position: absolute;
   top: 115px;
@@ -165,31 +149,6 @@ export const RocketCap = styled.i`
   background-color: #d1d2d6;
 `;
 
-const FirstStage = ({animationType}) => {
-    return (
-        <FirstStageDiv>
-            <FirstStageSpan/>
-            <FinLeft animationType={animationType}/>
-            <FinRight animationType={animationType}/>
-            <Thrust animationType={animationType}/>
-            <Octaweb/>
-            <MerlinEngineLeft/>
-            <MerlinEngineRight/>
-            <MerlinEngineLeftMiddle/>
-            <MerlinEngineRightMiddle/>
-            <LegLeft animationType={animationType}/>
-            <LegRight animationType={animationType}/>
-            <LegMiddle animationType={animationType}/>
-            <Wastes animationType={animationType}>
-                <i/>
-                <i/>
-                <i/>
-                <i/>
-                <i/>
-            </Wastes>
-        </FirstStageDiv>
-    );
-};
 
 FirstStage.propTypes = {
     animationType: PropTypes.string.isRequired,

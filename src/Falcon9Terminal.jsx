@@ -1,7 +1,7 @@
 import FalconRocket from './Falcon9/Falcon9';
 import FalconHeavy from './FalconHeavy/FalconHeavy';
 import Platform from './Platform';
-import Exhaust from './Falcon9/Exhaust';
+import Exhaust from './Falcon9/FirstStage/Exhaust';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
