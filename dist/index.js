@@ -99,7 +99,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.RocketCap = exports.RocketSecondStage = exports.RocketFairing = exports.SpaceXLogo = exports.USFlag = exports.Falcon9 = exports.Rocket = exports.launch = exports.land = exports.wiggle = undefined;
+exports.SpaceXLogo = exports.USFlag = exports.Falcon9 = exports.Rocket = exports.launch = exports.land = exports.wiggle = undefined;
 
 var _templateObject = _taggedTemplateLiteral(['\n  0% {\n    left: calc(90% - 47px); }\n  50% {\n    left: calc(90% - 45px); }\n  100% {\n    left: calc(90% - 47px); }\n'], ['\n  0% {\n    left: calc(90% - 47px); }\n  50% {\n    left: calc(90% - 45px); }\n  100% {\n    left: calc(90% - 47px); }\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n  0% {\n    top: -260px; }\n  50% {\n      top: calc(100% - 300px); }\n  67% {\n    top: calc(100% - 285px); }\n  100% {\n    top: calc(100% - 285px); }\n'], ['\n  0% {\n    top: -260px; }\n  50% {\n      top: calc(100% - 300px); }\n  67% {\n    top: calc(100% - 285px); }\n  100% {\n    top: calc(100% - 285px); }\n']),
@@ -107,10 +107,7 @@ var _templateObject = _taggedTemplateLiteral(['\n  0% {\n    left: calc(90% - 47
     _templateObject4 = _taggedTemplateLiteral(['\n  display: ', ';\n  position: absolute;\n  height: 320px;\n  left: calc(90% - 50px);\n  ', '\n'], ['\n  display: ', ';\n  position: absolute;\n  height: 320px;\n  left: calc(90% - 50px);\n  ', '\n']),
     _templateObject5 = _taggedTemplateLiteral(['\n  ', '\n  position: absolute;\n  height: 320px;\n  top: calc(0%-300px);\n  ', '\n'], ['\n  ', '\n  position: absolute;\n  height: 320px;\n  top: calc(0%-300px);\n  ', '\n']),
     _templateObject6 = _taggedTemplateLiteral(['\n  position: absolute;\n  top: 115px;\n  height: 5px;\n  width: 8px;\n  left: 7px;\n'], ['\n  position: absolute;\n  top: 115px;\n  height: 5px;\n  width: 8px;\n  left: 7px;\n']),
-    _templateObject7 = _taggedTemplateLiteral(['\n  position: absolute;\n  top: 130px;\n  height: 85px;\n  width: 22px;\n'], ['\n  position: absolute;\n  top: 130px;\n  height: 85px;\n  width: 22px;\n']),
-    _templateObject8 = _taggedTemplateLiteral(['\n  display: ', ';\n  //display: ', ';\n  position: absolute;\n  top: -20px;\n  height: 60px;\n  width: 30px;\n  left: -4px;\n  border-top-left-radius: 200%;\n  border-top-right-radius: 200%;\n  border-bottom-left-radius: 70%;\n  border-bottom-right-radius: 70%;\n  background-color: #d1d2d6;\n  box-sizing: border-box;\n\n  :after{\n    content: \'\';\n    position: absolute;\n    display: ', ';\n    left: 16px;\n    width: 10px;\n    top: 3px;\n    height: 27px;\n    border-top-right-radius: 100%;\n    background: linear-gradient(180deg, #a7a9b1 20%, #d6d8e1); \n  }\n'], ['\n  display: ', ';\n  //display: ', ';\n  position: absolute;\n  top: -20px;\n  height: 60px;\n  width: 30px;\n  left: -4px;\n  border-top-left-radius: 200%;\n  border-top-right-radius: 200%;\n  border-bottom-left-radius: 70%;\n  border-bottom-right-radius: 70%;\n  background-color: #d1d2d6;\n  box-sizing: border-box;\n\n  :after{\n    content: \'\';\n    position: absolute;\n    display: ', ';\n    left: 16px;\n    width: 10px;\n    top: 3px;\n    height: 27px;\n    border-top-right-radius: 100%;\n    background: linear-gradient(180deg, #a7a9b1 20%, #d6d8e1); \n  }\n']),
-    _templateObject9 = _taggedTemplateLiteral(['\n  display: ', ';\n  position: absolute;\n  top: 40px;\n  height: 60px;\n  width: 20px;\n  left: 1px;\n  background-color: #d1d2d6;\n  border-bottom: 1px solid #a7a9b1;\n  border-top: 1px solid #a7a9b1;\n  box-sizing: initial;\n'], ['\n  display: ', ';\n  position: absolute;\n  top: 40px;\n  height: 60px;\n  width: 20px;\n  left: 1px;\n  background-color: #d1d2d6;\n  border-bottom: 1px solid #a7a9b1;\n  border-top: 1px solid #a7a9b1;\n  box-sizing: initial;\n']),
-    _templateObject10 = _taggedTemplateLiteral(['\n  display: block;\n  position: absolute;\n  top: 80px;\n  height: 65px;\n  width: 22px;\n  border-top-left-radius: 2000%;\n  border-top-right-radius: 2000%;\n  background-color: #d1d2d6;\n'], ['\n  display: block;\n  position: absolute;\n  top: 80px;\n  height: 65px;\n  width: 22px;\n  border-top-left-radius: 2000%;\n  border-top-right-radius: 2000%;\n  background-color: #d1d2d6;\n']);
+    _templateObject7 = _taggedTemplateLiteral(['\n  position: absolute;\n  top: 130px;\n  height: 85px;\n  width: 22px;\n'], ['\n  position: absolute;\n  top: 130px;\n  height: 85px;\n  width: 22px;\n']);
 
 var _styledComponents = __webpack_require__(/*! styled-components */ "styled-components");
 
@@ -127,6 +124,8 @@ var _react2 = _interopRequireDefault(_react);
 var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _SecondStage = __webpack_require__(/*! ./SecondStage/SecondStage */ "./src/Falcon9/SecondStage/SecondStage.jsx");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -171,22 +170,6 @@ var Falcon9 = exports.Falcon9 = _styledComponents2.default.div(_templateObject5,
 var USFlag = exports.USFlag = _styledComponents2.default.img(_templateObject6);
 
 var SpaceXLogo = exports.SpaceXLogo = _styledComponents2.default.img(_templateObject7);
-var RocketFairing = exports.RocketFairing = _styledComponents2.default.i(_templateObject8, function (props) {
-  return props.animationType == "LAUNCH" ? 'block' : 'none';
-}, function (props) {
-  return props.heavy ? 'block' : 'none';
-}, function (props) {
-  return props.animationType == "LAUNCH" ? 'block' : 'none';
-});
-
-var RocketSecondStage = exports.RocketSecondStage = _styledComponents2.default.i(_templateObject9, function (props) {
-  return props.animationType == "LAUNCH" ? 'block' : 'none';
-});
-var RocketCap = exports.RocketCap = _styledComponents2.default.i(_templateObject10);
-
-_FirstStage2.default.propTypes = {
-  animationType: _propTypes2.default.string.isRequired
-};
 
 var Falcon9SideRocket = function Falcon9SideRocket(_ref) {
   var position = _ref.position,
@@ -196,7 +179,7 @@ var Falcon9SideRocket = function Falcon9SideRocket(_ref) {
   return _react2.default.createElement(
     Falcon9,
     { position: position, heavy: heavy, animationType: animationType },
-    _react2.default.createElement(RocketCap, null),
+    _react2.default.createElement(_SecondStage.RocketCap, null),
     _react2.default.createElement(_FirstStage2.default, { animationType: animationType })
   );
 };
@@ -216,8 +199,8 @@ var Falcon9Rocket = function Falcon9Rocket(_ref2) {
   return _react2.default.createElement(
     Falcon9,
     { position: position, heavy: heavy, animationType: animationType },
-    _react2.default.createElement(RocketSecondStage, { animationType: animationType }),
-    _react2.default.createElement(RocketFairing, { animationType: animationType, heavy: heavy }),
+    _react2.default.createElement(_SecondStage.RocketSecondStage, { animationType: animationType }),
+    _react2.default.createElement(_SecondStage.RocketFairing, { animationType: animationType, heavy: heavy }),
     _react2.default.createElement(_FirstStage2.default, { animationType: animationType }),
     _react2.default.createElement(USFlag, {
       src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png' }),
@@ -680,6 +663,49 @@ var Wastes = exports.Wastes = _styledComponents2.default.i(_templateObject8, fun
   return props.animationType == "LAUNCH" ? '30' : '18';
 }, wasting, function (props) {
   return props.animationType == "LAUNCH" ? '30' : '18';
+});
+
+/***/ }),
+
+/***/ "./src/Falcon9/SecondStage/SecondStage.jsx":
+/*!*************************************************!*\
+  !*** ./src/Falcon9/SecondStage/SecondStage.jsx ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.RocketFairing = exports.RocketCap = exports.RocketSecondStage = undefined;
+
+var _templateObject = _taggedTemplateLiteral(['\n  display: ', ';\n  position: absolute;\n  top: 40px;\n  height: 60px;\n  width: 20px;\n  left: 1px;\n  background-color: #d1d2d6;\n  border-bottom: 1px solid #a7a9b1;\n  border-top: 1px solid #a7a9b1;\n  box-sizing: initial;\n'], ['\n  display: ', ';\n  position: absolute;\n  top: 40px;\n  height: 60px;\n  width: 20px;\n  left: 1px;\n  background-color: #d1d2d6;\n  border-bottom: 1px solid #a7a9b1;\n  border-top: 1px solid #a7a9b1;\n  box-sizing: initial;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  display: block;\n  position: absolute;\n  top: 80px;\n  height: 65px;\n  width: 22px;\n  border-top-left-radius: 2000%;\n  border-top-right-radius: 2000%;\n  background-color: #d1d2d6;\n'], ['\n  display: block;\n  position: absolute;\n  top: 80px;\n  height: 65px;\n  width: 22px;\n  border-top-left-radius: 2000%;\n  border-top-right-radius: 2000%;\n  background-color: #d1d2d6;\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n  display: ', ';\n  //display: ', ';\n  position: absolute;\n  top: -20px;\n  height: 60px;\n  width: 30px;\n  left: -4px;\n  border-top-left-radius: 200%;\n  border-top-right-radius: 200%;\n  border-bottom-left-radius: 70%;\n  border-bottom-right-radius: 70%;\n  background-color: #d1d2d6;\n  box-sizing: border-box;\n\n  :after{\n    content: \'\';\n    position: absolute;\n    display: ', ';\n    left: 16px;\n    width: 10px;\n    top: 3px;\n    height: 27px;\n    border-top-right-radius: 100%;\n    background: linear-gradient(180deg, #a7a9b1 20%, #d6d8e1);\n  }\n'], ['\n  display: ', ';\n  //display: ', ';\n  position: absolute;\n  top: -20px;\n  height: 60px;\n  width: 30px;\n  left: -4px;\n  border-top-left-radius: 200%;\n  border-top-right-radius: 200%;\n  border-bottom-left-radius: 70%;\n  border-bottom-right-radius: 70%;\n  background-color: #d1d2d6;\n  box-sizing: border-box;\n\n  :after{\n    content: \'\';\n    position: absolute;\n    display: ', ';\n    left: 16px;\n    width: 10px;\n    top: 3px;\n    height: 27px;\n    border-top-right-radius: 100%;\n    background: linear-gradient(180deg, #a7a9b1 20%, #d6d8e1);\n  }\n']);
+
+var _styledComponents = __webpack_require__(/*! styled-components */ "styled-components");
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var RocketSecondStage = exports.RocketSecondStage = _styledComponents2.default.i(_templateObject, function (props) {
+  return props.animationType == "LAUNCH" ? 'block' : 'none';
+});
+
+var RocketCap = exports.RocketCap = _styledComponents2.default.i(_templateObject2);
+
+var RocketFairing = exports.RocketFairing = _styledComponents2.default.i(_templateObject3, function (props) {
+  return props.animationType == "LAUNCH" ? 'block' : 'none';
+}, function (props) {
+  return props.heavy ? 'block' : 'none';
+}, function (props) {
+  return props.animationType == "LAUNCH" ? 'block' : 'none';
 });
 
 /***/ }),
