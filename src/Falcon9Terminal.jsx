@@ -1,6 +1,7 @@
-import FalconRocket from './Falcon9';
+import FalconRocket from './Falcon9/Falcon9';
+import FalconHeavy from './FalconHeavy/FalconHeavy';
 import Platform from './Platform';
-import Exhaust from './Exhaust';
+import Exhaust from './Falcon9/Exhaust';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -171,16 +172,32 @@ exports.decorateTerm = (Term, { React }) => {
     }
 
     render() {
-      return (
-        <div style={{div_style}}>
-          {React.createElement(Term, Object.assign({}, this.props, {
-            onTerminal: this._onTerminal,
-          }))}
-          <Exhaust display={this.state.display} animationType={this.state.animationType} heavy={this.state.heavy} />
-          <FalconRocket display={this.state.display} animationType={this.state.animationType} heavy={this.state.heavy} onAnimationEnd={this.onAnimationEnd.bind(this)} />
-          <Platform display={this.state.display} animationType={this.state.animationType} />
-        </div>
-      );
+        if (this.state.heavy) {
+          return (<div style={{div_style}}>
+            {React.createElement(Term, Object.assign({}, this.props, {
+              onTerminal: this._onTerminal,
+            }))}
+            <Exhaust display={this.state.display} animationType={this.state.animationType}
+                     heavy={this.state.heavy}/>
+            <FalconHeavy display={this.state.display} animationType={this.state.animationType}
+                         onAnimationEnd={this.onAnimationEnd.bind(this)}/>
+            <Platform display={this.state.display} animationType={this.state.animationType}/>
+          </div>
+          );
+        } else {
+          return (
+              <div style={{div_style}}>
+                {React.createElement(Term, Object.assign({}, this.props, {
+                  onTerminal: this._onTerminal,
+                }))}
+                <Exhaust display={this.state.display} animationType={this.state.animationType}
+                         heavy={this.state.heavy}/>
+                <FalconRocket display={this.state.display} animationType={this.state.animationType}
+                              heavy={this.state.heavy} onAnimationEnd={this.onAnimationEnd.bind(this)}/>
+                <Platform display={this.state.display} animationType={this.state.animationType}/>
+              </div>
+          );
+        }
     }
   }
 

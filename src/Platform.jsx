@@ -85,7 +85,6 @@ class Platform extends React.Component {
         </LaunchPad>
         )
     }
-
 }
 
 Platform.propTypes = {

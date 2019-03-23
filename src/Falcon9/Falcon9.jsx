@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components'
 import { LegLeft, LegMiddle, LegRight } from './Legs'
 import { FinLeft, FinRight } from './Fins'
-import { Octaweb, MerlinEngineLeft, MerlinEngineLeftMiddle, MerlinEngineRightMiddle, MerlinEngineRight } from './Falcon9/Engines'
+import { Octaweb, MerlinEngineLeft, MerlinEngineLeftMiddle, MerlinEngineRightMiddle, MerlinEngineRight } from './Engines'
 import { Thrust, Wastes } from './Thrust'
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -231,14 +231,14 @@ Falcon9Rocket.propTypes = {
 };
 
 const FalconRocket = ({display, animationType, heavy, onAnimationEnd}) => {
-        return (
-            <Rocket id="rocket" display={display} animationType={animationType}
-                    onAnimationEnd={onAnimationEnd.bind(this)}>
-                <Falcon9SideRocket position='24px' heavy={heavy} animationType={animationType}/>
-                <Falcon9SideRocket position='-24px' heavy={heavy} animationType={animationType}/>
-                <Falcon9Rocket position='0px' heavy={heavy} animationType={animationType}/>
-            </Rocket>
-        );
+    return (
+        <Rocket id="rocket" display={display} animationType={animationType}
+                onAnimationEnd={onAnimationEnd.bind(this)}>
+            <Falcon9SideRocket position='24px' heavy={heavy} animationType={animationType}/>
+            <Falcon9SideRocket position='-24px' heavy={heavy} animationType={animationType}/>
+            <Falcon9Rocket position='0px' heavy={heavy} animationType={animationType}/>
+        </Rocket>
+    );
 };
 
 FalconRocket.propTypes = {
@@ -248,4 +248,4 @@ FalconRocket.propTypes = {
     onAnimationEnd: PropTypes.func.isRequired
 };
 
-export default FalconRocket
+export default FalconRocket;
