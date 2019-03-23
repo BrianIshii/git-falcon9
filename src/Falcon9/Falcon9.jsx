@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components'
 import FirstStage from './FirstStage/FirstStage'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { RocketSecondStage, RocketCap, RocketFairing } from './SecondStage/SecondStage'
+import { RocketSecondStage, RocketCap, RocketFairing } from './SecondStage/RocketSecondStages'
 
 // Animation Duration: 3 seconds
 

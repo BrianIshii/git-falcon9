@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
 export const RocketSecondStage = styled.i`
   display: ${props => ((props.animationType == "LAUNCH") ? 'block' : 'none')};
