@@ -9,14 +9,14 @@ import styled from 'styled-components';
 // at the command line. Currently it supports output from bash, zsh, fish, cmd and powershell.
 function detectPushCommand(data) {
   const patterns = ['To(.+).git'];
-  const antiPatterns = ['error:']
+  const antiPatterns = ['error:'];
   return new RegExp(`(${patterns.join(')|(')})`).test(data) && !new RegExp(`(${antiPatterns.join(')|(')})`).test(data);
 }
 
 function detectPullCommand(data) {
   //const patterns = ['Updating'] // for development
   const patterns = ['Unpacking objects:(.+)done.'];
-  const antiPattern = /CONFLICT/
+  const antiPattern = /CONFLICT/;
   return new RegExp(`(${patterns.join(')|(')})`).test(data) && !antiPattern.test(data)
 }
 
@@ -110,7 +110,7 @@ export const div_style= styled.div`
     width: '100%';
     height: '100%';
     position: 'relative'
-`
+`;
 
 exports.decorateTerm = (Term, { React }) => {
   // Define and return our higher order component.
@@ -118,7 +118,6 @@ exports.decorateTerm = (Term, { React }) => {
     constructor(props, context) {
       super(props, context);
 
-      this.onAnimationEnd = this.onAnimationEnd.bind(this);
       this.state = {
         animationType: "NONE",
         heavy: false,
@@ -145,6 +144,7 @@ exports.decorateTerm = (Term, { React }) => {
         // console.log(uid);
 
         if (gitFalcon9.uid === uid) {
+          console.log("good to go");
           this.setState({
             animationType: gitFalcon9.rocketState,
             display: true,
@@ -155,6 +155,7 @@ exports.decorateTerm = (Term, { React }) => {
               heavy: true
             });
           }
+          console.log(this.onAnimationEnd);
 
         }
       }
@@ -164,7 +165,7 @@ exports.decorateTerm = (Term, { React }) => {
     onAnimationEnd(event) {
       if (event.elapsedTime == 3) {
         this.setState({
-          animationType: "NONE",
+          animationType: "LAUNCH",
           heavy: false,
           display: false,
         });
@@ -174,12 +175,12 @@ exports.decorateTerm = (Term, { React }) => {
 
     render() {
       return (
-        <div style={div_style}>
+        <div style={{div_style}}>
           {React.createElement(Term, Object.assign({}, this.props, {
             onTerminal: this._onTerminal,
           }))}
           <Exhaust display={this.state.display} animationType={this.state.animationType} heavy={this.state.heavy} />
-          <FalconRocket display={this.state.display} animationType={this.state.animationType} heavy={this.state.heavy} onAnimationEnd={this.onAnimationEnd} />
+          <FalconRocket display={this.state.display} animationType={this.state.animationType} heavy={this.state.heavy} onAnimationEnd={this.onAnimationEnd.bind(this)} />
           <Platform display={this.state.display} animationType={this.state.animationType} />
         </div>
       );

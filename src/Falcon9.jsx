@@ -167,21 +167,22 @@ export const RocketCap = styled.i`
 
 class FirstStage extends React.Component {
     render() {
+        const { animationType } = this.props;
         return (
             <FirstStageDiv>
                 <FirstStageSpan/>
-                <FinLeft animationType={this.animationType}/>
-                <FinRight animationType={this.animationType}/>
-                <Thrust animationType={this.animationType}/>
+                <FinLeft animationType={animationType}/>
+                <FinRight animationType={animationType}/>
+                <Thrust animationType={animationType}/>
                 <Octaweb/>
                 <MerlinEngineLeft/>
                 <MerlinEngineRight/>
                 <MerlinEngineLeftMiddle/>
                 <MerlinEngineRightMiddle/>
-                <LegLeft animationType={this.animationType}/>
-                <LegRight animationType={this.animationType}/>
-                <LegMiddle animationType={this.animationType}/>
-                <Wastes animationType={this.animationType}>
+                <LegLeft animationType={animationType}/>
+                <LegRight animationType={animationType}/>
+                <LegMiddle animationType={animationType}/>
+                <Wastes animationType={animationType}>
                     <i/>
                     <i/>
                     <i/>
@@ -195,14 +196,15 @@ class FirstStage extends React.Component {
 
 FirstStage.propTypes = {
     animationType: PropTypes.string.isRequired,
-}
+};
 
 class Falcon9SideRocket extends React.Component {
     render() {
+        const { position, heavy, animationType } = this.props;
         return (
-            <Falcon9 position={this.position} heavy={this.heavy} animationType={this.animationType}>
+            <Falcon9 position={position} heavy={heavy} animationType={animationType}>
                 <RocketCap/>
-                <FirstStage animationType={this.animationType}/>
+                <FirstStage animationType={animationType}/>
             </Falcon9>
         )
     }
@@ -217,11 +219,12 @@ Falcon9SideRocket.propTypes = {
 
 class Falcon9Rocket extends React.Component {
     render() {
+        const { position, heavy, animationType } = this.props;
         return (
-            <Falcon9 position={this.position} heavy={this.heavy} animationType={this.animationType}>
-                <RocketSecondStage animationType={this.animationType}/>
-                <RocketFairing animationType={this.animationType} heavy={this.heavy}/>
-                <FirstStage animationType={this.animationType}/>
+            <Falcon9 position={position} heavy={heavy} animationType={animationType}>
+                <RocketSecondStage animationType={animationType}/>
+                <RocketFairing animationType={animationType} heavy={heavy}/>
+                <FirstStage animationType={animationType}/>
                 <USFlag
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png"/>
                 <SpaceXLogo src="http://i67.tinypic.com/24q6a0k.png"/>
@@ -238,18 +241,16 @@ Falcon9Rocket.propTypes = {
 };
 
 class FalconRocket extends React.Component {
-    constructor(props) {
-        super(props);
-        this.onAnimationEnd = props.onAnimationEnd.bind(this)
-    }
-
     render() {
+
+        const { display, animationType, heavy, onAnimationEnd } = this.props;
+
         return (
-            <Rocket id="rocket" display={this.display} animationType={this.animationType}
-                    onAnimationEnd={this.onAnimationEnd}>
-                <Falcon9SideRocket position='24px' heavy={this.heavy} animationType={this.animationType}/>
-                <Falcon9SideRocket position='-24px' heavy={this.heavy} animationType={this.animationType}/>
-                <Falcon9Rocket position='0px' heavy={this.heavy} animationType={this.animationType}/>
+            <Rocket id="rocket" display={display} animationType={animationType}
+                    onAnimationEnd={onAnimationEnd.bind(this)}>
+                <Falcon9SideRocket position='24px' heavy={heavy} animationType={animationType}/>
+                <Falcon9SideRocket position='-24px' heavy={heavy} animationType={animationType}/>
+                <Falcon9Rocket position='0px' heavy={heavy} animationType={animationType}/>
             </Rocket>
         )
     }
