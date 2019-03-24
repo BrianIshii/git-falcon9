@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled, {keyframes} from "styled-components";
 
 export const Platform = styled.div`
     position: absolute;
-    display: 'block';
+    display: ${props => (props.display ? 'block' : 'none')};
     height: 2px;
     width: 100px;
     
@@ -20,7 +21,7 @@ export const moveHolderBack = keyframes`
 
 export const Holder = styled.div`
     position: absolute;
-    display: 'block';
+    display: ${props => (props.display && props.animationType==="LAUNCH" ? 'block' : 'none')};
     height: 200px;
     width: 20px;
     
@@ -36,18 +37,18 @@ export const Holder = styled.div`
 
 `;
 
-class LaunchPad extends React.Component {
-    render() {
-        return (
-            <div>
-            <Platform/>
-            <Holder/>
-            </div>
-        )
-    }
+const LaunchPad = ({state}) =>  {
+    const { display, animationType } = state;
+    return (
+        <div>
+            <Platform display={display}/>
+            <Holder display={display} animationType={animationType} />
+        </div>
+    );
 }
 
 LaunchPad.propTypes = {
+    state: PropTypes.object.isRequired,
 };
 
 export default LaunchPad

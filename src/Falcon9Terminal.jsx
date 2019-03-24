@@ -191,7 +191,7 @@ exports.decorateTerm = (Term, { React }) => {
                 {React.createElement(Term, Object.assign({}, this.props, {
                   onTerminal: this._onTerminal,
                 }))}
-                <LaunchPad/>
+                <LaunchPad state={this.state}/>
                 <Exhaust display={this.state.display} animationType={this.state.animationType}
                          heavy={this.state.heavy}/>
                 <FalconRocket display={this.state.display} animationType={this.state.animationType}

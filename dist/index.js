@@ -993,7 +993,7 @@ exports.decorateTerm = function (Term, _ref) {
             React.createElement(Term, Object.assign({}, this.props, {
               onTerminal: this._onTerminal
             })),
-            React.createElement(_LaunchPad2.default, null),
+            React.createElement(_LaunchPad2.default, { state: this.state }),
             React.createElement(_Exhaust2.default, { display: this.state.display, animationType: this.state.animationType,
               heavy: this.state.heavy }),
             React.createElement(_Falcon2.default, { display: this.state.display, animationType: this.state.animationType,
@@ -1087,15 +1087,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Holder = exports.moveHolderBack = exports.Platform = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _templateObject = _taggedTemplateLiteral(["\n    position: absolute;\n    display: 'block';\n    height: 2px;\n    width: 100px;\n    \n    left: calc(90% - 85px);\n    bottom: calc(0%);\n    background: #444;\n"], ["\n    position: absolute;\n    display: 'block';\n    height: 2px;\n    width: 100px;\n    \n    left: calc(90% - 85px);\n    bottom: calc(0%);\n    background: #444;\n"]),
-    _templateObject2 = _taggedTemplateLiteral(["\n  from {\n    transform: rotate(0deg); }\n  to {\n    transform: rotate(15deg); }\n"], ["\n  from {\n    transform: rotate(0deg); }\n  to {\n    transform: rotate(15deg); }\n"]),
-    _templateObject3 = _taggedTemplateLiteral(["\n    position: absolute;\n    display: 'block';\n    height: 200px;\n    width: 20px;\n    \n    left: calc(90%);\n    bottom: calc(0%);\n    background: #444;\n    transform-origin: left bottom;\n    animation-duration: 4s;\n    animation-delay: 0s;\n    animation-name: ", ";\n    animation-iteration-count: 1;\n\n\n"], ["\n    position: absolute;\n    display: 'block';\n    height: 200px;\n    width: 20px;\n    \n    left: calc(90%);\n    bottom: calc(0%);\n    background: #444;\n    transform-origin: left bottom;\n    animation-duration: 4s;\n    animation-delay: 0s;\n    animation-name: ", ";\n    animation-iteration-count: 1;\n\n\n"]);
+var _templateObject = _taggedTemplateLiteral(['\n    position: absolute;\n    display: ', ';\n    height: 2px;\n    width: 100px;\n    \n    left: calc(90% - 85px);\n    bottom: calc(0%);\n    background: #444;\n'], ['\n    position: absolute;\n    display: ', ';\n    height: 2px;\n    width: 100px;\n    \n    left: calc(90% - 85px);\n    bottom: calc(0%);\n    background: #444;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  from {\n    transform: rotate(0deg); }\n  to {\n    transform: rotate(15deg); }\n'], ['\n  from {\n    transform: rotate(0deg); }\n  to {\n    transform: rotate(15deg); }\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n    position: absolute;\n    display: ', ';\n    height: 200px;\n    width: 20px;\n    \n    left: calc(90%);\n    bottom: calc(0%);\n    background: #444;\n    transform-origin: left bottom;\n    animation-duration: 4s;\n    animation-delay: 0s;\n    animation-name: ', ';\n    animation-iteration-count: 1;\n\n\n'], ['\n    position: absolute;\n    display: ', ';\n    height: 200px;\n    width: 20px;\n    \n    left: calc(90%);\n    bottom: calc(0%);\n    background: #444;\n    transform-origin: left bottom;\n    animation-duration: 4s;\n    animation-delay: 0s;\n    animation-name: ', ';\n    animation-iteration-count: 1;\n\n\n']);
 
 var _react = __webpack_require__(/*! react */ "react");
 
 var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _styledComponents = __webpack_require__(/*! styled-components */ "styled-components");
 
@@ -1103,44 +1105,33 @@ var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var Platform = exports.Platform = _styledComponents2.default.div(_templateObject);
+var Platform = exports.Platform = _styledComponents2.default.div(_templateObject, function (props) {
+    return props.display ? 'block' : 'none';
+});
 var moveHolderBack = exports.moveHolderBack = (0, _styledComponents.keyframes)(_templateObject2);
 
-var Holder = exports.Holder = _styledComponents2.default.div(_templateObject3, moveHolderBack);
+var Holder = exports.Holder = _styledComponents2.default.div(_templateObject3, function (props) {
+    return props.display && props.animationType === "LAUNCH" ? 'block' : 'none';
+}, moveHolderBack);
 
-var LaunchPad = function (_React$Component) {
-    _inherits(LaunchPad, _React$Component);
+var LaunchPad = function LaunchPad(_ref) {
+    var state = _ref.state;
+    var display = state.display,
+        animationType = state.animationType;
 
-    function LaunchPad() {
-        _classCallCheck(this, LaunchPad);
+    return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(Platform, { display: display }),
+        _react2.default.createElement(Holder, { display: display, animationType: animationType })
+    );
+};
 
-        return _possibleConstructorReturn(this, (LaunchPad.__proto__ || Object.getPrototypeOf(LaunchPad)).apply(this, arguments));
-    }
-
-    _createClass(LaunchPad, [{
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(
-                "div",
-                null,
-                _react2.default.createElement(Platform, null),
-                _react2.default.createElement(Holder, null)
-            );
-        }
-    }]);
-
-    return LaunchPad;
-}(_react2.default.Component);
-
-LaunchPad.propTypes = {};
+LaunchPad.propTypes = {
+    state: _propTypes2.default.object.isRequired
+};
 
 exports.default = LaunchPad;
 
