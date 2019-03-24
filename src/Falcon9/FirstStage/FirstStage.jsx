@@ -17,7 +17,7 @@ export const FirstStageSpan = styled.span`
   top: 100px;
   width: 22px;
   height: 155px;
-  background-color: #d1d2d6;
+  background: linear-gradient(to right, #bbb, white, #f1f1f1);
   border-top: 1px solid #a7a9b1;
 `
 

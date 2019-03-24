@@ -171,7 +171,7 @@ var Falcon9Rocket = exports.Falcon9Rocket = function Falcon9Rocket(_ref2) {
         Falcon9,
         { position: position, animationType: animationType },
         _react2.default.createElement(_RocketSecondStages.RocketSecondStage, { animationType: animationType }),
-        _react2.default.createElement(_RocketSecondStages.DragonCapsule, { id: 'fairing', animationType: animationType }),
+        _react2.default.createElement(_RocketSecondStages.RocketFairing, { id: 'fairing', animationType: animationType }),
         _react2.default.createElement(_FirstStage2.default, { animationType: animationType }),
         _react2.default.createElement(USFlag, {
             src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png' }),
@@ -426,7 +426,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.FirstStageSpan = exports.FirstStageDiv = undefined;
 
 var _templateObject = _taggedTemplateLiteral(['\n'], ['\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n  display: block;\n  position: absolute;\n  top: 100px;\n  width: 22px;\n  height: 155px;\n  background-color: #d1d2d6;\n  border-top: 1px solid #a7a9b1;\n'], ['\n  display: block;\n  position: absolute;\n  top: 100px;\n  width: 22px;\n  height: 155px;\n  background-color: #d1d2d6;\n  border-top: 1px solid #a7a9b1;\n']);
+    _templateObject2 = _taggedTemplateLiteral(['\n  display: block;\n  position: absolute;\n  top: 100px;\n  width: 22px;\n  height: 155px;\n  background: linear-gradient(to right, #bbb, white, #f1f1f1);\n  border-top: 1px solid #a7a9b1;\n'], ['\n  display: block;\n  position: absolute;\n  top: 100px;\n  width: 22px;\n  height: 155px;\n  background: linear-gradient(to right, #bbb, white, #f1f1f1);\n  border-top: 1px solid #a7a9b1;\n']);
 
 var _styledComponents = __webpack_require__(/*! styled-components */ "styled-components");
 
@@ -706,9 +706,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.DragonCapsule = exports.RocketFairing = exports.RocketCap = exports.RocketSecondStage = undefined;
 
-var _templateObject = _taggedTemplateLiteral(['\n  display: ', ';\n  position: absolute;\n  top: 40px;\n  height: 60px;\n  width: 20px;\n  left: 1px;\n  background-color: #d1d2d6;\n  border-bottom: 1px solid #a7a9b1;\n  border-top: 2px solid #a7a9b1;\n  box-sizing: initial;\n'], ['\n  display: ', ';\n  position: absolute;\n  top: 40px;\n  height: 60px;\n  width: 20px;\n  left: 1px;\n  background-color: #d1d2d6;\n  border-bottom: 1px solid #a7a9b1;\n  border-top: 2px solid #a7a9b1;\n  box-sizing: initial;\n']),
+var _templateObject = _taggedTemplateLiteral(['\n  display: ', ';\n  position: absolute;\n  top: 40px;\n  height: 60px;\n  width: 20px;\n  left: 1px;\n  background: linear-gradient(to right, #bbb, white, #f1f1f1);\n  border-bottom: 1px solid #a7a9b1;\n  border-top: 2px solid #a7a9b1;\n  box-sizing: initial;\n'], ['\n  display: ', ';\n  position: absolute;\n  top: 40px;\n  height: 60px;\n  width: 20px;\n  left: 1px;\n  background: linear-gradient(to right, #bbb, white, #f1f1f1);\n  border-bottom: 1px solid #a7a9b1;\n  border-top: 2px solid #a7a9b1;\n  box-sizing: initial;\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n  display: block;\n  position: absolute;\n  top: 80px;\n  height: 65px;\n  width: 22px;\n  border-top-left-radius: 2000%;\n  border-top-right-radius: 2000%;\n  background-color: #d1d2d6;\n'], ['\n  display: block;\n  position: absolute;\n  top: 80px;\n  height: 65px;\n  width: 22px;\n  border-top-left-radius: 2000%;\n  border-top-right-radius: 2000%;\n  background-color: #d1d2d6;\n']),
-    _templateObject3 = _taggedTemplateLiteral(['\n  display: ', ';\n  position: absolute;\n  top: -20px;\n  height: 60px;\n  width: 30px;\n  left: -4px;\n  border-top-left-radius: 200%;\n  border-top-right-radius: 200%;\n  border-bottom-left-radius: 70%;\n  border-bottom-right-radius: 70%;\n  background-color: #d1d2d6;\n  box-sizing: border-box;\n\n  :after{\n    content: \'\';\n    position: absolute;\n    display: ', ';\n    left: 16px;\n    width: 10px;\n    top: 3px;\n    height: 27px;\n    border-top-right-radius: 100%;\n    background: linear-gradient(180deg, #a7a9b1 20%, #d6d8e1);\n  }\n'], ['\n  display: ', ';\n  position: absolute;\n  top: -20px;\n  height: 60px;\n  width: 30px;\n  left: -4px;\n  border-top-left-radius: 200%;\n  border-top-right-radius: 200%;\n  border-bottom-left-radius: 70%;\n  border-bottom-right-radius: 70%;\n  background-color: #d1d2d6;\n  box-sizing: border-box;\n\n  :after{\n    content: \'\';\n    position: absolute;\n    display: ', ';\n    left: 16px;\n    width: 10px;\n    top: 3px;\n    height: 27px;\n    border-top-right-radius: 100%;\n    background: linear-gradient(180deg, #a7a9b1 20%, #d6d8e1);\n  }\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n  display: ', ';\n  position: absolute;\n  top: -20px;\n  height: 60px;\n  width: 30px;\n  left: -4px;\n  border-top-left-radius: 200%;\n  border-top-right-radius: 200%;\n  border-bottom-left-radius: 70%;\n  border-bottom-right-radius: 70%;\n  background: linear-gradient(to right, #bbb, white, #f1f1f1);\n  box-sizing: border-box;\n'], ['\n  display: ', ';\n  position: absolute;\n  top: -20px;\n  height: 60px;\n  width: 30px;\n  left: -4px;\n  border-top-left-radius: 200%;\n  border-top-right-radius: 200%;\n  border-bottom-left-radius: 70%;\n  border-bottom-right-radius: 70%;\n  background: linear-gradient(to right, #bbb, white, #f1f1f1);\n  box-sizing: border-box;\n']),
     _templateObject4 = _taggedTemplateLiteral(['\n  display: ', ';\n  position: absolute;\n  top: 20px;\n  width: 22px;\n  border-top: 20px solid #d1d2d6;\n  border-bottom: 40px solid transparent;\n  border-left: 0px solid transparent;\n  border-right: 0px solid transparent;\n  border-radius: 400% 400% 0% 0%;\n\n    :after{\n        left: 1px;\n        content: \'\';\n        display: \'block\';\n        position: absolute;\n        background: #d1d2d6;\n        width: 10px;\n        height: 22px;\n        border-right: 10px solid #3a3a3b;\n  }\n'], ['\n  display: ', ';\n  position: absolute;\n  top: 20px;\n  width: 22px;\n  border-top: 20px solid #d1d2d6;\n  border-bottom: 40px solid transparent;\n  border-left: 0px solid transparent;\n  border-right: 0px solid transparent;\n  border-radius: 400% 400% 0% 0%;\n\n    :after{\n        left: 1px;\n        content: \'\';\n        display: \'block\';\n        position: absolute;\n        background: #d1d2d6;\n        width: 10px;\n        height: 22px;\n        border-right: 10px solid #3a3a3b;\n  }\n']);
 
 var _styledComponents = __webpack_require__(/*! styled-components */ "styled-components");
@@ -726,8 +726,6 @@ var RocketSecondStage = exports.RocketSecondStage = _styledComponents2.default.i
 var RocketCap = exports.RocketCap = _styledComponents2.default.i(_templateObject2);
 
 var RocketFairing = exports.RocketFairing = _styledComponents2.default.i(_templateObject3, function (props) {
-  return props.animationType == "LAUNCH" ? 'block' : 'none';
-}, function (props) {
   return props.animationType == "LAUNCH" ? 'block' : 'none';
 });
 

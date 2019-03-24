@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import FirstStage from './FirstStage/FirstStage'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { RocketSecondStage, RocketCap, DragonCapsule } from './SecondStage/RocketSecondStages'
+import { RocketSecondStage, RocketCap, RocketFairing } from './SecondStage/RocketSecondStages'
 import { Rocket } from './Rocket'
 // Animation Duration: 3 seconds
 
@@ -55,7 +55,7 @@ export const Falcon9Rocket = ({animationType, position}) => {
     return (
         <Falcon9 position={position} animationType={animationType}>
             <RocketSecondStage animationType={animationType}/>
-            <DragonCapsule id="fairing" animationType={animationType}/>
+            <RocketFairing id="fairing" animationType={animationType}/>
             <FirstStage animationType={animationType}/>
             <USFlag
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png"/>
