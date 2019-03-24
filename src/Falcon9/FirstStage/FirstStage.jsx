@@ -23,8 +23,8 @@ export const FirstStageSpan = styled.span`
 
 const FirstStage = ({animationType}) => {
     return (
-        <FirstStageDiv>
-            <FirstStageSpan/>
+        <FirstStageDiv id='firstStageDiv'>
+            <FirstStageSpan id='firstStageSpan'/>
             <FinLeft animationType={animationType}/>
             <FinRight animationType={animationType}/>
             <Thrust animationType={animationType}/>

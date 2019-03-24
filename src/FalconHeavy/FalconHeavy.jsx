@@ -1,11 +1,16 @@
 import PropTypes from "prop-types";
 import React from "react";
-import FalconRocket from "../Falcon9/Falcon9";
+import { Rocket } from "../Falcon9/Rocket"
+import { Falcon9Rocket, Falcon9SideRocket } from "../Falcon9/Falcon9"
 
 export const FalconHeavy = ({display, animationType, onAnimationEnd}) => {
     return (
-        <FalconRocket display={display} animationType={animationType}
-                      heavy={true} onAnimationEnd={onAnimationEnd.bind(this)}/>
+        <Rocket id="rocket" display={display} animationType={animationType}
+                onAnimationEnd={onAnimationEnd.bind(this)}>
+            <Falcon9SideRocket position='24px' heavy={true} animationType={animationType}/>
+            <Falcon9SideRocket position='-24px' heavy={true} animationType={animationType}/>
+            <Falcon9Rocket position='0px' heavy={true} animationType={animationType}/>
+        </Rocket>
     );
 };
 

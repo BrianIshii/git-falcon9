@@ -9,7 +9,7 @@ export const RocketSecondStage = styled.i`
   left: 1px;
   background-color: #d1d2d6;
   border-bottom: 1px solid #a7a9b1;
-  border-top: 1px solid #a7a9b1;
+  border-top: 2px solid #a7a9b1;
   box-sizing: initial;
 `;
 
@@ -26,7 +26,6 @@ export const RocketCap = styled.i`
 
 export const RocketFairing = styled.i`
   display: ${props => ((props.animationType == "LAUNCH") ? 'block' : 'none')};
-  //display: ${props => (props.heavy ? 'block' : 'none')};
   position: absolute;
   top: -20px;
   height: 60px;
@@ -50,4 +49,27 @@ export const RocketFairing = styled.i`
     border-top-right-radius: 100%;
     background: linear-gradient(180deg, #a7a9b1 20%, #d6d8e1);
   }
-`
+`;
+
+export const DragonCapsule = styled.i`
+  display: ${props => ((props.animationType == "LAUNCH") ? 'block' : 'none')};
+  position: absolute;
+  top: 20px;
+  width: 22px;
+  border-top: 20px solid #d1d2d6;
+  border-bottom: 40px solid transparent;
+  border-left: 0px solid transparent;
+  border-right: 0px solid transparent;
+  border-radius: 400% 400% 0% 0%;
+
+    :after{
+        left: 1px;
+        content: '';
+        display: 'block';
+        position: absolute;
+        background: #d1d2d6;
+        width: 10px;
+        height: 22px;
+        border-right: 10px solid #3a3a3b;
+  }
+`;
