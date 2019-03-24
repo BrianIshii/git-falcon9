@@ -2,6 +2,7 @@ import FalconRocket from './Falcon9/Falcon9';
 import FalconHeavy from './FalconHeavy/FalconHeavy';
 import Platform from './Platform';
 import Exhaust from './Falcon9/FirstStage/Exhaust';
+import LaunchPad from './LaunchPad';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -190,6 +191,7 @@ exports.decorateTerm = (Term, { React }) => {
                 {React.createElement(Term, Object.assign({}, this.props, {
                   onTerminal: this._onTerminal,
                 }))}
+                <LaunchPad/>
                 <Exhaust display={this.state.display} animationType={this.state.animationType}
                          heavy={this.state.heavy}/>
                 <FalconRocket display={this.state.display} animationType={this.state.animationType}

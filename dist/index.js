@@ -585,7 +585,7 @@ exports.Wastes = exports.Thrust = exports.wasting2 = exports.wasting = exports.e
 var _templateObject = _taggedTemplateLiteral(['\n  0% {\n    height: 80px; }\n  50% {\n    height: 90px; }\n  100% {\n    height: 80px; }\n'], ['\n  0% {\n    height: 80px; }\n  50% {\n    height: 90px; }\n  100% {\n    height: 80px; }\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n  0% {\n    height: 30px; }\n  50% {\n    height: 35px; }\n  100% {\n    height: 30px; }\n'], ['\n  0% {\n    height: 30px; }\n  50% {\n    height: 35px; }\n  100% {\n    height: 30px; }\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n  from {\n    opacity: 1;\n    display: block;    \n    left: 5px;\n    width: 13px;\n  }\n  to {\n    opacity: 1;\n    display: block; \n    left: 5px;\n    width: 13px;\n  }\n}\n'], ['\n  from {\n    opacity: 1;\n    display: block;    \n    left: 5px;\n    width: 13px;\n  }\n  to {\n    opacity: 1;\n    display: block; \n    left: 5px;\n    width: 13px;\n  }\n}\n']),
-    _templateObject4 = _taggedTemplateLiteral(['\n  0% {\n    opacity: 1;\n    position: absolute;\n    left: 11px;\n    width: 2px;\n  }\n  50% {\n    opacity: 1;\n    position: absolute;\n    left: 11px;\n    width: 2px;\n  }\n  90% {\n    opacity: 1;\n    position: absolute;\n    left: 11px;\n    width: 2px;\n  }\n  99% {\n    opacity: 1;\n    position: absolute;\n    left: 11px;\n    width: 2px;\n  }\n  100% {\n    opacity: 0;\n    position: absolute;\n    left: 11px;\n    width: 0px;\n    //height: 0px;\n  }\n}\n'], ['\n  0% {\n    opacity: 1;\n    position: absolute;\n    left: 11px;\n    width: 2px;\n  }\n  50% {\n    opacity: 1;\n    position: absolute;\n    left: 11px;\n    width: 2px;\n  }\n  90% {\n    opacity: 1;\n    position: absolute;\n    left: 11px;\n    width: 2px;\n  }\n  99% {\n    opacity: 1;\n    position: absolute;\n    left: 11px;\n    width: 2px;\n  }\n  100% {\n    opacity: 0;\n    position: absolute;\n    left: 11px;\n    width: 0px;\n    //height: 0px;\n  }\n}\n']),
+    _templateObject4 = _taggedTemplateLiteral(['\n  0% {\n    opacity: 1;\n    position: absolute;\n    left: 11px;\n    width: 2px;\n  }\n  50% {\n    opacity: 1;\n    position: absolute;\n    left: 11px;\n    width: 2px;\n  }\n  90% {\n    opacity: 1;\n    position: absolute;\n    left: 11px;\n    width: 2px;\n  }\n  99% {\n    opacity: 1;\n    position: absolute;\n    left: 11px;\n    width: 2px;\n  }\n  100% {\n    opacity: 0;\n    display: hidden; \n    position: absolute;\n    left: 11px;\n    width: 0px;\n  }\n}\n'], ['\n  0% {\n    opacity: 1;\n    position: absolute;\n    left: 11px;\n    width: 2px;\n  }\n  50% {\n    opacity: 1;\n    position: absolute;\n    left: 11px;\n    width: 2px;\n  }\n  90% {\n    opacity: 1;\n    position: absolute;\n    left: 11px;\n    width: 2px;\n  }\n  99% {\n    opacity: 1;\n    position: absolute;\n    left: 11px;\n    width: 2px;\n  }\n  100% {\n    opacity: 0;\n    display: hidden; \n    position: absolute;\n    left: 11px;\n    width: 0px;\n  }\n}\n']),
     _templateObject5 = _taggedTemplateLiteral(['\n  0% {\n    transform: translate3d(0px, 0, 0); }\n  100% {\n    transform: translate3d(-10px, 35px, 0); }\n'], ['\n  0% {\n    transform: translate3d(0px, 0, 0); }\n  100% {\n    transform: translate3d(-10px, 35px, 0); }\n']),
     _templateObject6 = _taggedTemplateLiteral(['\n  0% {\n    transform: translate3d(0px, 0, 0); }\n  100% {\n    transform: translate3d(10px, 35px, 0); }\n'], ['\n  0% {\n    transform: translate3d(0px, 0, 0); }\n  100% {\n    transform: translate3d(10px, 35px, 0); }\n']),
     _templateObject7 = _taggedTemplateLiteral(['\n  display: block;\n  position: absolute;\n  top: 265px;\n  height: 10px;\n  width: 1px;\n  left: 12px;\n  opacity: 0;\n  margin: 0px auto;\n  background: white; \n  border-top-left-radius: 100px;\n  border-bottom-left-radius: 9000%;\n  border-top-right-radius: 100px;\n  border-bottom-right-radius: 9000%;\n  box-shadow: \n      0 0px 0px 3px white,\n      0 20px 1px 4px white, \n      0 25px 2px 3px #ffd9b3, \n      0 30px 5px 4px #ffd9b3,  //top\n      0 0px 150px 15px #ffd9b3, //global\n      0 10px 2px 4px white,\n      0 5px 3px 3px white;\n  ', '\n  animation-iteration-count: infinite, 1;\n  animation-fill-mode: forwards;\n  }\n    .shadows{\n    position: absolute;\n    left: 4px;\n    //top: -5%;\n    width: 0px;\n    height: ', ';\n    border-radius: 50%;\n    box-shadow: \n      0 5px 20px 15px white, \n      0 0px 150px 30px #ffd9b3\n  }\n'], ['\n  display: block;\n  position: absolute;\n  top: 265px;\n  height: 10px;\n  width: 1px;\n  left: 12px;\n  opacity: 0;\n  margin: 0px auto;\n  background: white; \n  border-top-left-radius: 100px;\n  border-bottom-left-radius: 9000%;\n  border-top-right-radius: 100px;\n  border-bottom-right-radius: 9000%;\n  box-shadow: \n      0 0px 0px 3px white,\n      0 20px 1px 4px white, \n      0 25px 2px 3px #ffd9b3, \n      0 30px 5px 4px #ffd9b3,  //top\n      0 0px 150px 15px #ffd9b3, //global\n      0 10px 2px 4px white,\n      0 5px 3px 3px white;\n  ', '\n  animation-iteration-count: infinite, 1;\n  animation-fill-mode: forwards;\n  }\n    .shadows{\n    position: absolute;\n    left: 4px;\n    //top: -5%;\n    width: 0px;\n    height: ', ';\n    border-radius: 50%;\n    box-shadow: \n      0 5px 20px 15px white, \n      0 0px 150px 30px #ffd9b3\n  }\n']),
@@ -649,13 +649,12 @@ var Wastes = exports.Wastes = _styledComponents2.default.i(_templateObject8, fun
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Rocket = exports.Rocket1 = exports.launch = exports.land = exports.wiggle = undefined;
+exports.Rocket = exports.launch = exports.land = exports.wiggle = undefined;
 
 var _templateObject = _taggedTemplateLiteral(['\n  0% {\n    left: calc(90% - 47px); }\n  50% {\n    left: calc(90% - 45px); }\n  100% {\n    left: calc(90% - 47px); }\n'], ['\n  0% {\n    left: calc(90% - 47px); }\n  50% {\n    left: calc(90% - 45px); }\n  100% {\n    left: calc(90% - 47px); }\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n  0% {\n    top: -260px; }\n  50% {\n      top: calc(100% - 300px); }\n  67% {\n    top: calc(100% - 285px); }\n  100% {\n    top: calc(100% - 285px); }\n'], ['\n  0% {\n    top: -260px; }\n  50% {\n      top: calc(100% - 300px); }\n  67% {\n    top: calc(100% - 285px); }\n  100% {\n    top: calc(100% - 285px); }\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n  0% {\n    top: calc(100% - 280px); }\n  33% {\n    top: calc(100% - 280px); }\n  100% {\n    top: calc(0% - 300px); }\n'], ['\n  0% {\n    top: calc(100% - 280px); }\n  33% {\n    top: calc(100% - 280px); }\n  100% {\n    top: calc(0% - 300px); }\n']),
-    _templateObject4 = _taggedTemplateLiteral(['\n  display: ', ';\n  position: absolute;\n  height: 320px;\n  left: calc(90% - 50px);\n  ', '\n'], ['\n  display: ', ';\n  position: absolute;\n  height: 320px;\n  left: calc(90% - 50px);\n  ', '\n']),
-    _templateObject5 = _taggedTemplateLiteral(['\n  display: \'block\';\n  position: absolute;\n  height: 320px;\n  left: calc(90% - 50px);\n'], ['\n  display: \'block\';\n  position: absolute;\n  height: 320px;\n  left: calc(90% - 50px);\n']);
+    _templateObject4 = _taggedTemplateLiteral(['\n  display: ', ';\n  position: absolute;\n  height: 320px;\n  left: calc(90% - 50px);\n  ', '\n'], ['\n  display: ', ';\n  position: absolute;\n  height: 320px;\n  left: calc(90% - 50px);\n  ', '\n']);
 
 var _styledComponents = __webpack_require__(/*! styled-components */ "styled-components");
 
@@ -671,7 +670,7 @@ var land = exports.land = (0, _styledComponents.keyframes)(_templateObject2);
 
 var launch = exports.launch = (0, _styledComponents.keyframes)(_templateObject3);
 
-var Rocket1 = exports.Rocket1 = _styledComponents2.default.div(_templateObject4, function (props) {
+var Rocket = exports.Rocket = _styledComponents2.default.div(_templateObject4, function (props) {
   return props.display ? 'block' : 'none';
 }, function (props) {
   return props.animationType == "None" ? ';' : function (props) {
@@ -683,7 +682,12 @@ var Rocket1 = exports.Rocket1 = _styledComponents2.default.div(_templateObject4,
   };
 });
 
-var Rocket = exports.Rocket = _styledComponents2.default.div(_templateObject5);
+// export const Rocket = styled.div`
+//   display: 'block';
+//   position: absolute;
+//   height: 320px;
+//   left: calc(90% - 50px);
+// `;
 
 /***/ }),
 
@@ -767,6 +771,10 @@ var _Platform2 = _interopRequireDefault(_Platform);
 var _Exhaust = __webpack_require__(/*! ./Falcon9/FirstStage/Exhaust */ "./src/Falcon9/FirstStage/Exhaust.jsx");
 
 var _Exhaust2 = _interopRequireDefault(_Exhaust);
+
+var _LaunchPad = __webpack_require__(/*! ./LaunchPad */ "./src/LaunchPad.jsx");
+
+var _LaunchPad2 = _interopRequireDefault(_LaunchPad);
 
 var _propTypes = __webpack_require__(/*! prop-types */ "prop-types");
 
@@ -987,6 +995,7 @@ exports.decorateTerm = function (Term, _ref) {
             React.createElement(Term, Object.assign({}, this.props, {
               onTerminal: this._onTerminal
             })),
+            React.createElement(_LaunchPad2.default, null),
             React.createElement(_Exhaust2.default, { display: this.state.display, animationType: this.state.animationType,
               heavy: this.state.heavy }),
             React.createElement(_Falcon2.default, { display: this.state.display, animationType: this.state.animationType,
@@ -1062,6 +1071,80 @@ FalconHeavy.propTypes = {
 };
 
 exports.default = FalconHeavy;
+
+/***/ }),
+
+/***/ "./src/LaunchPad.jsx":
+/*!***************************!*\
+  !*** ./src/LaunchPad.jsx ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Holder = exports.moveHolderBack = exports.Platform = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(["\n    position: absolute;\n    display: 'block';\n    height: 2px;\n    width: 100px;\n    \n    left: calc(90% - 85px);\n    bottom: calc(0%);\n    background: #444;\n"], ["\n    position: absolute;\n    display: 'block';\n    height: 2px;\n    width: 100px;\n    \n    left: calc(90% - 85px);\n    bottom: calc(0%);\n    background: #444;\n"]),
+    _templateObject2 = _taggedTemplateLiteral(["\n  from {\n    transform: rotate(0deg); }\n  to {\n    transform: rotate(15deg); }\n"], ["\n  from {\n    transform: rotate(0deg); }\n  to {\n    transform: rotate(15deg); }\n"]),
+    _templateObject3 = _taggedTemplateLiteral(["\n    position: absolute;\n    display: 'block';\n    height: 200px;\n    width: 20px;\n    \n    left: calc(90%);\n    bottom: calc(0%);\n    background: #444;\n    transform-origin: left bottom;\n    animation-duration: 4s;\n    animation-delay: 0s;\n    animation-name: ", ";\n    animation-iteration-count: 1;\n\n\n"], ["\n    position: absolute;\n    display: 'block';\n    height: 200px;\n    width: 20px;\n    \n    left: calc(90%);\n    bottom: calc(0%);\n    background: #444;\n    transform-origin: left bottom;\n    animation-duration: 4s;\n    animation-delay: 0s;\n    animation-name: ", ";\n    animation-iteration-count: 1;\n\n\n"]);
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = __webpack_require__(/*! styled-components */ "styled-components");
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Platform = exports.Platform = _styledComponents2.default.div(_templateObject);
+var moveHolderBack = exports.moveHolderBack = (0, _styledComponents.keyframes)(_templateObject2);
+
+var Holder = exports.Holder = _styledComponents2.default.div(_templateObject3, moveHolderBack);
+
+var LaunchPad = function (_React$Component) {
+    _inherits(LaunchPad, _React$Component);
+
+    function LaunchPad() {
+        _classCallCheck(this, LaunchPad);
+
+        return _possibleConstructorReturn(this, (LaunchPad.__proto__ || Object.getPrototypeOf(LaunchPad)).apply(this, arguments));
+    }
+
+    _createClass(LaunchPad, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(Platform, null),
+                _react2.default.createElement(Holder, null)
+            );
+        }
+    }]);
+
+    return LaunchPad;
+}(_react2.default.Component);
+
+LaunchPad.propTypes = {};
+
+exports.default = LaunchPad;
 
 /***/ }),
 

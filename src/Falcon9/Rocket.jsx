@@ -29,7 +29,7 @@ export const launch = keyframes`
     top: calc(0% - 300px); }
 `;
 
-export const Rocket1 = styled.div`
+export const Rocket = styled.div`
   display: ${props => (props.display ? 'block' : 'none')};
   position: absolute;
   height: 320px;
@@ -58,9 +58,9 @@ export const Rocket1 = styled.div`
     ))}
 `;
 
-export const Rocket = styled.div`
-  display: 'block';
-  position: absolute;
-  height: 320px;
-  left: calc(90% - 50px);
-`;
+// export const Rocket = styled.div`
+//   display: 'block';
+//   position: absolute;
+//   height: 320px;
+//   left: calc(90% - 50px);
+// `;
