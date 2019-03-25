@@ -745,14 +745,7 @@ var DragonCapsule = exports.DragonCapsule = _styledComponents2.default.i(_templa
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.div_style = undefined;
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _templateObject = _taggedTemplateLiteral(['\n    width: \'100%\';\n    height: \'100%\';\n    position: \'relative\'\n'], ['\n    width: \'100%\';\n    height: \'100%\';\n    position: \'relative\'\n']);
 
 var _Falcon = __webpack_require__(/*! ./Falcon9/Falcon9 */ "./src/Falcon9/Falcon9.jsx");
 
@@ -789,8 +782,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 // This function performs regex matching on expected shell output for git push result being input
 // at the command line. Currently it supports output from bash, zsh, fish, cmd and powershell.
@@ -900,8 +891,6 @@ exports.mapTermsState = function (state, map) {
 exports.getTermGroupProps = passProps;
 exports.getTermProps = passProps;
 
-var div_style = exports.div_style = _styledComponents2.default.div(_templateObject);
-
 exports.decorateTerm = function (Term, _ref) {
   var React = _ref.React;
 
@@ -973,10 +962,11 @@ exports.decorateTerm = function (Term, _ref) {
     }, {
       key: 'render',
       value: function render() {
+        var style = { width: '100%', height: '100%', position: 'relative' };
         if (this.state.heavy) {
           return React.createElement(
             'div',
-            { style: { div_style: div_style } },
+            { style: style },
             React.createElement(Term, Object.assign({}, this.props, {
               onTerminal: this._onTerminal
             })),
@@ -989,7 +979,7 @@ exports.decorateTerm = function (Term, _ref) {
         } else {
           return React.createElement(
             'div',
-            { style: { div_style: div_style } },
+            { style: style },
             React.createElement(Term, Object.assign({}, this.props, {
               onTerminal: this._onTerminal
             })),

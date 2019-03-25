@@ -108,11 +108,7 @@ exports.mapTermsState = (state, map) => Object.assign(map, {
 exports.getTermGroupProps = passProps;
 exports.getTermProps = passProps;
 
-export const div_style= styled.div`
-    width: '100%';
-    height: '100%';
-    position: 'relative'
-`;
+
 
 exports.decorateTerm = (Term, { React }) => {
   // Define and return our higher order component.
@@ -173,8 +169,9 @@ exports.decorateTerm = (Term, { React }) => {
     }
 
     render() {
+      const style = { width: '100%', height: '100%', position: 'relative'};
         if (this.state.heavy) {
-          return (<div style={{div_style}}>
+          return (<div style={style}>
             {React.createElement(Term, Object.assign({}, this.props, {
               onTerminal: this._onTerminal,
             }))}
@@ -187,7 +184,7 @@ exports.decorateTerm = (Term, { React }) => {
           );
         } else {
           return (
-              <div style={{div_style}}>
+              <div style={style}>
                 {React.createElement(Term, Object.assign({}, this.props, {
                   onTerminal: this._onTerminal,
                 }))}
