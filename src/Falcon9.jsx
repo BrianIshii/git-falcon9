@@ -243,11 +243,10 @@ Falcon9Rocket.propTypes = {
 class FalconRocket extends React.Component {
     render() {
 
-        const { display, animationType, heavy, onAnimationEnd } = this.props;
+        const { display, animationType, heavy } = this.props;
 
         return (
-            <Rocket id="rocket" display={display} animationType={animationType}
-                    onAnimationEnd={onAnimationEnd.bind(this)}>
+            <Rocket id="rocket" display={display} animationType={animationType}>
                 <Falcon9SideRocket position='24px' heavy={heavy} animationType={animationType}/>
                 <Falcon9SideRocket position='-24px' heavy={heavy} animationType={animationType}/>
                 <Falcon9Rocket position='0px' heavy={heavy} animationType={animationType}/>
@@ -260,7 +259,6 @@ FalconRocket.propTypes = {
     display: PropTypes.bool.isRequired,
     heavy: PropTypes.bool.isRequired,
     animationType: PropTypes.string.isRequired,
-    onAnimationEnd: PropTypes.func.isRequired
 };
 
 export default FalconRocket
