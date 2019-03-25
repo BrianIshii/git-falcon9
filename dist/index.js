@@ -188,13 +188,11 @@ Falcon9Rocket.propTypes = {
 var FalconRocket = exports.FalconRocket = function FalconRocket(_ref3) {
     var display = _ref3.display,
         animationType = _ref3.animationType,
-        heavy = _ref3.heavy,
-        onAnimationEnd = _ref3.onAnimationEnd;
+        heavy = _ref3.heavy;
 
     return _react2.default.createElement(
         _Rocket.Rocket,
-        { id: 'rocket', display: display, animationType: animationType,
-            onAnimationEnd: onAnimationEnd.bind(undefined) },
+        { id: 'rocket', display: display, animationType: animationType },
         _react2.default.createElement(Falcon9Rocket, { position: '0px', heavy: heavy, animationType: animationType })
     );
 };
@@ -202,8 +200,7 @@ var FalconRocket = exports.FalconRocket = function FalconRocket(_ref3) {
 FalconRocket.propTypes = {
     display: _propTypes2.default.bool.isRequired,
     heavy: _propTypes2.default.bool.isRequired,
-    animationType: _propTypes2.default.string.isRequired,
-    onAnimationEnd: _propTypes2.default.func.isRequired
+    animationType: _propTypes2.default.string.isRequired
 };
 
 exports.default = FalconRocket;
@@ -948,16 +945,20 @@ exports.decorateTerm = function (Term, _ref) {
         return nextProps;
       }
     }, {
-      key: 'onAnimationEnd',
-      value: function onAnimationEnd(event) {
-        if (event.elapsedTime == 3) {
-          this.setState({
-            animationType: "LAUNCH",
-            heavy: false,
-            display: false
-          });
+      key: 'componentDidUpdate',
+      value: function componentDidUpdate() {
+        console.log("component did update");
+
+        var that = this;
+        if (this.state.display) {
+          setTimeout(function () {
+            that.setState({
+              animationType: "LAUNCH",
+              heavy: false,
+              display: false
+            });
+          }, 3000);
         }
-        setTimeout(1500);
       }
     }, {
       key: 'render',
@@ -972,8 +973,7 @@ exports.decorateTerm = function (Term, _ref) {
             })),
             React.createElement(_Exhaust2.default, { display: this.state.display, animationType: this.state.animationType,
               heavy: this.state.heavy }),
-            React.createElement(_FalconHeavy2.default, { display: this.state.display, animationType: this.state.animationType,
-              onAnimationEnd: this.onAnimationEnd.bind(this) }),
+            React.createElement(_FalconHeavy2.default, { display: this.state.display, animationType: this.state.animationType }),
             React.createElement(_Platform2.default, { display: this.state.display, animationType: this.state.animationType })
           );
         } else {
@@ -987,7 +987,7 @@ exports.decorateTerm = function (Term, _ref) {
             React.createElement(_Exhaust2.default, { display: this.state.display, animationType: this.state.animationType,
               heavy: this.state.heavy }),
             React.createElement(_Falcon2.default, { display: this.state.display, animationType: this.state.animationType,
-              heavy: this.state.heavy, onAnimationEnd: this.onAnimationEnd.bind(this) }),
+              heavy: this.state.heavy }),
             React.createElement(_Platform2.default, { display: this.state.display, animationType: this.state.animationType })
           );
         }
@@ -1039,13 +1039,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var FalconHeavy = exports.FalconHeavy = function FalconHeavy(_ref) {
     var display = _ref.display,
-        animationType = _ref.animationType,
-        onAnimationEnd = _ref.onAnimationEnd;
+        animationType = _ref.animationType;
 
     return _react2.default.createElement(
         _Rocket.Rocket,
-        { id: "rocket", display: display, animationType: animationType,
-            onAnimationEnd: onAnimationEnd.bind(undefined) },
+        { id: "rocket", display: display, animationType: animationType },
         _react2.default.createElement(_Falcon.Falcon9SideRocket, { position: "24px", heavy: true, animationType: animationType }),
         _react2.default.createElement(_Falcon.Falcon9SideRocket, { position: "-24px", heavy: true, animationType: animationType }),
         _react2.default.createElement(_Falcon.Falcon9Rocket, { position: "0px", heavy: true, animationType: animationType })
@@ -1054,8 +1052,7 @@ var FalconHeavy = exports.FalconHeavy = function FalconHeavy(_ref) {
 
 FalconHeavy.propTypes = {
     display: _propTypes2.default.bool.isRequired,
-    animationType: _propTypes2.default.string.isRequired,
-    onAnimationEnd: _propTypes2.default.func.isRequired
+    animationType: _propTypes2.default.string.isRequired
 };
 
 exports.default = FalconHeavy;

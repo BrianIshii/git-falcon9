@@ -157,15 +157,19 @@ exports.decorateTerm = (Term, { React }) => {
       return nextProps;
     }
 
-    onAnimationEnd(event) {
-      if (event.elapsedTime == 3) {
-        this.setState({
-          animationType: "LAUNCH",
-          heavy: false,
-          display: false,
-        });
+    componentDidUpdate() {
+      console.log("component did update");
+
+      const that = this;
+      if (this.state.display) {
+        setTimeout(function () {
+          that.setState({
+            animationType: "LAUNCH",
+            heavy: false,
+            display: false,
+          })
+        }, 3000);
       }
-      setTimeout(1500);
     }
 
     render() {
@@ -177,8 +181,7 @@ exports.decorateTerm = (Term, { React }) => {
             }))}
             <Exhaust display={this.state.display} animationType={this.state.animationType}
                      heavy={this.state.heavy}/>
-            <FalconHeavy display={this.state.display} animationType={this.state.animationType}
-                         onAnimationEnd={this.onAnimationEnd.bind(this)}/>
+            <FalconHeavy display={this.state.display} animationType={this.state.animationType}/>
             <Platform display={this.state.display} animationType={this.state.animationType}/>
           </div>
           );
@@ -192,7 +195,7 @@ exports.decorateTerm = (Term, { React }) => {
                 <Exhaust display={this.state.display} animationType={this.state.animationType}
                          heavy={this.state.heavy}/>
                 <FalconRocket display={this.state.display} animationType={this.state.animationType}
-                              heavy={this.state.heavy} onAnimationEnd={this.onAnimationEnd.bind(this)}/>
+                              heavy={this.state.heavy}/>
                 <Platform display={this.state.display} animationType={this.state.animationType}/>
               </div>
           );
