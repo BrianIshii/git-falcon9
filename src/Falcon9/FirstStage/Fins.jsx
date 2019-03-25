@@ -12,7 +12,7 @@ export const openRightFin = keyframes`
     transform: rotate(0deg); }
   to {
     transform: rotate(-90deg); }
-`
+`;
 
 export const GridFin = styled.i`
   display: block;

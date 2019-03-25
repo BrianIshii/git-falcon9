@@ -59,10 +59,10 @@ export const engineTurnedOff = keyframes`
   }
   100% {
     opacity: 0;
+    display: hidden; 
     position: absolute;
     left: 11px;
     width: 0px;
-    //height: 0px;
   }
 }
 `
