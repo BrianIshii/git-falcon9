@@ -58,9 +58,11 @@ export const Rocket = styled.div`
     ))}
 `;
 
+// dev
 // export const Rocket = styled.div`
 //   display: 'block';
 //   position: absolute;
+//   top: calc(100% - 280px);
 //   height: 320px;
 //   left: calc(90% - 50px);
 // `;

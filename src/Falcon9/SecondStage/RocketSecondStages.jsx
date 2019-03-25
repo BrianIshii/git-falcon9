@@ -21,7 +21,7 @@ export const RocketCap = styled.i`
   width: 22px;
   border-top-left-radius: 2000%;
   border-top-right-radius: 2000%;
-  background-color: #d1d2d6;
+  background: linear-gradient(to right, #bbb, white, #f1f1f1);
 `;
 
 export const RocketFairing = styled.i`

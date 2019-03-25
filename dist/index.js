@@ -679,9 +679,11 @@ var Rocket = exports.Rocket = _styledComponents2.default.div(_templateObject4, f
   };
 });
 
+// dev
 // export const Rocket = styled.div`
 //   display: 'block';
 //   position: absolute;
+//   top: calc(100% - 280px);
 //   height: 320px;
 //   left: calc(90% - 50px);
 // `;
@@ -704,7 +706,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.DragonCapsule = exports.RocketFairing = exports.RocketCap = exports.RocketSecondStage = undefined;
 
 var _templateObject = _taggedTemplateLiteral(['\n  display: ', ';\n  position: absolute;\n  top: 40px;\n  height: 60px;\n  width: 20px;\n  left: 1px;\n  background: linear-gradient(to right, #bbb, white, #f1f1f1);\n  border-bottom: 1px solid #a7a9b1;\n  border-top: 2px solid #a7a9b1;\n  box-sizing: initial;\n'], ['\n  display: ', ';\n  position: absolute;\n  top: 40px;\n  height: 60px;\n  width: 20px;\n  left: 1px;\n  background: linear-gradient(to right, #bbb, white, #f1f1f1);\n  border-bottom: 1px solid #a7a9b1;\n  border-top: 2px solid #a7a9b1;\n  box-sizing: initial;\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n  display: block;\n  position: absolute;\n  top: 80px;\n  height: 65px;\n  width: 22px;\n  border-top-left-radius: 2000%;\n  border-top-right-radius: 2000%;\n  background-color: #d1d2d6;\n'], ['\n  display: block;\n  position: absolute;\n  top: 80px;\n  height: 65px;\n  width: 22px;\n  border-top-left-radius: 2000%;\n  border-top-right-radius: 2000%;\n  background-color: #d1d2d6;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  display: block;\n  position: absolute;\n  top: 80px;\n  height: 65px;\n  width: 22px;\n  border-top-left-radius: 2000%;\n  border-top-right-radius: 2000%;\n  background: linear-gradient(to right, #bbb, white, #f1f1f1);\n'], ['\n  display: block;\n  position: absolute;\n  top: 80px;\n  height: 65px;\n  width: 22px;\n  border-top-left-radius: 2000%;\n  border-top-right-radius: 2000%;\n  background: linear-gradient(to right, #bbb, white, #f1f1f1);\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n  display: ', ';\n  position: absolute;\n  top: -20px;\n  height: 60px;\n  width: 30px;\n  left: -4px;\n  border-top-left-radius: 200%;\n  border-top-right-radius: 200%;\n  border-bottom-left-radius: 70%;\n  border-bottom-right-radius: 70%;\n  background: linear-gradient(to right, #bbb, white, #f1f1f1);\n  box-sizing: border-box;\n'], ['\n  display: ', ';\n  position: absolute;\n  top: -20px;\n  height: 60px;\n  width: 30px;\n  left: -4px;\n  border-top-left-radius: 200%;\n  border-top-right-radius: 200%;\n  border-bottom-left-radius: 70%;\n  border-bottom-right-radius: 70%;\n  background: linear-gradient(to right, #bbb, white, #f1f1f1);\n  box-sizing: border-box;\n']),
     _templateObject4 = _taggedTemplateLiteral(['\n  display: ', ';\n  position: absolute;\n  top: 20px;\n  width: 22px;\n  border-top: 20px solid #d1d2d6;\n  border-bottom: 40px solid transparent;\n  border-left: 0px solid transparent;\n  border-right: 0px solid transparent;\n  border-radius: 400% 400% 0% 0%;\n\n    :after{\n        left: 1px;\n        content: \'\';\n        display: \'block\';\n        position: absolute;\n        background: #d1d2d6;\n        width: 10px;\n        height: 22px;\n        border-right: 10px solid #3a3a3b;\n  }\n'], ['\n  display: ', ';\n  position: absolute;\n  top: 20px;\n  width: 22px;\n  border-top: 20px solid #d1d2d6;\n  border-bottom: 40px solid transparent;\n  border-left: 0px solid transparent;\n  border-right: 0px solid transparent;\n  border-radius: 400% 400% 0% 0%;\n\n    :after{\n        left: 1px;\n        content: \'\';\n        display: \'block\';\n        position: absolute;\n        background: #d1d2d6;\n        width: 10px;\n        height: 22px;\n        border-right: 10px solid #3a3a3b;\n  }\n']);
 
