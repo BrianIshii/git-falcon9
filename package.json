@@ -1,6 +1,6 @@
 {
   "name": "git-falcon9",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Falcon9 Rocket launches and lands in Hyper terminal when pushing and pulling with Git",
   "main": "dist/index.js",
   "files": [
