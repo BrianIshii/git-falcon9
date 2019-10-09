@@ -22,7 +22,7 @@ module.exports = {
               exclude: /node_modules/,
               query: {
                   cacheDirectory: 'babel_cache',
-                  presets: ['@babel/preset-react']
+                  presets: ['@babel/preset-env', '@babel/preset-react']
               }
             }
         ]
