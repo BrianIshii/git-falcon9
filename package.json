@@ -37,7 +37,9 @@
     "depcheck": "^0.8.3",
     "path": "^0.12.7",
     "prop-types": "^15.7.2",
-    "styled-components": "^3.4.10"
+    "styled-components": "^3.4.10",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
   },
   "devDependencies": {
     "@babel/core": "^7.6.3",
@@ -54,8 +56,6 @@
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-native": "^3.6.0",
     "eslint-plugin-standard": "^4.0.1",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
     "webpack": "^4.31.0",
     "webpack-cli": "^3.3.2",
     "webpack-node-externals": "^1.7.2"

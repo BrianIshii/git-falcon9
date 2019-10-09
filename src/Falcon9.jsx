@@ -5,7 +5,6 @@ import { Octaweb, MerlinEngineLeft, MerlinEngineLeftMiddle, MerlinEngineRightMid
 import { Thrust, Wastes } from './Thrust'
 import React from 'react'
 import PropTypes from 'prop-types'
-
 // Animation Duration: 3 seconds
 
 export const wiggle = keyframes`
@@ -219,7 +218,7 @@ const Falcon9Rocket = ({heavy, animationType, position}) => {
             <FirstStage animationType={animationType}/>
             <USFlag
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/280px-Flag_of_the_United_States_%28Pantone%29.svg.png"/>
-            <SpaceXLogo src="http://i67.tinypic.com/24q6a0k.png"/>
+            <SpaceXLogo src="https://logodix.com/logo/19083.png"/>
         </Falcon9>
     );
 };
