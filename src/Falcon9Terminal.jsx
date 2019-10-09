@@ -167,7 +167,6 @@ exports.decorateTerm = (Term, { React }) => {
           display: false,
         });
       }
-      setTimeout(1500);
     }
 
     render() {
