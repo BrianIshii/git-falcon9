@@ -603,12 +603,11 @@ var MerlinEngineRight = MerlinEngine.extend(_templateObject6());
 /*!*********************************!*\
   !*** ./src/Falcon9Terminal.jsx ***!
   \*********************************/
-/*! exports provided: div_style */
+/*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "div_style", function() { return div_style; });
 /* harmony import */ var _Falcon9__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Falcon9 */ "./src/Falcon9.jsx");
 /* harmony import */ var _Platform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Platform */ "./src/Platform.jsx");
 /* harmony import */ var _Exhaust__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Exhaust */ "./src/Exhaust.jsx");
@@ -633,18 +632,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    width: '100%';\n    height: '100%';\n    position: 'relative'\n"]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
 
@@ -760,7 +747,6 @@ exports.mapTermsState = function (state, map) {
 
 exports.getTermGroupProps = passProps;
 exports.getTermProps = passProps;
-var div_style = styled_components__WEBPACK_IMPORTED_MODULE_4___default.a.div(_templateObject());
 
 exports.decorateTerm = function (Term, _ref) {
   var React = _ref.React;
@@ -835,7 +821,9 @@ exports.decorateTerm = function (Term, _ref) {
       value: function render() {
         return React.createElement("div", {
           style: {
-            div_style: div_style
+            width: '100%',
+            height: '100%',
+            position: 'relative'
           }
         }, React.createElement(Term, Object.assign({}, this.props, {
           onTerminal: this._onTerminal

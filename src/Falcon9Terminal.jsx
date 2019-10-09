@@ -106,12 +106,6 @@ exports.mapTermsState = (state, map) => Object.assign(map, {
 exports.getTermGroupProps = passProps;
 exports.getTermProps = passProps;
 
-export const div_style= styled.div`
-    width: '100%';
-    height: '100%';
-    position: 'relative'
-`;
-
 exports.decorateTerm = (Term, { React }) => {
   // Define and return our higher order component.
   class HigherOrderComponentTerminal extends React.Component {
@@ -171,7 +165,7 @@ exports.decorateTerm = (Term, { React }) => {
 
     render() {
       return (
-        <div style={{div_style}}>
+        <div style={{ width: '100%', height: '100%', position: 'relative' }}>
           {React.createElement(Term, Object.assign({}, this.props, {
             onTerminal: this._onTerminal,
           }))}
