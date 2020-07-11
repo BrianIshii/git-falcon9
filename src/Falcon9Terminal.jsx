@@ -4,6 +4,7 @@ import Exhaust from './Exhaust';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+let dispatchRef;
 
 // This function performs regex matching on expected shell output for git push result being input
 // at the command line. Currently it supports output from bash, zsh, fish, cmd and powershell.
@@ -20,7 +21,6 @@ function detectPullCommand(data) {
   return new RegExp(`(${patterns.join(')|(')})`).test(data) && !antiPattern.test(data)
 }
 
-
 function detectByteCommand(data) {
   const patterns = ['Writing(.+),(.+)KiB'];
   if (new RegExp(`(${patterns.join(')|(')})`).test(data)) {
@@ -31,10 +31,10 @@ function detectByteCommand(data) {
 }
 
 exports.middleware = store => next => (action) => {
-  // console.log("in middleware");
-  // console.log(action);
-  // console.log(store.getState());
-
+  //console.log("in middleware");
+  //console.log(action);
+  //console.log(store.getState());
+  dispatchRef = store.dispatch
   if (action.type === 'SESSION_ADD_DATA') {
 
     const { data } = action;
@@ -66,10 +66,6 @@ exports.middleware = store => next => (action) => {
 };
 
 exports.reduceUI = (state, action) => {
-  // console.log("action");
-  // console.log(state);
-  // console.log(action.uid);
-
   let gitFalcon9 = ({
     'uid': action.uid,
     'rocketState': 'None',
@@ -90,14 +86,16 @@ exports.reduceUI = (state, action) => {
       return state.set('gitFalcon9', gitFalcon9);
     }
     return state.set('gitFalcon9', gitFalcon9);
+  } else if (action.type === 'REMOVE_ROCKET') {
+    return state.set('gitFalcon9', gitFalcon9);
   }
 
   return state;
 };
 
 const passProps = (uid, parentProps, props) => Object.assign(props, {
-  gitFalcon9: parentProps.gitFalcon9,
-});
+    gitFalcon9: parentProps.gitFalcon9,
+  });
 
 exports.mapTermsState = (state, map) => Object.assign(map, {
   gitFalcon9: state.ui.gitFalcon9,
@@ -132,10 +130,7 @@ exports.decorateTerm = (Term, { React }) => {
       const { gitFalcon9 } = nextProps;
 
       if (gitFalcon9) {
-
-        // console.log(rocketUID);
-        // console.log(nextProps.rocketUID);
-        // console.log(uid);
+        // console.log({ "where": "will recieve props", gitFalcon9 });
 
         if (gitFalcon9.uid === uid) {
           this.setState({
@@ -161,6 +156,10 @@ exports.decorateTerm = (Term, { React }) => {
           display: false,
         });
       }
+
+      dispatchRef({
+        type: 'REMOVE_ROCKET'
+      });
     }
 
     render() {

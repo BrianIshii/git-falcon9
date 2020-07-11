@@ -637,7 +637,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
- // This function performs regex matching on expected shell output for git push result being input
+
+var dispatchRef; // This function performs regex matching on expected shell output for git push result being input
 // at the command line. Currently it supports output from bash, zsh, fish, cmd and powershell.
 
 function detectPushCommand(data) {
@@ -667,9 +668,11 @@ function detectByteCommand(data) {
 exports.middleware = function (store) {
   return function (next) {
     return function (action) {
-      // console.log("in middleware");
-      // console.log(action);
-      // console.log(store.getState());
+      //console.log("in middleware");
+      //console.log(action);
+      //console.log(store.getState());
+      dispatchRef = store.dispatch;
+
       if (action.type === 'SESSION_ADD_DATA') {
         var data = action.data;
         var uid = store.getState().ui.activeUid;
@@ -704,9 +707,6 @@ exports.middleware = function (store) {
 };
 
 exports.reduceUI = function (state, action) {
-  // console.log("action");
-  // console.log(state);
-  // console.log(action.uid);
   var gitFalcon9 = {
     'uid': action.uid,
     'rocketState': 'None',
@@ -727,6 +727,8 @@ exports.reduceUI = function (state, action) {
       return state.set('gitFalcon9', gitFalcon9);
     }
 
+    return state.set('gitFalcon9', gitFalcon9);
+  } else if (action.type === 'REMOVE_ROCKET') {
     return state.set('gitFalcon9', gitFalcon9);
   }
 
@@ -786,9 +788,7 @@ exports.decorateTerm = function (Term, _ref) {
         var gitFalcon9 = nextProps.gitFalcon9;
 
         if (gitFalcon9) {
-          // console.log(rocketUID);
-          // console.log(nextProps.rocketUID);
-          // console.log(uid);
+          // console.log({ "where": "will recieve props", gitFalcon9 });
           if (gitFalcon9.uid === uid) {
             this.setState({
               animationType: gitFalcon9.rocketState,
@@ -815,6 +815,10 @@ exports.decorateTerm = function (Term, _ref) {
             display: false
           });
         }
+
+        dispatchRef({
+          type: 'REMOVE_ROCKET'
+        });
       }
     }, {
       key: "render",
